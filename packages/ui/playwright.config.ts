@@ -7,7 +7,8 @@ const baseURL = `http://localhost:${PORT}`
  * Self-hosted visual regression.
  *
  * Screenshots every Storybook story (`tests/visual`) against multiple browsers.
- * Baselines live in `tests/visual/__screenshots__` and are committed to git.
+ * Baselines are platform-specific (Playwright default): the Linux ones are
+ * committed and authoritative in CI; other platforms generate local baselines.
  *
  *   pnpm --filter ui-italia test:visual          # compare against baselines
  *   pnpm --filter ui-italia test:visual:update   # regenerate baselines
@@ -15,13 +16,14 @@ const baseURL = `http://localhost:${PORT}`
 export default defineConfig({
   testDir: "./tests/visual",
   snapshotDir: "./tests/visual/__screenshots__",
-  // Platform-agnostic names so macOS-generated baselines also match on Linux CI.
+  // Platform-specific baselines (e.g. `-linux`, `-darwin`).
   snapshotPathTemplate:
-    "{snapshotDir}/{testFileDir}/{testFileName}-snapshots/{arg}{-projectName}{ext}",
+    "{snapshotDir}/{testFileDir}/{testFileName}-snapshots/{arg}{-projectName}-{platform}{ext}",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
-  workers: process.env.CI ? 2 : undefined,
+  // Projects share one Storybook dev server; serialize to avoid Vite compile contention.
+  workers: 1,
   reporter: process.env.CI ? [["github"], ["html", { open: "never" }]] : "list",
   expect: {
     toHaveScreenshot: {

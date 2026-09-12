@@ -12,6 +12,9 @@ type StoryIndex = {
  * Storybook dev server is started once; snapshots are split per browser project.
  */
 test("visual regression across all stories", async ({ page, request }) => {
+  // A single test walks every story: give it room (CI already runs 3 browsers).
+  test.setTimeout(10 * 60_000)
+
   const response = await request.get("/index.json")
   const index = (await response.json()) as StoryIndex
 
@@ -23,7 +26,9 @@ test("visual regression across all stories", async ({ page, request }) => {
 
   for (const story of stories) {
     await page.goto(`/iframe.html?id=${story.id}&viewMode=story`)
-    await page.waitForLoadState("networkidle")
+    await page.waitForLoadState("load")
+    // Ensure webfonts (Titillium/DM Mono) are ready before screenshotting.
+    await page.evaluate(() => document.fonts.ready)
     await expect(page).toHaveScreenshot(`${story.id}.png`, {
       fullPage: true,
       animations: "disabled",

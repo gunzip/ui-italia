@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
+  workflow_dispatch:
 
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
@@ -52,8 +53,6 @@ jobs:
   visual:
     name: Visual regression (self-hosted)
     runs-on: ubuntu-latest
-    # Baselines live in git. Remove continue-on-error once they are committed.
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
 

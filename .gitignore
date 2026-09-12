@@ -39,5 +39,9 @@ storybook-static
 playwright-report
 test-results
 
+# visual baselines: Linux (CI) ones are committed; other platforms are local-only
+**/__screenshots__/**/*-darwin.png
+**/__screenshots__/**/*-win32.png
+
 # shadcn registry build output
 public/r

@@ -1,0 +1,39 @@
+name: Update visual baselines
+
+# Visual baselines are authoritative on Linux (the CI platform).
+# Run this workflow after adding/changing stories, then CI will be green again.
+on:
+  workflow_dispatch:
+  schedule:
+    # Weekly, to pick up drift.
+    - cron: "0 4 * * 1"
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browsers
+        run: pnpm --filter ui-italia exec playwright install --with-deps chromium firefox webkit
+
+      - name: Regenerate baselines
+        run: pnpm --filter ui-italia test:visual:update
+
+      - name: Commit baselines
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "test(visual): update Playwright baselines [skip ci]"
+          file_pattern: "packages/ui/tests/visual/__screenshots__/**"
