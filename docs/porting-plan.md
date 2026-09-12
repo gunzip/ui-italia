@@ -438,9 +438,11 @@ Ogni workstream chiude con: story + test + a11y verde + docs + registry item.
 **Decisione**: nessun fornitore esterno. Il visual regression è self-hosted con **Playwright** (`@playwright/test`), con baseline tracciate in git.
 
 - `packages/ui/playwright.config.ts`: projects **chromium + firefox + webkit** (WebKit ≈ Safari), `webServer` che avvia Storybook in automatico.
-- `packages/ui/tests/visual/stories.spec.ts`: enumera `/index.json`, apre ogni story e usa `toHaveScreenshot`. Baseline in `packages/ui/tests/visual/__screenshots__`, committate.
-- Comandi: `pnpm --filter ui-italia test:visual` (confronto) e `test:visual:update` (rigenerazione baseline).
-- CI: job dedicato che scarica i browser e confronta; su fallimento carica il report Playwright.
+- `packages/ui/tests/visual/stories.spec.ts`: enumera `/index.json`, apre ogni story e usa `toHaveScreenshot`.
+- **Baseline per piattaforma** (default Playwright): fanno fede quelle **Linux** (CI), committate in `packages/ui/tests/visual/__screenshots__`; le baseline macOS/Windows restano locali e gitignorate.
+- Comandi: `pnpm --filter ui-italia test:visual` (confronto) e `test:visual:update` (rigenerazione locale).
+- Aggiornamento baseline Linux: workflow **Update visual baselines** (`workflow_dispatch` + settimanale), che rigenera e committa.
+- CI: il job `visual` è **bloccante** sulle baseline Linux; su fallimento carica il report Playwright.
 
 **Perché** (vs fornitore hosted): costo **$0**, nessun dato che esce dal perimetro, **multi-browser incluso** (Chromium/Firefox/WebKit), nessun lock-in. **Costo**: niente review UI proprietaria — la review avviene sul report Playwright HTML e le baseline sono nostre.
 

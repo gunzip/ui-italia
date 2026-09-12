@@ -56,3 +56,7 @@ Usa il MCP `shadcn` per cercare/consultare/installare item dei registry (es. `@s
 - shadcn: <https://ui.shadcn.com/docs>
 - Base UI: <https://base-ui.com>
 - Storybook: <https://storybook.js.org/docs>
+
+## Visual test
+
+Le baseline fanno fede **su Linux (CI)** e sono committate. In locale `pnpm --filter ui-italia test:visual:update` genera baseline per la tua piattaforma (gitignorate). Dopo aver aggiunto/modificato story, lancia il workflow **Update visual baselines** su GitHub per aggiornare quelle Linux, altrimenti il job `visual` della CI fallisce.
