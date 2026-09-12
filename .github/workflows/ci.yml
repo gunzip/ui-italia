@@ -1,0 +1,85 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Lint · Typecheck · Test · Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm lint
+
+      - run: pnpm typecheck
+
+      # Storybook Test runs the stories (and the a11y gate) in a real browser.
+      - name: Install Playwright (Chromium)
+        run: pnpm --filter ui-italia exec playwright install --with-deps chromium
+
+      - name: Test (Storybook + a11y)
+        run: pnpm --filter ui-italia test
+
+      - name: Build Storybook
+        run: pnpm --filter ui-italia build-storybook
+
+      - name: Build shadcn registry
+        run: pnpm registry:build
+
+      - name: Upload Storybook artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: storybook-static
+          path: packages/ui/storybook-static
+          retention-days: 7
+
+  visual:
+    name: Visual regression (self-hosted)
+    runs-on: ubuntu-latest
+    # Baselines live in git. Remove continue-on-error once they are committed.
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browsers
+        run: pnpm --filter ui-italia exec playwright install --with-deps
+
+      - name: Run visual tests
+        run: pnpm --filter ui-italia test:visual
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: packages/ui/playwright-report
+          retention-days: 7

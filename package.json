@@ -1,0 +1,31 @@
+{
+  "name": "ui-italia-monorepo",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "turbo format",
+    "typecheck": "turbo typecheck",
+    "test": "turbo test",
+    "test:visual": "turbo test:visual",
+    "registry:build": "pnpm --filter ui-italia registry:build",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^17.5.1",
+    "prettier": "^3.9.6",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "turbo": "^2.9.18",
+    "typescript": "~6"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,json,jsonc,md,css}": "prettier --write"
+  },
+  "packageManager": "pnpm@10.33.4",
+  "engines": {
+    "node": ">=20"
+  }
+}

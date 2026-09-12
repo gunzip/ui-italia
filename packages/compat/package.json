@@ -1,0 +1,27 @@
+{
+  "name": "ui-italia-compat",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.tsx"
+  },
+  "description": "Optional compatibility shim: MUI-Italia-like component names on top of ui-italia. Remove once migration is complete.",
+  "scripts": {
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "ui-italia": "workspace:*"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10",
+    "@types/react": "^19",
+    "eslint": "^10",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17",
+    "typescript": "~6",
+    "typescript-eslint": "^8"
+  }
+}

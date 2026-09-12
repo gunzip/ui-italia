@@ -1,0 +1,61 @@
+name: Deploy Storybook + registry to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build Storybook
+        run: pnpm --filter ui-italia build-storybook
+
+      - name: Build shadcn registry
+        run: pnpm registry:build
+
+      # Serve the registry under /r so consumers can use
+      # https://gunzip.github.io/ui-italia/r/{name}.json
+      - name: Merge registry into the site
+        run: |
+          mkdir -p packages/ui/storybook-static/r
+          cp -R packages/ui/public/r/. packages/ui/storybook-static/r/
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: packages/ui/storybook-static
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

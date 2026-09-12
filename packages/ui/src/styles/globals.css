@@ -1,0 +1,391 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* Typefaces — Italia */
+@import "@fontsource/titillium-web/400.css";
+@import "@fontsource/titillium-web/600.css";
+@import "@fontsource/titillium-web/700.css";
+@import "@fontsource/dm-mono/400.css";
+@import "@fontsource/dm-mono/500.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Scanned sources (Tailwind v4 content detection) */
+@source "../../../../apps/**/*.{ts,tsx}";
+@source "../**/*.{ts,tsx}";
+
+@theme inline {
+  /* Semantic colors (shadcn contract) */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Status colors (additive to shadcn) */
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+
+  /* Brand tokens (additive) */
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-eu: var(--eu);
+  --color-eu-foreground: var(--eu-foreground);
+
+  /* Italia palette */
+  --color-italia-50: var(--italia-50);
+  --color-italia-100: var(--italia-100);
+  --color-italia-200: var(--italia-200);
+  --color-italia-300: var(--italia-300);
+  --color-italia-400: var(--italia-400);
+  --color-italia-500: var(--italia-500);
+  --color-italia-600: var(--italia-600);
+  --color-italia-700: var(--italia-700);
+  --color-italia-800: var(--italia-800);
+  --color-italia-900: var(--italia-900);
+
+  /* Charts + sidebar (required by shadcn) */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Typography */
+  --font-sans: "Titillium Web", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, monospace;
+  --font-heading: var(--font-sans);
+
+  /* Radii — MUI shape scale */
+  --radius: 0.5rem; /* 8px */
+  --radius-sm: 0.25rem; /* 4px  — buttons */
+  --radius-md: 0.375rem; /* 6px  — tags/chips */
+  --radius-lg: 0.5rem; /* 8px  — cards */
+  --radius-xl: 1rem; /* 16px */
+  --radius-2xl: 1.5rem; /* 24px */
+
+  /* Breakpoints — Bootstrap Italia inspired */
+  --breakpoint-sm: 40rem; /* 640 */
+  --breakpoint-md: 56.25rem; /* 900 */
+  --breakpoint-lg: 75rem; /* 1200 */
+  --breakpoint-xl: 96rem; /* 1536 */
+  --breakpoint-2xl: 120rem; /* 1920 */
+
+  /* Elevations */
+  --shadow-elevation-4:
+    0px 2px 4px -1px color-mix(in srgb, var(--shadow-color) 10%, transparent),
+    0px 4px 5px color-mix(in srgb, var(--shadow-color) 5%, transparent),
+    0px 1px 10px color-mix(in srgb, var(--shadow-color) 10%, transparent);
+  --shadow-elevation-8:
+    0px 8px 10px -5px color-mix(in srgb, var(--shadow-color) 10%, transparent),
+    0px 16px 24px 2px color-mix(in srgb, var(--shadow-color) 5%, transparent),
+    0px 6px 30px 5px color-mix(in srgb, var(--shadow-color) 10%, transparent);
+  --shadow-elevation-16:
+    0px 16px 24px -8px color-mix(in srgb, var(--shadow-color) 12%, transparent),
+    0px 8px 32px 4px color-mix(in srgb, var(--shadow-color) 8%, transparent),
+    0px 4px 48px 8px color-mix(in srgb, var(--shadow-color) 12%, transparent);
+}
+
+:root {
+  --shadow-color: #002b55;
+
+  /* Surfaces */
+  --background: #ffffff;
+  --foreground: #17324d;
+  --card: #ffffff;
+  --card-foreground: #17324d;
+  --popover: #ffffff;
+  --popover-foreground: #17324d;
+  --muted: #f2f2f2;
+  --muted-foreground: #5c6f82;
+  --accent: #e3f2fd;
+  --accent-foreground: #17324d;
+  --border: #e3e7eb;
+  --input: #e3e7eb;
+  --ring: #0073e6;
+
+  /* Primary — blu */
+  --primary: #0073e6;
+  --primary-foreground: #ffffff;
+
+  /* Secondary — teal (dark text for AA: 6.15:1) */
+  --secondary: #00c5ca;
+  --secondary-foreground: #17324d;
+
+  /* Status — text-safe mains + Italia accents */
+  --destructive: #b02a2a;
+  --destructive-foreground: #ffffff;
+  --success: #2e6b2c;
+  --success-foreground: #ffffff;
+  --warning: #7a5c00;
+  --warning-foreground: #ffffff;
+  --info: #17566e;
+  --info-foreground: #ffffff;
+
+  /* Status accents (icons/borders/fills) + muted surfaces + strong text */
+  --destructive-accent: #fe6666;
+  --destructive-muted: #ffe0e0;
+  --destructive-strong: #761f1f;
+  --success-accent: #6cc66a;
+  --success-muted: #e1f4e1;
+  --success-strong: #224021;
+  --warning-accent: #ffcb46;
+  --warning-muted: #fff5da;
+  --warning-strong: #614c15;
+  --info-accent: #6bcffb;
+  --info-muted: #e1f5fe;
+  --info-strong: #215c76;
+
+  /* Brand */
+  --brand: #0066cc;
+  --brand-foreground: #ffffff;
+  --eu: #264ca4;
+  --eu-foreground: #ffffff;
+
+  /* Italia palette */
+  --italia-50: #e3f2fd;
+  --italia-100: #bbdefb;
+  --italia-200: #90caf9;
+  --italia-300: #1976d2;
+  --italia-400: #42a5f5;
+  --italia-500: #0073e6;
+  --italia-600: #1e88e5;
+  --italia-700: #0059b2;
+  --italia-800: #1565c0;
+  --italia-900: #0d47a1;
+
+  /* Charts */
+  --chart-1: #0073e6;
+  --chart-2: #00c5ca;
+  --chart-3: #6cc66a;
+  --chart-4: #ffcb46;
+  --chart-5: #b02a2a;
+
+  /* Sidebar */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #17324d;
+  --sidebar-primary: #0073e6;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e3f2fd;
+  --sidebar-accent-foreground: #17324d;
+  --sidebar-border: #e3e7eb;
+  --sidebar-ring: #0073e6;
+}
+
+.dark {
+  --shadow-color: #000000;
+
+  --background: #121212;
+  --foreground: #ffffff;
+  --card: #252525;
+  --card-foreground: #ffffff;
+  --popover: #252525;
+  --popover-foreground: #ffffff;
+  --muted: #2a2a2a;
+  --muted-foreground: #a2adb8;
+  --accent: #1e3a5f;
+  --accent-foreground: #ffffff;
+  --border: rgba(255, 255, 255, 0.12);
+  --input: rgba(255, 255, 255, 0.16);
+  --ring: #3da2ff;
+
+  --primary: #3da2ff;
+  --primary-foreground: #0b1f33;
+
+  --secondary: #00c5ca;
+  --secondary-foreground: #0b1f33;
+
+  --destructive: #ff8a8a;
+  --destructive-foreground: #3b0a0a;
+  --success: #8ed88c;
+  --success-foreground: #10240f;
+  --warning: #ffd97a;
+  --warning-foreground: #3a2c00;
+  --info: #8fd8f5;
+  --info-foreground: #06232e;
+
+  --brand: #4d9fff;
+  --brand-foreground: #0b1f33;
+  --eu: #7f9fe0;
+  --eu-foreground: #0b1f33;
+
+  --italia-50: #0d2135;
+  --italia-100: #123354;
+  --italia-200: #17456f;
+  --italia-300: #1d5c93;
+  --italia-400: #2f7fc4;
+  --italia-500: #3da2ff;
+  --italia-600: #64b5ff;
+  --italia-700: #8ec8ff;
+  --italia-800: #b8dcff;
+  --italia-900: #e3f2fd;
+
+  --chart-1: #3da2ff;
+  --chart-2: #00c5ca;
+  --chart-3: #8ed88c;
+  --chart-4: #ffd97a;
+  --chart-5: #ff8a8a;
+
+  --sidebar: #1a1a1a;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #3da2ff;
+  --sidebar-primary-foreground: #0b1f33;
+  --sidebar-accent: #1e3a5f;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.12);
+  --sidebar-ring: #3da2ff;
+}
+
+/* Type scale — Italia (responsive at sm = 640px, as in mui-italia) */
+@utility text-headline {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 3.625rem; /* 58px */
+  line-height: 1.1;
+}
+@utility text-h1 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 2.625rem; /* 42px */
+  line-height: 1.1;
+  @media (width >= 40rem) {
+    font-size: 3.125rem; /* 50px */
+    line-height: 1.08;
+  }
+}
+@utility text-h2 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 2.25rem; /* 36px */
+  line-height: 1.1;
+  @media (width >= 40rem) {
+    font-size: 2.75rem; /* 44px */
+    line-height: 1.09;
+  }
+}
+@utility text-h3 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 2rem; /* 32px */
+  line-height: 1.125;
+  @media (width >= 40rem) {
+    font-size: 2.375rem; /* 38px */
+    line-height: 1.1;
+  }
+}
+@utility text-h4 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.75rem; /* 28px */
+  line-height: 1.15;
+  @media (width >= 40rem) {
+    font-size: 2rem; /* 32px */
+    line-height: 1.125;
+  }
+}
+@utility text-h5 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1.5rem; /* 24px */
+  line-height: 1.15;
+  @media (width >= 40rem) {
+    font-size: 1.75rem; /* 28px */
+    line-height: 1.5;
+  }
+}
+@utility text-h6 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1.375rem; /* 22px */
+  line-height: 1.18;
+  @media (width >= 40rem) {
+    font-size: 1.5rem; /* 24px */
+    line-height: 1.15;
+  }
+}
+@utility text-body-lg {
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.5;
+  font-weight: 400;
+}
+@utility text-body {
+  font-size: 1rem; /* 16px */
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: 0.15px;
+}
+@utility text-caption {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.4;
+  font-weight: 400;
+}
+@utility text-caption-strong {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.4;
+  font-weight: 600;
+}
+@utility text-overline {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+@utility text-mono {
+  font-family: var(--font-mono);
+  font-size: 1rem; /* 16px */
+  line-height: 1.4;
+  letter-spacing: 0.15px;
+}
+
+/* Reusable Italia focus ring */
+@utility focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+    box-shadow: none;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
