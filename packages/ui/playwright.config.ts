@@ -15,11 +15,22 @@ const baseURL = `http://localhost:${PORT}`
 export default defineConfig({
   testDir: "./tests/visual",
   snapshotDir: "./tests/visual/__screenshots__",
+  // Platform-agnostic names so macOS-generated baselines also match on Linux CI.
+  snapshotPathTemplate:
+    "{snapshotDir}/{testFileDir}/{testFileName}-snapshots/{arg}{-projectName}{ext}",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
   workers: process.env.CI ? 2 : undefined,
   reporter: process.env.CI ? [["github"], ["html", { open: "never" }]] : "list",
+  expect: {
+    toHaveScreenshot: {
+      // Small tolerance for cross-platform font anti-aliasing.
+      maxDiffPixelRatio: 0.02,
+      animations: "disabled",
+      caret: "hide",
+    },
+  },
   use: {
     baseURL,
     trace: "on-first-retry",
@@ -31,7 +42,7 @@ export default defineConfig({
     { name: "webkit", use: { ...devices["Desktop Safari"] } },
   ],
   webServer: {
-    command: "pnpm storybook -- --ci --quiet",
+    command: "pnpm storybook",
     url: `${baseURL}/index.json`,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
