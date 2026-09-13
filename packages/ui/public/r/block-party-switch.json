@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "block-party-switch",
+  "description": "Italia party-switch block (composition).",
+  "dependencies": [
+    "@base-ui/react",
+    "class-variance-authority",
+    "cn",
+    "lucide-react"
+  ],
+  "registryDependencies": ["utils", "theme"],
+  "files": [
+    {
+      "path": "src/blocks/party-switch.tsx",
+      "content": "import * as React from \"react\"\nimport { ChevronDownIcon } from \"lucide-react\"\n\nimport { Button } from \"ui-italia/components/button\"\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuItem,\n  DropdownMenuTrigger,\n} from \"ui-italia/components/dropdown-menu\"\nimport { PartyAccountItemButton } from \"./party-account-item-button\"\n\nexport interface PartySwitchItem {\n  id: string\n  name: string\n  productRole?: string\n  logoUrl?: string\n  parentName?: string\n}\n\ninterface PartySwitchProps {\n  currentPartyId: string\n  parties: PartySwitchItem[]\n  onExit?: (party: PartySwitchItem) => void\n  maxCharactersNumberMultiLineItem?: number\n  maxCharactersNumberMultiLineButton?: number\n}\n\n/**\n * Port of mui-italia `PartySwitch`: current party + dropdown to switch party.\n */\nfunction PartySwitch({\n  currentPartyId,\n  parties,\n  onExit,\n  maxCharactersNumberMultiLineItem,\n  maxCharactersNumberMultiLineButton,\n}: PartySwitchProps) {\n  const [selectedId, setSelectedId] = React.useState(currentPartyId)\n\n  React.useEffect(() => setSelectedId(currentPartyId), [currentPartyId])\n\n  const selected = parties.find((party) => party.id === selectedId)\n\n  return (\n    <DropdownMenu>\n      <DropdownMenuTrigger\n        render={\n          <Button variant=\"link\" aria-label=\"Seleziona ente\">\n            <span className=\"truncate\">{selected?.name}</span>\n            <ChevronDownIcon data-icon=\"inline-end\" aria-hidden=\"true\" />\n          </Button>\n        }\n      />\n      <DropdownMenuContent align=\"end\" className=\"w-90\">\n        {parties.map((party) => (\n          <DropdownMenuItem\n            key={party.id}\n            onClick={() => {\n              setSelectedId(party.id)\n              onExit?.(party)\n            }}\n            className=\"p-0\"\n          >\n            <PartyAccountItemButton\n              partyName={party.name}\n              partyRole={party.productRole}\n              parentPartyName={party.parentName}\n              image={party.logoUrl}\n              maxCharactersNumberMultiLine={\n                maxCharactersNumberMultiLineButton ??\n                maxCharactersNumberMultiLineItem\n              }\n            />\n          </DropdownMenuItem>\n        ))}\n      </DropdownMenuContent>\n    </DropdownMenu>\n  )\n}\n\nexport { PartySwitch }\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

@@ -1144,6 +1144,42 @@
       ]
     },
     {
+      "name": "block-header-account",
+      "type": "registry:component",
+      "description": "Italia header-account block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/header-account.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "block-header-product",
+      "type": "registry:component",
+      "description": "Italia header-product block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/header-product.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "block-hero",
       "type": "registry:component",
       "description": "Italia hero block (composition).",
@@ -1265,6 +1301,24 @@
       "files": [
         {
           "path": "src/blocks/party-avatar.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "block-party-switch",
+      "type": "registry:component",
+      "description": "Italia party-switch block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/party-switch.tsx",
           "type": "registry:component"
         }
       ]
