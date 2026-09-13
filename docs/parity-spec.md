@@ -230,16 +230,16 @@ Fonte: `src/components/MIChip/MIChip.tsx`.
 
 ### 5.5 Alert
 
-| Aspetto        | Target                                                | ui-italia                       | Gap |
-| -------------- | ----------------------------------------------------- | ------------------------------- | --- |
-| root           | border-left `4px solid`, testo `#0E0F13`, radius 8    | ✅ border-l-4, ma radius `lg`   | 🟡  |
-| padding        | 8 / 16 (`sm`)                                         | `px-3 py-2` / `sm:px-4 sm:py-3` | 🟢  |
-| icona          | margin-right 8/16, opacity 1                          | gap-x-2                         | 🟡  |
-| standard       | bg `alpha(main,.16)`, bordo main, **icona `#0E0F13`** | non modellato                   | 🔴  |
-| outlined       | bg bianco, shadow 4, bordo-left main                  | `border-l-{status}` + `bg-card` | 🟡  |
-| icona outlined | colore = `main` acceso                                | `text-{status}` (scurito)       | 🔴  |
-| title          | 16 / 600, ls 0.15                                     | `text-base font-semibold`       | 🟢  |
-| colore warning | `#FFC824`                                             | `#7A5C00`                       | 🔴  |
+| Aspetto        | Target                                                | ui-italia                                | Gap |
+| -------------- | ----------------------------------------------------- | ---------------------------------------- | --- |
+| root           | border-left `4px solid`, testo `#0E0F13`, radius 8    | ✅ `border-l-4` + `text-card-foreground` | 🟢  |
+| padding        | 8 / 16 (`sm`)                                         | ✅ `px-2 py-2` / `sm:p-4`                | 🟢  |
+| icona          | margin-right 8/16, opacity 1                          | ✅ `gap-x-2 sm:gap-x-4`                  | 🟢  |
+| standard       | bg `alpha(main,.16)`, bordo main, **icona `#0E0F13`** | non modellato (solo outlined)            | 🔴  |
+| outlined       | bg bianco, shadow 4, bordo-left main                  | ✅ `border-l-{status}` + `bg-card`       | 🟢  |
+| icona outlined | colore = `main` acceso                                | ✅ `text-{status}` = main (F1)           | 🟢  |
+| title          | 16 / 600, ls 0.15                                     | ✅ `text-body font-semibold`             | 🟢  |
+| colore warning | `#FFC824`                                             | ✅ (F1)                                  | 🟢  |
 
 Fonte: `themeNext.ts` `MuiAlert/MuiAlertTitle`.
 
@@ -280,7 +280,7 @@ Fonte: default MUI + `focusWidth/focusOffset`; allineare al pattern `MuiButton`.
 
 ### 5.9 Tabs
 
-> In `mui-italia` **non esiste** una story Tabs né un override `MuiTabs`: la parity non è richiesta dalla matrice story. Allineare comunque tipografia (14 / 600) e focus se lo si vuole coerente.
+> In `mui-italia` **non esiste** una story Tabs né un override `MuiTabs`: la parity non è richiesta dalla matrice story. Tipografia allineata a 14 / 600 (`text-caption-strong`) per coerenza.
 
 ### 5.10 Table
 
@@ -294,10 +294,10 @@ Fonte: `MuiTableHead` + default MUI Table. Nessuna story Table in `mui-italia` (
 
 ### 5.11 Tooltip
 
-| Aspetto   | Target                                            | ui-italia                    | Gap |
-| --------- | ------------------------------------------------- | ---------------------------- | --- |
-| contenuto | 14 / 600, bg `#455B71`, shadow 16, testo centrato | `text-xs`, bg `--tooltip` ✅ | 🟡  |
-| arrow     | `#455B71`                                         | ✅                           | 🟢  |
+| Aspetto   | Target                                            | ui-italia                                     | Gap |
+| --------- | ------------------------------------------------- | --------------------------------------------- | --- |
+| contenuto | 14 / 600, bg `#455B71`, shadow 16, testo centrato | ✅ `text-caption font-semibold`, elevation-16 | 🟢  |
+| arrow     | `#455B71`                                         | ✅                                            | 🟢  |
 
 Fonte: `themeNext.ts` `MuiTooltip`.
 
@@ -441,7 +441,7 @@ Ogni step chiude con: story + a11y verde + parity test + baseline.
 ### Stato di avanzamento
 
 - **F1 — Token: fatto** (`packages/ui/src/styles/globals.css`, `foundations.stories.tsx`). Light su `themeNext`; dark allineato a `darkTheme` + nuovi token derivati. Build Storybook verde.
-- **F2 — Primitive: in corso.** Blocco 1: **Button/Card/Badge**. Blocco 2: **Input/Field/Label/Textarea** (§5.2). Blocco 3: **Select/Combobox/NativeSelect/Menu/Dropdown/Command** (§5.3). Blocco 4: **Switch/Checkbox/Radio** (§5.7/§5.8). Restano §5.5, §5.9 → §5.13.
+- **F2 — Primitive: in corso.** Blocchi 1-4: Button/Card/Badge, Input/Field/Label/Textarea, Select/Combobox/NativeSelect/Menu, Switch/Checkbox/Radio. Blocco 5: **Alert/Tooltip/Tabs** (§5.5/§5.9/§5.11). Restano §5.10, §5.12 → §5.14.
 - **F3 — Storybook: da fare** (§6).
 - **F4 — Catalogo: da fare** (§7).
 - **F5 — Guardrail: da fare** (§8).
