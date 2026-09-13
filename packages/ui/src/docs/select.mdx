@@ -1,0 +1,36 @@
+import {
+  Meta,
+  Title,
+  Primary,
+  Controls,
+  Stories,
+} from "@storybook/addon-docs/blocks"
+
+import * as SelectStories from "../components/select.stories"
+
+<Meta of={SelectStories} />
+
+<Title />
+
+`Select` è la tendina di selezione su Base UI, porting di `MuiSelect`: trigger
+56px, testo 16px/600, icona 24px e paper con elevazione 16.
+
+## Playground
+
+<Primary />
+<Controls />
+
+## Composizione
+
+`Select` con `SelectTrigger` (`size` `default`/`sm`), `SelectValue`,
+`SelectContent`, `SelectGroup` e `SelectItem`. L'item selezionato usa il colore
+`--primary` per testo e icone.
+
+<Stories />
+
+## Accessibilità
+
+- Il trigger espone `role="combobox"` e gli attributi `aria-*` gestiti da Base
+  UI; associare sempre una `Label`.
+- Navigazione da tastiera completa (frecce, Invio, Esc, typeahead).
+- Focus visibile 2px, offset 2px.

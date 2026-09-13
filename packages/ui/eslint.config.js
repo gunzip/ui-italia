@@ -33,6 +33,22 @@ export default defineConfig([
       // Vendored shadcn registry components intentionally sync state in effects
       // (e.g. carousel, use-mobile); keep them aligned with upstream.
       "react-hooks/set-state-in-effect": "off",
+      // Guard against hard-coded colors: use semantic tokens instead. Brand
+      // assets/illustrations keep literal hex values in SVG markup (not
+      // Tailwind arbitrary values), so they are intentionally not matched.
+      "no-restricted-syntax": [
+        "error",
+        {
+          selector: "Literal[value=/\\[#(?:[0-9a-fA-F]{3,8})\\]/]",
+          message:
+            "Hard-coded color: use a semantic token (bg-primary, text-muted-foreground, border-border…).",
+        },
+        {
+          selector: "TemplateElement[value.raw=/\\[#(?:[0-9a-fA-F]{3,8})\\]/]",
+          message:
+            "Hard-coded color: use a semantic token (bg-primary, text-muted-foreground, border-border…).",
+        },
+      ],
     },
   },
   ...storybook.configs["flat/recommended"],

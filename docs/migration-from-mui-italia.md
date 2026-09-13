@@ -2,7 +2,7 @@
 
 > **Agent-oriented** document: deterministic steps, explicit mapping, no ambiguity. An agent should be able to apply it file by file and verify the result.
 >
-> Status: **in progress**. The table grows alongside the port. Today `Button` is covered.
+> Status: **in progress**. Primitives, blocks and assets are ported; the mappings below grow alongside the port.
 
 ## 0. Agent protocol
 
@@ -51,21 +51,84 @@ pnpm dlx shadcn@latest add @ui-italia/button @ui-italia/theme
 
 ## 3. Components
 
-| Old                                     | New                     | Status       |
-| --------------------------------------- | ----------------------- | ------------ |
-| `MIButton`                              | `Button`                | ✅ available |
-| `MIIconButton`                          | `Button size="icon*"`   | ⏳           |
-| `MIChip`                                | `Badge`                 | ⏳           |
-| `MIAlert`                               | `Alert`                 | ⏳           |
-| `MIBreadcrumbs`                         | `Breadcrumb`            | ⏳           |
-| `MISpinner`                             | `Spinner`               | ⏳           |
-| `MISnackbar`                            | `Sonner` (`toast()`)    | ⏳           |
-| `MITooltip`                             | `Tooltip`               | ⏳           |
-| `Tag` / `TagGroup`                      | `Badge` / `ToggleGroup` | ⏳           |
-| `Autocomplete`                          | `Combobox`              | ⏳           |
-| `MIStepper` / `MIWizard` / `MITimeline` | block                   | ⏳           |
+| Old                                          | New                                                   | Status       |
+| -------------------------------------------- | ----------------------------------------------------- | ------------ |
+| `MIButton` / `ButtonNaked`                   | `Button`                                              | ✅ available |
+| `MIIconButton`                               | `Button size="icon*"`                                 | ✅ available |
+| `MIChip`                                     | `Badge`                                               | ✅ available |
+| `MIAlert`                                    | `Alert`                                               | ✅ available |
+| `MIBreadcrumbs`                              | `Breadcrumb`                                          | ✅ available |
+| `MISpinner`                                  | `Spinner`                                             | ✅ available |
+| `MISnackbar`                                 | `Sonner` (`toast()`)                                  | ✅ available |
+| `MITooltip`                                  | `Tooltip`                                             | ✅ available |
+| `MIPaper`                                    | `Card`                                                | ✅ available |
+| `MIBoxedModule`                              | `BoxedModule` (block)                                 | ✅ available |
+| `Tag` / `TagGroup`                           | `Tag` / `TagGroup`                                    | ✅ available |
+| `Autocomplete`                               | `Combobox`                                            | ✅ available |
+| `Link` (`@mui/material`)                     | `Link`                                                | ✅ available |
+| `MIStepper`                                  | `Stepper` (block)                                     | ✅ available |
+| `MIWizard`                                   | `Wizard` (block)                                      | ✅ available |
+| `MITimeline`                                 | `Timeline` (block)                                    | ✅ available |
+| `MISpidSelectOIDialog`                       | `SpidSelectOIDialog`                                  | ✅ available |
+| `Footer` / `HeaderAccount` / `HeaderProduct` | `Footer` / `HeaderAccount` / `HeaderProduct` (blocks) | ✅ available |
 
 > The ⏳ rows become ✅ as components get ported. Do not migrate a component that is not yet ✅: wait for the port or contribute.
+
+### Blocks and compositions
+
+The application-level compositions live in `ui-italia/blocks` (imported as
+`ui-italia/blocks/<name>`); the registry item names are prefixed with `block-`
+(e.g. `@ui-italia/block-footer`).
+
+| `mui-italia`                                                                       | `ui-italia` block                                                                  |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `MIBoxedModule`                                                                    | `BoxedModule`                                                                      |
+| `MITimeline` / `TimelineNotification`                                              | `Timeline` / `TimelineItem`                                                        |
+| `MIStepper`                                                                        | `Stepper`                                                                          |
+| `MIWizard`                                                                         | `Wizard`                                                                           |
+| `MISpidSelectOIDialog`                                                             | `SpidSelectOIDialog`                                                               |
+| `Tag` / `TagGroup`                                                                 | `Tag` / `TagGroup`                                                                 |
+| `Footer` / `FooterLegal` / `FooterCheckout` / `FooterPostLogin` / `FooterPreLogin` | `Footer` / `FooterLegal` / `FooterCheckout` / `FooterPostLogin` / `FooterPreLogin` |
+| `HeaderAccount`                                                                    | `HeaderAccount`                                                                    |
+| `HeaderProduct`                                                                    | `HeaderProduct`                                                                    |
+| `AccountDropdown`                                                                  | `AccountDropdown`                                                                  |
+| `Banner` / `EnvironmentBanner`                                                     | `Banner` / `EnvironmentBanner`                                                     |
+| `Hero` / `Infoblock` / `HorizontalNav` / `LangSwitch` / `Showcase`                 | same names                                                                         |
+| `PartyAccountItem` / `PartyAccountItemButton` / `PartyAvatar`                      | same names                                                                         |
+| `PartySwitch` / `ProductSwitch` / `ProductAvatar`                                  | `PartySwitch` / `ProductSwitch` / `ProductAvatar`                                  |
+| `ProfileItem`                                                                      | `ProfileItem`                                                                      |
+| `SingleFileInput`                                                                  | `SingleFileInput`                                                                  |
+| `TOSAgreement`                                                                     | `TOSAgreement`                                                                     |
+| `Walkthrough`                                                                      | `Walkthrough`                                                                      |
+| `CopyToClipboardButton`                                                            | `CopyToClipboardButton`                                                            |
+
+```tsx
+// Before
+import { MIBoxedModule } from "mui-italia"
+;<MIBoxedModule title="Titolo" loading={false}>
+  {content}
+</MIBoxedModule>
+
+// After
+import { BoxedModule, BoxedModuleTitle } from "ui-italia/blocks/boxed-module"
+;<BoxedModule icon={<InfoIcon />} action={<Button>Entra</Button>}>
+  <BoxedModuleTitle>Titolo</BoxedModuleTitle>
+  {content}
+</BoxedModule>
+```
+
+### `Link` → `Link`
+
+```tsx
+import { Link } from "ui-italia/components/link"
+
+;<Link href="/area-personale" underline="always">
+  Area personale
+</Link>
+```
+
+`underline` accepts `always` (default, MUI parity), `hover`, `none`. The focus
+ring follows the MUI pattern: `outline 2px`, offset 4px, radius 8px.
 
 ### `MIButton` → `Button`
 
@@ -112,10 +175,10 @@ import { Button } from "ui-italia/components/button"
 | `isLoading`                           | `disabled` + `aria-busy` (or `Spinner` when available)                                  |
 | `sx`                                  | semantic Tailwind classes                                                               |
 
-> There is an **optional shim** `ui-italia-compat` with `MIButton` that accepts the old props. Use it only during the transition:
+> There is an **optional shim** `ui-italia-compat` that accepts the old props and names: `MIButton`, `MIChip`, `MIAlert`, `MIPaper`, `MISnackbar`, `MIBreadcrumbs`. Use it only during the transition:
 >
 > ```tsx
-> import { MIButton } from "ui-italia-compat"
+> import { MIButton, MIChip, MIAlert } from "ui-italia-compat"
 > ```
 >
 > It must be removed once migration is complete.
@@ -130,17 +193,26 @@ import { Button } from "ui-italia/components/button"
 | `severity="info"`    | `info`              |
 | neutral              | `default`           |
 
-The colored left border (4px) and the shadow are in the component; compose with `AlertTitle` / `AlertDescription` / `AlertAction`.
+The colored left border (4px) is in the component; compose with `AlertTitle` / `AlertDescription` / `AlertAction`. Use `appearance="standard"` for the tinted MUI `standard` look (icon `#0E0F13`); the default `appearance="outlined"` keeps the white surface + elevation.
 
-### Chip / Tag → `Badge`
+### Chip / Tag → `Badge` / `Tag`
 
-| `mui-italia`                                 | `Badge` (`variant`)            |
-| -------------------------------------------- | ------------------------------ |
-| `MIChip color="primary"`                     | `default`                      |
-| `MIChip color="secondary"`                   | `secondary`                    |
-| `MIChip color="error"`                       | `destructive`                  |
-| `Tag variant="success" / "info" / "warning"` | `success` / `info` / `warning` |
-| `MIChip variant="outlined"`                  | `outline`                      |
+`MIChip` maps to `Badge` (pill, 40px radius):
+
+| `mui-italia`                                  | `Badge` (`variant`)            |
+| --------------------------------------------- | ------------------------------ |
+| `MIChip color="default"`                      | `primary`                      |
+| `MIChip color="highlight"`                    | `highlight`                    |
+| `MIChip color="error"`                        | `destructive`                  |
+| `MIChip color="neutral"`                      | `neutral`                      |
+| `MIChip color="success" / "info" / "warning"` | `success` / `info` / `warning` |
+| `MIChip variant="outlined"`                   | `outline`                      |
+| `MIChip variant="outlined" color="error"`     | `outline-destructive`          |
+| `MIChip onDelete`                             | `onDelete` + `deleteAriaLabel` |
+| `MIChip avatar`                               | `avatar`                       |
+
+`Tag` / `TagGroup` (uppercase status label, truncation) are available as a
+separate block: `ui-italia/blocks/tag`.
 
 ### TextField → `Input` + `Label` + `Field`
 

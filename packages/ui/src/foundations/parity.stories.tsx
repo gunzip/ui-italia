@@ -1,10 +1,19 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 import { expect, within } from "storybook/test"
+import { TriangleAlertIcon } from "lucide-react"
 
+import { Alert } from "../components/alert"
 import { Badge } from "../components/badge"
 import { Button } from "../components/button"
+import { Field, FieldDescription, FieldError } from "../components/field"
 import { Input } from "../components/input"
 import { Label } from "../components/label"
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+} from "../components/pagination"
 import {
   Select,
   SelectContent,
@@ -54,6 +63,25 @@ export const ThemeAndComponents: Story = {
         <Switch data-testid="parity-switch" defaultChecked />
         Notifications
       </Label>
+      <Alert data-testid="parity-alert" variant="warning">
+        <TriangleAlertIcon />
+        <span>Warning</span>
+      </Alert>
+      <Pagination data-testid="parity-pagination">
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationLink href="#" data-testid="parity-pagination-link">
+              1
+            </PaginationLink>
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
+      <Field>
+        <FieldDescription data-testid="parity-field-description">
+          Helper text
+        </FieldDescription>
+        <FieldError data-testid="parity-field-error">Error text</FieldError>
+      </Field>
     </div>
   ),
   play: async ({ canvasElement }) => {
@@ -73,6 +101,9 @@ export const ThemeAndComponents: Story = {
     await expect(badge.fontWeight).toBe("600")
     await expect(badge.paddingTop).toBe("3px")
     await expect(badge.paddingLeft).toBe("8px")
+    // Chip info — muted surface / strong text (#E1F5FE / #225C76).
+    await expect(badge.backgroundColor).toBe("rgb(225, 245, 254)")
+    await expect(badge.color).toBe("rgb(34, 92, 118)")
 
     // Input — 56px medium, 600 weight, grey[650] border.
     const input = getComputedStyle(canvas.getByTestId("parity-input"))
@@ -91,5 +122,29 @@ export const ThemeAndComponents: Story = {
     const track = getComputedStyle(canvas.getByTestId("parity-switch"))
     await expect(track.width).toBe("42px")
     await expect(track.height).toBe("26px")
+
+    // Alert warning — icon uses the bright `main` (#FFC824), not `-strong`.
+    const alertIcon = canvas
+      .getByTestId("parity-alert")
+      .querySelector("svg") as SVGElement
+    await expect(getComputedStyle(alertIcon).color).toBe("rgb(255, 200, 36)")
+
+    // Pagination — MIChip/MUI item is 32×32.
+    const pageLink = getComputedStyle(
+      canvas.getByTestId("parity-pagination-link")
+    )
+    await expect(pageLink.width).toBe("32px")
+    await expect(pageLink.height).toBe("32px")
+
+    // Field — helper 12/600 muted, error destructive.
+    const helper = getComputedStyle(
+      canvas.getByTestId("parity-field-description")
+    )
+    await expect(helper.fontSize).toBe("12px")
+    await expect(helper.fontWeight).toBe("600")
+    await expect(helper.color).toBe("rgb(85, 92, 112)")
+
+    const errorText = getComputedStyle(canvas.getByTestId("parity-field-error"))
+    await expect(errorText.color).toBe("rgb(209, 51, 51)")
   },
 }

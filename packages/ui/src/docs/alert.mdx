@@ -1,0 +1,39 @@
+import {
+  Meta,
+  Title,
+  Primary,
+  Controls,
+  Stories,
+} from "@storybook/addon-docs/blocks"
+
+import * as AlertStories from "../components/alert.stories"
+
+<Meta of={AlertStories} />
+
+<Title />
+
+`Alert` è il messaggio di stato, porting di `MIAlert`: bordo sinistro 4px,
+titolo, descrizione e azione opzionale.
+
+## Playground
+
+<Primary />
+<Controls />
+
+## Varianti
+
+`variant` seleziona lo stato (`default`, `destructive`, `success`, `warning`,
+`info`) e ne colora bordo e icona. `appearance` sceglie la superficie:
+
+- `outlined` (default) — sfondo bianco, elevazione 4, icona nel colore `main`.
+- `standard` — superficie tinta `main` al 16%, icona `#0E0F13`.
+
+Comporre con `AlertTitle`, `AlertDescription`, `AlertAction`.
+
+<Stories />
+
+## Accessibilità
+
+- `role="alert"`; il contenuto è annunciato quando compare.
+- Non usare il colore acceso `main` come testo su bianco: per il testo si
+  usano i token `*-strong` (contrasto AA verificato dal gate a11y).

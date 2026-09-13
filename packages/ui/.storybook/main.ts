@@ -32,6 +32,17 @@ const config: StorybookConfig = {
   viteFinal: async (config) => {
     config.plugins ??= []
     config.plugins.push(tailwindcss())
+    // Prefer the `source` condition so the workspace consumes `src` while
+    // published consumers get the built `dist` (see package.json exports).
+    config.resolve ??= {}
+    config.resolve.conditions = [
+      ...(config.resolve.conditions ?? [
+        "module",
+        "browser",
+        "development|production",
+      ]),
+      "source",
+    ]
     return config
   },
 }

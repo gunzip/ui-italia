@@ -22,6 +22,7 @@ React 19 · Vite 8 · TypeScript 6 · Tailwind v4 · `@base-ui/react` · shadcn 
 pnpm dev                 # playground
 pnpm --filter ui-italia storybook      # Storybook on :6006
 pnpm --filter ui-italia typecheck
+pnpm --filter ui-italia build          # npm package build (tsc → dist)
 pnpm test                              # Storybook Test + a11y
 pnpm --filter ui-italia test:visual    # visual regression (Playwright)
 pnpm registry:build
@@ -35,6 +36,28 @@ pnpm lint
 - Composition with sub-components (`Card`/`CardHeader`/…), variants with `cva`, class merging with `cn` from `cn`, `data-slot` on every part, ref forwarding.
 - Base UI: polymorphism with the `render` prop. For links use `buttonVariants` + `<a>` (not `render={<a/>}` on `Button`).
 - **WCAG 2.2 AA accessibility is mandatory**: associated labels, visible focus, roles/`aria-*`, targets ≥ 24px. Stories must pass `@storybook/addon-a11y` (set to `test: 'error'`).
+
+## Catalogue layout and entrypoints
+
+- `packages/ui/src/components/**` — primitives with variants (`Button`, `Badge`, `Input`, `Select`…).
+- `packages/ui/src/blocks/**` — compositions built on the primitives (`Footer`, `HeaderAccount`, `Banner`, `Stepper`, `Timeline`, `Wizard`, `Tag`, `PartySwitch`…). Registry items are prefixed `block-` (e.g. `@ui-italia/block-footer`).
+- `packages/ui/src/{icons,illustrations,assets}/**` — 1:1 SVG ports; the registry items are `icons`, `illustrations`, `assets` with a dedicated `target` so their `index.ts` files do not collide.
+
+Consumer entrypoints (see `packages/ui/package.json` → `exports`):
+
+```tsx
+import { Button } from "ui-italia/components/button"
+import { Footer } from "ui-italia/blocks/footer"
+import { useIsMobile } from "ui-italia/hooks/use-mobile"
+import { IllusPush } from "ui-italia/illustrations"
+import { CieIcon } from "ui-italia/icons"
+import { LogoPagoPACompany } from "ui-italia/assets"
+import { cn } from "ui-italia/lib/utils"
+import "ui-italia/globals.css"
+```
+
+- The registry is generated: edit `registry.json` (name/type/description/files) and run `pnpm registry:build`; `scripts/build-registry.mjs` recomputes `dependencies`, `registryDependencies` and the asset `target`s. **Never edit those derived fields by hand.**
+- `public/r/*` is gitignored build output.
 
 ## Storybook MCP (`storybook`)
 
@@ -65,4 +88,4 @@ Use the `shadcn` MCP to search/consult/install registry items (e.g. `@shadcn/but
 
 ## Visual test
 
-The baselines are authoritative **on Linux (CI)** and are committed. Locally, `pnpm --filter ui-italia test:visual:update` generates baselines for your platform (gitignored). After adding/modifying a story, run the **Update visual baselines** workflow on GitHub to update the Linux ones, otherwise the CI `visual` job fails.
+The baselines are authoritative **on Linux (CI)** and are committed. Locally, `pnpm --filter ui-italia test:visual:update` generates baselines for your platform (gitignored). After adding/modifying a story, run the **Update visual baselines** workflow on GitHub to update the Linux ones, otherwise the CI `visual` job fails. Visual tests run on **chromium, firefox and webkit**: the same workflow (re)generates all three.

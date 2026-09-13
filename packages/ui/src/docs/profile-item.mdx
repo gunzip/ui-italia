@@ -1,0 +1,38 @@
+import {
+  Meta,
+  Title,
+  Primary,
+  Controls,
+  Stories,
+} from "@storybook/addon-docs/blocks"
+
+import * as ProfileItemStories from "../blocks/profile-item.stories"
+
+<Meta of={ProfileItemStories} />
+
+<Title />
+
+`ProfileItem` è la voce profilo del Design System, porting di `ProfileItem`:
+avatar con iniziali, didascalia e nome, più l'azione "cambia profilo". Sotto i
+160px il testo collassa nell'avatar.
+
+## Playground
+
+<Primary />
+<Controls />
+
+## Props
+
+- `profileName` / `profileInitials` — nome e iniziali dell'avatar.
+- `caption` — etichetta sopra il nome (default `Stai operando come`).
+- `switchLabel` / `switchAriaLabel` / `showSwitchProfile` — azione di cambio
+  profilo.
+- `onSwitchProfile` — handler del cambio profilo.
+
+<Stories />
+
+## Accessibilità
+
+- L'avatar è decorativo (`aria-hidden`); il nome è testo reale.
+- L'azione di cambio profilo è un `<button>` con nome accessibile che include
+  il nome del profilo.

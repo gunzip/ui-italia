@@ -1,0 +1,36 @@
+import {
+  Meta,
+  Title,
+  Primary,
+  Controls,
+  Stories,
+} from "@storybook/addon-docs/blocks"
+
+import * as CardStories from "../components/card.stories"
+
+<Meta of={CardStories} />
+
+<Title />
+
+`Card` è la superficie contenitore, porting di `MIPaper`/`MICard`: raggio 8px,
+padding 24px e nessun bordo su footer/azioni.
+
+## Playground
+
+<Primary />
+<Controls />
+
+## Composizione
+
+`Card` con `CardHeader` (`CardTitle`, `CardDescription`, `CardAction`),
+`CardContent` e `CardFooter`. La prop `size` (`default`/`sm`) regola la spaziatura
+interna.
+
+<Stories />
+
+## Accessibilità
+
+- Usare heading semantici (`h2`–`h6`) per `CardTitle` quando la card introduce
+  una sezione.
+- Le azioni interattive restano `<button>`/`<a>` reali: la card non è cliccabile
+  di default.

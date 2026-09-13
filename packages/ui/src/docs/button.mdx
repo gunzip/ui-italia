@@ -1,0 +1,43 @@
+import {
+  Meta,
+  Title,
+  Primary,
+  Controls,
+  Stories,
+} from "@storybook/addon-docs/blocks"
+
+import * as ButtonStories from "../components/button.stories"
+
+<Meta of={ButtonStories} />
+
+<Title />
+
+`Button` è il pulsante del Design System, porting idiomatico di `MIButton`.
+Supporta varianti, colori, dimensioni, icone e stati di caricamento.
+
+## Playground
+
+<Primary />
+<Controls />
+
+## Varianti e stati
+
+- `default` — contained primary (bordo 2px, hover `--primary-hover`).
+- `outline` — testo/bordo primary, hover bordo `currentColor`.
+- `ghost` — sfondo trasparente, hover su `--action-hover`.
+- `destructive` / `destructive-outline` — errore.
+- `contrasted` / `contrasted-outline` — superfici scure o colorate.
+- `link` — link testuale, padding 0 e altezza automatica.
+
+Dimensioni `xs`/`sm`/`default`/`lg` (32/40/48/56px) e `icon-*`. Le icone si
+affiancano al testo con `data-icon="inline-start"` / `"inline-end"`.
+
+<Stories />
+
+## Accessibilità
+
+- Il pulsante è sempre un `<button>` reale; per i link usare `buttonVariants`
+  su un `<a>` (non `render={<a />}`, che forzerebbe `role="button"`).
+- `loading` imposta `disabled` + `aria-busy`; `loadingLabel` fornisce il nome
+  accessibile dello stato di caricamento.
+- Focus visibile `outline 2px`, offset 2px, token `--ring`; target minimo 24×24.

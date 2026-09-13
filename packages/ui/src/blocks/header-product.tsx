@@ -24,6 +24,8 @@ const chipVariant = {
 interface HeaderProductProps extends React.ComponentProps<"div"> {
   chipColor?: ChipColors
   chipLabel?: string
+  /** Shows the bottom divider (default `true`). */
+  divider?: boolean
   onSelectedParty?: (party: PartySwitchItem) => void
   onSelectedProduct?: (product: ProductSwitchItem) => void
   partyId?: string
@@ -41,6 +43,7 @@ interface HeaderProductProps extends React.ComponentProps<"div"> {
 function HeaderProduct({
   chipColor = "primary",
   chipLabel,
+  divider = true,
   onSelectedParty,
   onSelectedProduct = () => {},
   partyId,
@@ -72,7 +75,8 @@ function HeaderProduct({
     <div
       data-slot="header-product"
       className={cn(
-        "flex min-h-12 items-center border-b border-border bg-card md:min-h-20",
+        "flex min-h-12 items-center bg-card md:min-h-20",
+        divider && "border-b border-border",
         className
       )}
       {...props}

@@ -7,6 +7,8 @@ import { defineConfig } from "vite"
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
+    // Workspace consumes the `source` condition (see packages/ui package.json).
+    conditions: ["module", "browser", "development|production", "source"],
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },

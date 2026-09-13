@@ -33,7 +33,7 @@ function Walkthrough({ title, items, className, ...props }: WalkthroughProps) {
           <h2 className="text-center text-h4 text-foreground">{title}</h2>
           <ol
             tabIndex={0}
-            className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-2 md:justify-center md:overflow-visible"
+            className="flex snap-x snap-mandatory scroll-px-4 [scrollbar-width:none] gap-6 overflow-x-auto pb-2 md:justify-center md:overflow-visible [&::-webkit-scrollbar]:hidden"
           >
             {items.map((item, index) => {
               const sequential = item.isSequential ?? true

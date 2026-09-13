@@ -43,3 +43,7 @@ export const SingleProduct: Story = {
 export const SingleParty: Story = {
   args: { ...base, partyList: [base.partyList[0]] },
 }
+
+export const WithoutDivider: Story = {
+  args: { ...base, divider: false },
+}

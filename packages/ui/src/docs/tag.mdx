@@ -1,0 +1,40 @@
+import {
+  Meta,
+  Title,
+  Primary,
+  Controls,
+  Stories,
+} from "@storybook/addon-docs/blocks"
+
+import * as TagStories from "../blocks/tag.stories"
+
+<Meta of={TagStories} />
+
+<Title />
+
+`Tag` è l'etichetta di stato in maiuscolo, porting di `Tag`: bordo,
+icona di stato opzionale e testo troncabile o a capo.
+
+## Playground
+
+<Primary />
+<Controls />
+
+## Props
+
+- `variant` — `default`, `info`, `warning`, `error`, `success`, `only-icon`.
+- `value` — testo della tag (obbligatorio tranne per `only-icon`).
+- `mode` — `truncate` (ellissi + tooltip) o `wrap`.
+- `icon` — icona personalizzata; `aria-label` per il nome accessibile.
+
+`TagGroup` disporrà le tag in una griglia con overflow `+N` tramite
+`visibleItems`.
+
+<Stories />
+
+## Accessibilità
+
+- Per `only-icon` è obbligatorio `aria-label`.
+- Le icone di stato espongono un `role="img"` con etichetta tradotta.
+- Testo e bordo usano i token `*-strong` (AA); il colore da solo non è
+  sufficiente a comunicare lo stato.

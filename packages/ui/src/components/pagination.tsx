@@ -52,7 +52,12 @@ function PaginationLink({
     <Button
       variant={isActive ? "outline" : "ghost"}
       size={size}
-      className={cn(className)}
+      className={cn(
+        "text-caption-strong",
+        size === "icon" && "size-8 p-0",
+        "focus-visible:outline-offset-4",
+        className
+      )}
       nativeButton={false}
       render={
         <a
@@ -75,7 +80,7 @@ function PaginationPrevious({
     <PaginationLink
       aria-label="Go to previous page"
       size="default"
-      className={cn("pl-1.5!", className)}
+      className={cn("h-8 pl-1.5!", className)}
       {...props}
     >
       <ChevronLeftIcon data-icon="inline-start" />
@@ -93,7 +98,7 @@ function PaginationNext({
     <PaginationLink
       aria-label="Go to next page"
       size="default"
-      className={cn("pr-1.5!", className)}
+      className={cn("h-8 pr-1.5!", className)}
       {...props}
     >
       <span className="hidden sm:block">{text}</span>

@@ -6,7 +6,6 @@ const meta = {
   title: "Blocks/ProfileItem",
   component: ProfileItem,
   parameters: { layout: "centered" },
-  tags: ["autodocs"],
 } satisfies Meta<typeof ProfileItem>
 
 export default meta

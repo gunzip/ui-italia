@@ -35,6 +35,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
       toastOptions={{
         classNames: {
           toast: "cn-toast text-body",
+          actionButton: "mr-0!",
         },
       }}
       {...props}
@@ -43,3 +44,4 @@ const Toaster = ({ ...props }: ToasterProps) => {
 }
 
 export { Toaster }
+export { toast } from "sonner"

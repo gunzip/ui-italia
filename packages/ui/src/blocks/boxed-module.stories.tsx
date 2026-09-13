@@ -10,7 +10,6 @@ const meta = {
   parameters: {
     layout: "padded",
   },
-  tags: ["autodocs"],
 } satisfies Meta<typeof BoxedModule>
 
 export default meta

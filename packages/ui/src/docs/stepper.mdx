@@ -1,0 +1,37 @@
+import {
+  Meta,
+  Title,
+  Primary,
+  Controls,
+  Stories,
+} from "@storybook/addon-docs/blocks"
+
+import * as StepperStories from "../blocks/stepper.stories"
+
+<Meta of={StepperStories} />
+
+<Title />
+
+`Stepper` è lo stepper del Design System, porting di `MIStepper`: numerato e
+orizzontale su desktop, con progresso circolare su schermi piccoli (`< lg`).
+
+## Playground
+
+<Primary />
+<Controls />
+
+## Props
+
+- `steps` — elenco di `{ label }`.
+- `activeStep` — indice zero-based dello step attivo.
+- `localeText` — etichette accessibili (`stepLabel`, `stepOfLabel`) per la
+  localizzazione.
+
+<Stories />
+
+## Accessibilità
+
+- Radice semantica (`ol`/lista) con lo stato dello step esposto come
+  `aria-current="step"`.
+- Le etichette di avanzamento sono personalizzabili via `localeText` per essere
+  tradotte; il testo deve restare significativo senza il solo colore.

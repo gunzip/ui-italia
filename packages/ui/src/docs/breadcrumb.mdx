@@ -1,0 +1,34 @@
+import {
+  Meta,
+  Title,
+  Primary,
+  Controls,
+  Stories,
+} from "@storybook/addon-docs/blocks"
+
+import * as BreadcrumbStories from "../components/breadcrumb.stories"
+
+<Meta of={BreadcrumbStories} />
+
+<Title />
+
+`Breadcrumb` è la navigazione gerarchica, porting di `MIBreadcrumbs`: testo
+16px, separatore `--muted-foreground` e pagina corrente con `aria-current`.
+
+## Playground
+
+<Primary />
+<Controls />
+
+## Composizione
+
+`Breadcrumb` (`nav`) con `BreadcrumbList`, `BreadcrumbItem`, `BreadcrumbLink`,
+`BreadcrumbPage` (voce corrente), `BreadcrumbSeparator` e `BreadcrumbEllipsis`.
+
+<Stories />
+
+## Accessibilità
+
+- `nav` con `aria-label` (default `breadcrumb`); l'ultima voce usa
+  `aria-current="page"` e non è un link.
+- Separatori decorativi con `aria-hidden`.

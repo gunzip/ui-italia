@@ -14,6 +14,10 @@ const dirname =
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
+  resolve: {
+    // Workspace consumes the `source` condition (see package.json exports).
+    conditions: ["module", "browser", "development|production", "source"],
+  },
   test: {
     projects: [
       {

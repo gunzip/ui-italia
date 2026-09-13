@@ -14,7 +14,6 @@ import {
 
 const meta = {
   component: Card,
-  tags: ["autodocs"],
   parameters: {
     layout: "padded",
   },

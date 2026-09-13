@@ -1,0 +1,39 @@
+import {
+  Meta,
+  Title,
+  Primary,
+  Controls,
+  Stories,
+} from "@storybook/addon-docs/blocks"
+
+import * as SpinnerStories from "../components/spinner.stories"
+
+<Meta of={SpinnerStories} />
+
+<Title />
+
+`Spinner` è l'indicatore di caricamento, porting di `MISpinner`. È un SVG
+`currentColor`: eredita il colore del contesto e la dimensione si controlla via
+`className` (es. `size-5`).
+
+## Playground
+
+<Primary />
+<Controls />
+
+## Uso
+
+```tsx
+import { Spinner } from "ui-italia/components/spinner"
+
+;<Spinner aria-hidden="true" className="size-5" />
+```
+
+`Button` con `loading` lo usa internamente e imposta già `aria-busy`.
+
+<Stories />
+
+## Accessibilità
+
+- `Spinner` è decorativo: marcare `aria-hidden="true"` e comunicare lo stato
+  con testo (`aria-busy`, `role="status"` o un'etichetta visibile).

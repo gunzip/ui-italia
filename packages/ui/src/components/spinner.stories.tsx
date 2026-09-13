@@ -4,7 +4,6 @@ import { Spinner } from "./spinner"
 
 const meta = {
   component: Spinner,
-  tags: ["autodocs"],
   parameters: {
     layout: "centered",
   },
