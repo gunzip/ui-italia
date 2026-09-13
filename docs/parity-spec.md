@@ -465,5 +465,6 @@ Ogni step chiude con: story + a11y verde + parity test + baseline.
 ## 11. Riferimenti
 
 - Piano generale: [`porting-plan.md`](./porting-plan.md)
+- Follow-up per completare il porting: [`porting-followup.md`](./porting-followup.md)
 - Migrazione: [`migration-from-mui-italia.md`](./migration-from-mui-italia.md)
 - Convenzioni agente: [`../AGENTS.md`](../AGENTS.md)
