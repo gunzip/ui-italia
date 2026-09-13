@@ -1180,6 +1180,24 @@
       ]
     },
     {
+      "name": "block-infoblock",
+      "type": "registry:component",
+      "description": "Italia infoblock block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/infoblock.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "block-lang-switch",
       "type": "registry:component",
       "description": "Italia lang-switch block (composition).",
@@ -1427,6 +1445,24 @@
       "files": [
         {
           "path": "src/blocks/tos-agreement.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "block-walkthrough",
+      "type": "registry:component",
+      "description": "Italia walkthrough block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/walkthrough.tsx",
           "type": "registry:component"
         }
       ]
