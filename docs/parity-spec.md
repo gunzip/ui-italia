@@ -190,13 +190,16 @@ Fonte: `themeNext.ts` `MuiInput/MuiOutlinedInput/MuiInputLabel/MuiInputAdornment
 
 ### 5.3 Select / Menu / Dropdown / NavigationMenu
 
-| Aspetto          | Target                                                  | ui-italia                      | Gap |
-| ---------------- | ------------------------------------------------------- | ------------------------------ | --- |
-| trigger          | h 56, 16 / 600, radius 8, bordo `#636B82`               | `h-8`, `text-sm`, `rounded-lg` | 🔴  |
-| menu item        | 16 / 600, whiteSpace normal, hover `rgba(23,50,77,.04)` | `text-sm`                      | 🔴  |
-| item selezionato | colore `#0B3EE3` (testo + icone)                        | base-nova                      | 🔴  |
-| icona + testo    | margin-left 8px                                         | base-nova                      | 🔴  |
-| popover paper    | shadow elevation-16                                     | `shadow-md`                    | 🔴  |
+| Aspetto          | Target                                                  | ui-italia                                     | Gap |
+| ---------------- | ------------------------------------------------------- | --------------------------------------------- | --- |
+| trigger          | h 56, 16 / 600, radius 8, bordo `#636B82`               | ✅ `h-14 text-body font-semibold`             | 🟢  |
+| trigger small    | h 40                                                    | ✅ `data-[size=sm]:h-10`                      | 🟢  |
+| menu item        | 16 / 600, whiteSpace normal, hover `rgba(23,50,77,.04)` | ✅ `text-body font-semibold` + `action-hover` | 🟢  |
+| item selezionato | colore `#0B3EE3` (testo + icone)                        | ✅ `data-selected:text-primary`               | 🟢  |
+| icona + testo    | margin-left 8px                                         | base-nova (gap gestito)                       | 🟡  |
+| icona trigger    | 24px                                                    | `size-5` (20px)                               | 🟡  |
+| popover paper    | shadow elevation-16                                     | ✅ `shadow-elevation-16`                      | 🟢  |
+| input group      | h 56                                                    | ✅ `h-14`                                     | 🟢  |
 
 Fonte: `themeNext.ts` `MuiSelect/MuiMenuItem/MuiPopover/MuiListItem*`.
 
@@ -437,7 +440,7 @@ Ogni step chiude con: story + a11y verde + parity test + baseline.
 ### Stato di avanzamento
 
 - **F1 — Token: fatto** (`packages/ui/src/styles/globals.css`, `foundations.stories.tsx`). Light su `themeNext`; dark allineato a `darkTheme` + nuovi token derivati. Build Storybook verde.
-- **F2 — Primitive: in corso.** Blocco 1 fatto: **Button** (§5.1), **Card** (§5.6), **Badge** (§5.4). Blocco 2 fatto: **Input/Field/Label/Textarea** (§5.2). Restano §5.3, §5.5, §5.7 → §5.13.
+- **F2 — Primitive: in corso.** Blocco 1: **Button/Card/Badge**. Blocco 2: **Input/Field/Label/Textarea** (§5.2). Blocco 3: **Select/Combobox/NativeSelect/Menu/Dropdown/Command** (§5.3). Restano §5.5, §5.7 → §5.13.
 - **F3 — Storybook: da fare** (§6).
 - **F4 — Catalogo: da fare** (§7).
 - **F5 — Guardrail: da fare** (§8).
