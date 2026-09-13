@@ -404,14 +404,15 @@ Fonte: `mui-italia/src/components/index.ts`, `src/assets/index.ts`, `src/icons/i
 
 ## 8. Verifica e guardrail
 
-1. **`parity.test.ts`** (Vitest browser): per un set di componenti chiave, esegue `getComputedStyle` e verifica i valori di questa spec con tolleranza (rgb esatto, dimensioni ±0.5px). Esempi minimi:
-   - Button contained: `background-color = rgb(11,62,227)`, `height = 48px`, `border-width = 2px`.
-   - Switch: track `42×26`, thumb `22`.
-   - Badge/Tag: `padding = 8px 12px`, `font-size = 14px`, `font-weight = 600`.
-   - Alert warning icona: `color = rgb(255,200,36)` (`#FFC824`).
-   - Chip info filled: bg `rgb(225,245,254)`, testo `rgb(33,92,118)`.
+1. **`Foundations/Parity guard`** (`src/foundations/parity.stories.tsx`, `play`): esegue `getComputedStyle` sui componenti chiave e verifica i valori di questa spec. Implementato e verde (237/237). Copre:
+   - Button contained: `background-color = rgb(11,62,227)`, `height = 48px`, `border-width = 2px`, `font-weight = 600`.
+   - Badge: `border-radius = 40px`, `font-size = 12px`, `font-weight = 600`, `padding = 3px 8px`.
+   - Input: `height = 56px`, `font-weight = 600`, `border-color = rgb(99,107,130)`.
+   - Select trigger: `height = 56px`, `font-weight = 600`.
+   - Switch: track `42×26`.
+   > Da estendere a ogni componente quando la sua parity viene chiusa (Alert warning icon, Chip info, ecc.).
 2. **Visual regression**: baselines Linux in `packages/ui/tests/visual/__screenshots__`, aggiornate via workflow "Update visual baselines".
-3. **A11y gate**: `test: 'error'` su tutte le story, `parity.test.ts` non lo sostituisce.
+3. **A11y gate**: `test: 'error'` su tutte le story; il parity guard non lo sostituisce.
 4. **Autodocs**: ogni componente con `tags: ['autodocs']` e descrizioni equivalenti agli MDX mui.
 5. **CI**: `lint → typecheck → vitest+a11y → build → storybook build → visual → registry`.
 
@@ -443,10 +444,10 @@ Ogni step chiude con: story + a11y verde + parity test + baseline.
 ### Stato di avanzamento
 
 - **F1 — Token: fatto** (`packages/ui/src/styles/globals.css`, `foundations.stories.tsx`). Light su `themeNext`; dark allineato a `darkTheme` + nuovi token derivati. Build Storybook verde.
-- **F2 — Primitive: completo.** Blocchi: Button/Card/Badge, Input/Field/Label/Textarea, Select/Combobox/NativeSelect/Menu, Switch/Checkbox/Radio, Alert/Tooltip/Tabs, Table/Breadcrumb/Skeleton, Dialog/AlertDialog/Sheet/Drawer/Sonner. Restano solo gap minori marcati 🟡/🔴 nella matrice (loading Button, varianti contrastate, adornment, Stepper/Timeline → F4).
-- **F3 — Storybook: da fare** (§6: port 1:1 delle story + canvas toggle + toolbar tema).
+- **F2 — Primitive: completo.** Blocchi: Button/Card/Badge, Input/Field/Label/Textarea, Select/Combobox/NativeSelect/Menu, Switch/Checkbox/Radio, Alert/Tooltip/Tabs, Table/Breadcrumb/Skeleton, Dialog/AlertDialog/Sheet/Drawer/Sonner. Button: `loading` + `contrasted`. Restano gap minori 🟡/🔴 nella matrice (adornment Input, icona Select 20 vs 24, Pagination, Alert standard, Stepper/Timeline → F4).
+- **F3 — Storybook: in corso.** Step 1 canvas toggle + toolbar tema; step 2 Button loading/contrasted + story MIButton; step 3 story TextField/Select/Card. Restano step 4 (MDX) e step 5 (registry).
 - **F4 — Catalogo: da fare** (§7).
-- **F5 — Guardrail: da fare** (§8).
+- **F5 — Guardrail: fatto (base).** `Foundations/Parity guard` verde su Button/Badge/Input/Select/Switch. Da estendere man mano che la parity di altri componenti viene chiusa.
 
 ---
 
