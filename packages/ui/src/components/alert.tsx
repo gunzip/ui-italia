@@ -20,6 +20,11 @@ const alertVariants = cva(
       appearance: {
         outlined: "bg-card shadow-elevation-4",
         standard: "",
+        /**
+         * Status-tinted surface with a full status border and status-strong icon/text
+         * (`MIAlert` `default` variant). Description inherits the status colour.
+         */
+        filled: "p-4 [&_[data-slot=alert-description]]:text-inherit",
       },
     },
     compoundVariants: [
@@ -47,6 +52,36 @@ const alertVariants = cva(
         appearance: "standard",
         variant: "info",
         class: "bg-info/16 *:[svg]:text-foreground!",
+      },
+      {
+        appearance: "filled",
+        variant: "default",
+        class:
+          "border-l border-border bg-muted text-foreground *:[svg]:text-foreground!",
+      },
+      {
+        appearance: "filled",
+        variant: "destructive",
+        class:
+          "border-l border-destructive bg-destructive-muted text-destructive-strong *:[svg]:text-destructive-strong!",
+      },
+      {
+        appearance: "filled",
+        variant: "success",
+        class:
+          "border-l border-success bg-success-muted text-success-strong *:[svg]:text-success-strong!",
+      },
+      {
+        appearance: "filled",
+        variant: "warning",
+        class:
+          "border-l border-warning bg-warning-muted text-warning-strong *:[svg]:text-warning-strong!",
+      },
+      {
+        appearance: "filled",
+        variant: "info",
+        class:
+          "border-l border-info bg-info-muted text-info-strong *:[svg]:text-info-strong!",
       },
     ],
     defaultVariants: {

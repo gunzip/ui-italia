@@ -67,6 +67,14 @@ export const ThemeAndComponents: Story = {
         <TriangleAlertIcon />
         <span>Warning</span>
       </Alert>
+      <Alert
+        data-testid="parity-alert-filled"
+        variant="warning"
+        appearance="filled"
+      >
+        <TriangleAlertIcon />
+        <span>Warning</span>
+      </Alert>
       <Pagination data-testid="parity-pagination">
         <PaginationContent>
           <PaginationItem>
@@ -128,6 +136,19 @@ export const ThemeAndComponents: Story = {
       .getByTestId("parity-alert")
       .querySelector("svg") as SVGElement
     await expect(getComputedStyle(alertIcon).color).toBe("rgb(255, 200, 36)")
+
+    // Alert filled (`MIAlert` default) — warning-100 surface, warning-500 full
+    // border, warning-850 icon (`SpidSelectOIDialog`).
+    const filledAlert = getComputedStyle(
+      canvas.getByTestId("parity-alert-filled")
+    )
+    await expect(filledAlert.backgroundColor).toBe("rgb(255, 245, 218)")
+    await expect(filledAlert.borderTopColor).toBe("rgb(255, 200, 36)")
+    await expect(filledAlert.borderRadius).toBe("8px")
+    const filledIcon = canvas
+      .getByTestId("parity-alert-filled")
+      .querySelector("svg") as SVGElement
+    await expect(getComputedStyle(filledIcon).color).toBe("rgb(97, 76, 21)")
 
     // Pagination — MIChip/MUI item is 32×32.
     const pageLink = getComputedStyle(
