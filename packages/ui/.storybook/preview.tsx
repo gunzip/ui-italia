@@ -1,7 +1,60 @@
-import type { Preview } from "@storybook/react-vite"
+import * as React from "react"
+import type { Decorator, Preview } from "@storybook/react-vite"
 
 // Design-system styles (Tailwind v4 + Italia tokens).
 import "../src/styles/globals.css"
+
+/** Italia canvas background — `theme.colors.blue[100]` in mui-italia. */
+const ITALIA_CANVAS = "#ced8f9"
+
+function usePrefersDark() {
+  const [prefersDark, setPrefersDark] = React.useState(false)
+
+  React.useEffect(() => {
+    const mql = window.matchMedia("(prefers-color-scheme: dark)")
+    const update = () => setPrefersDark(mql.matches)
+    update()
+    mql.addEventListener("change", update)
+    return () => mql.removeEventListener("change", update)
+  }, [])
+
+  return prefersDark
+}
+
+/**
+ * Reproduces mui-italia's Storybook presentation:
+ * - `canvas: italia` wraps every story in a centered `blue[100]` container
+ *   (mui `StoryContainer`); `plain` keeps a neutral background.
+ * - `theme: light | dark | system` toggles the `.dark` token scope, like the
+ *   mui theme toolbar.
+ */
+const withCanvas: Decorator = (Story, context) => {
+  const selectedTheme = context.globals.theme ?? "light"
+  const canvas = context.globals.canvas ?? "plain"
+  const prefersDark = usePrefersDark()
+  const isDark =
+    selectedTheme === "dark" || (selectedTheme === "system" && prefersDark)
+  const isItalia = canvas === "italia"
+
+  // Keep the default DOM untouched (storybook root → story) so Base UI
+  // portals/focus guards stay where the a11y gate expects them.
+  if (!isItalia && !isDark) {
+    return <Story />
+  }
+
+  return (
+    <div className={isDark ? "dark" : undefined}>
+      <div
+        className="flex min-h-screen w-full items-center justify-center p-6 md:p-10"
+        style={{
+          backgroundColor: isItalia ? ITALIA_CANVAS : "var(--background)",
+        }}
+      >
+        <Story />
+      </div>
+    </div>
+  )
+}
 
 const preview: Preview = {
   parameters: {
@@ -45,6 +98,39 @@ const preview: Preview = {
       },
     },
   },
+
+  globalTypes: {
+    canvas: {
+      name: "Canvas",
+      description:
+        "Italia canvas (blue, centered, like mui-italia) or plain background",
+      defaultValue: "plain",
+      toolbar: {
+        icon: "contrast",
+        title: "Canvas",
+        items: [
+          { value: "plain", title: "Plain" },
+          { value: "italia", title: "Italia" },
+        ],
+      },
+    },
+    theme: {
+      name: "Theme",
+      description: "Global theme for components",
+      defaultValue: "light",
+      toolbar: {
+        icon: "paintbrush",
+        title: "Theme",
+        items: [
+          { value: "light", icon: "circlehollow", title: "Light" },
+          { value: "dark", icon: "circle", title: "Dark" },
+          { value: "system", icon: "cog", title: "System" },
+        ],
+      },
+    },
+  },
+
+  decorators: [withCanvas],
 }
 
 export default preview

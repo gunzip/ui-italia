@@ -28,15 +28,15 @@
 
 ## 1. Decisioni globali
 
-| #   | Decisione       | Valore                                                                                                                                     |
-| --- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1   | Reference       | `themeNext`: primary `#0B3EE3`, testo `#0E0F13`, surface `#F4F5F8`, `shape.borderRadius: 8`                                                |
-| 2   | Colori di stato | i token base `--{status}` = `main` **acceso** (fill/icona/bordo); `--{status}-strong` = `850` per il **testo**; `--{status}-muted` = `100` |
-| 3   | A11y            | gate `@storybook/addon-a11y` `test: 'error'` invariato; vietato usare `--{status}` acceso come colore testo su bianco                      |
-| 4   | Stile           | solo token semantici + classi/cva idiomatiche shadcn/Base UI; nessun `sx`/`style` pubblico                                                 |
-| 5   | Label           | input idiomatico (`Field` + `Label`), label flottante non clonata (deciso: §10.2)                                                          |
-| 6   | Storybook       | toggle canvas `italia` (sfondo `#CED8F9` + centratura) + toolbar tema `light/dark/system/next`                                             |
-| 7   | Scope           | **full**: primitivi + blocchi/composizioni + assets/icone/illustrazioni                                                                    |
+| #   | Decisione       | Valore                                                                                                                                                                                                 |
+| --- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1   | Reference       | `themeNext`: primary `#0B3EE3`, testo `#0E0F13`, surface `#F4F5F8`, `shape.borderRadius: 8`                                                                                                            |
+| 2   | Colori di stato | i token base `--{status}` = `main` **acceso** (fill/icona/bordo); `--{status}-strong` = `850` per il **testo**; `--{status}-muted` = `100`                                                             |
+| 3   | A11y            | gate `@storybook/addon-a11y` `test: 'error'` invariato; vietato usare `--{status}` acceso come colore testo su bianco                                                                                  |
+| 4   | Stile           | solo token semantici + classi/cva idiomatiche shadcn/Base UI; nessun `sx`/`style` pubblico                                                                                                             |
+| 5   | Label           | input idiomatico (`Field` + `Label`), label flottante non clonata (deciso: §10.2)                                                                                                                      |
+| 6   | Storybook       | toggle canvas `plain` (default) / `italia` (sfondo `#CED8F9` + centratura) + toolbar tema `light/dark/system`. Default `plain`: la canvas blu rende `text-destructive` non-AA (3.49:1) col gate attivo |
+| 7   | Scope           | **full**: primitivi + blocchi/composizioni + assets/icone/illustrazioni                                                                                                                                |
 
 ---
 
