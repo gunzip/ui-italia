@@ -29,6 +29,9 @@ test("visual regression across all stories", async ({ page, request }) => {
     await page.waitForLoadState("load")
     // Ensure webfonts (Titillium/DM Mono) are ready before screenshotting.
     await page.evaluate(() => document.fonts.ready)
+    // Let mount-time transitions (dialogs, accordions, popovers) settle before
+    // capturing: they mount asynchronously and otherwise cause flaky diffs.
+    await page.waitForTimeout(300)
     await expect(page).toHaveScreenshot(`${story.id}.png`, {
       fullPage: true,
       animations: "disabled",
