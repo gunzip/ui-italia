@@ -284,11 +284,11 @@ Fonte: default MUI + `focusWidth/focusOffset`; allineare al pattern `MuiButton`.
 
 ### 5.10 Table
 
-| Aspetto | Target (MUI default)        | ui-italia              | Gap |
-| ------- | --------------------------- | ---------------------- | --- |
-| cell    | 14px, padding 16            | `text-sm`, `p-2` (8)   | 🔴  |
-| head    | weight 600 (`MuiTableHead`) | `font-medium`          | 🟡  |
-| footer  | nessun default bordo/fondo  | `border-t bg-muted/50` | 🟡  |
+| Aspetto | Target (MUI default)        | ui-italia                       | Gap |
+| ------- | --------------------------- | ------------------------------- | --- |
+| cell    | 14px, padding 16            | ✅ `text-body`, `p-4`           | 🟢  |
+| head    | weight 600 (`MuiTableHead`) | ✅ `font-semibold`, `h-14 px-4` | 🟢  |
+| footer  | bordo top, nessun fondo     | ✅ `border-t font-semibold`     | 🟢  |
 
 Fonte: `MuiTableHead` + default MUI Table. Nessuna story Table in `mui-italia` (§6).
 
@@ -303,36 +303,38 @@ Fonte: `themeNext.ts` `MuiTooltip`.
 
 ### 5.12 Dialog / Sheet / Drawer
 
-| Aspetto  | Target                              | ui-italia          | Gap |
-| -------- | ----------------------------------- | ------------------ | --- |
-| radius   | 8                                   | `rounded-xl` (12)  | 🔴  |
-| titolo   | ~20 / 600 (default MUI DialogTitle) | 16 / 500           | 🔴  |
-| padding  | default MUI DialogContent 24        | `p-4` (16)         | 🔴  |
-| backdrop | `rgba(14,15,19,.35)`                | `--overlay` legacy | 🔴  |
-| focus    | outline 2px offset 4                | base-nova          | 🟡  |
+| Aspetto  | Target                              | ui-italia                             | Gap |
+| -------- | ----------------------------------- | ------------------------------------- | --- |
+| radius   | 8                                   | ✅ `rounded-lg`                       | 🟢  |
+| titolo   | ~20 / 600 (default MUI DialogTitle) | ✅ `text-xl font-semibold`            | 🟢  |
+| padding  | default MUI DialogContent 24        | ✅ `p-6`                              | 🟢  |
+| footer   | nessun bordo/fondo                  | ✅ rimossi border-t/bg                | 🟢  |
+| backdrop | `rgba(14,15,19,.35)`                | ✅ `--overlay` (F1)                   | 🟢  |
+| sheet    | elevation 16, testo 16              | ✅ `shadow-elevation-16`, `text-body` | 🟢  |
+| focus    | outline 2px offset 4                | base-nova (`ring`)                    | 🟡  |
 
 Fonte: `themeNext.ts` `MuiBackdrop` + default MUI Dialog.
 
 ### 5.13 Snackbar / Toast (Sonner)
 
-| Aspetto | Target                          | ui-italia      | Gap |
-| ------- | ------------------------------- | -------------- | --- |
-| surface | bg bianco, shadow 4, padding 16 | `--popover`    | 🟡  |
-| testo   | 16, `#0E0F13`                   | default Sonner | 🔴  |
-| azione  | margin-right 0                  | default        | 🟡  |
+| Aspetto | Target                          | ui-italia                     | Gap |
+| ------- | ------------------------------- | ----------------------------- | --- |
+| surface | bg bianco, shadow 4, padding 16 | ✅ `--popover` + toast shadow | 🟢  |
+| testo   | 16, `#0E0F13`                   | ✅ `text-body`                | 🟢  |
+| azione  | margin-right 0                  | default                       | 🟡  |
 
 Fonte: `themeNext.ts` `MuiSnackbarContent`.
 
 ### 5.14 Breadcrumb / Pagination / Link / Skeleton / Stepper / Timeline
 
-| Componente                  | Target                                                                        | Gap |
-| --------------------------- | ----------------------------------------------------------------------------- | --- |
-| Breadcrumb                  | 16px, colore `#0E0F13`; separatore `#555C70`; svg 20 margin-right 12          | 🔴  |
-| Pagination                  | item MUI 32×32, radius 8, focus outline 2 offset 4; `outlined` non supportato | 🔴  |
-| Link                        | focus radius 8, outline 2 offset 4; tipografia margin 4 / padding 1           | 🔴  |
-| Skeleton                    | bg `#F4F5F8`, radius 4 (`MuiSkeleton` in Next)                                | 🔴  |
-| Stepper (`MuiStepLabel`)    | label 14; completed/active 600 (da `theme.ts`, non in Next)                   | 🔴  |
-| Timeline (`MuiTimelineDot`) | box-shadow none (da `theme.ts`)                                               | 🔴  |
+| Componente                  | Target                                                                        | Gap                               |
+| --------------------------- | ----------------------------------------------------------------------------- | --------------------------------- |
+| Breadcrumb                  | 16px, colore `#0E0F13`; separatore `#555C70`; svg 20                          | ✅ (margin-right gestito dal gap) |
+| Pagination                  | item MUI 32×32, radius 8, focus outline 2 offset 4; `outlined` non supportato | 🟡 (item a 48px)                  |
+| Link                        | focus radius 8, outline 2 offset 4; tipografia margin 4 / padding 1           | 🔴 (usa `buttonVariants`)         |
+| Skeleton                    | bg `#F4F5F8`, radius 4 (`MuiSkeleton` in Next)                                | ✅ `bg-muted` + `rounded-sm`      |
+| Stepper (`MuiStepLabel`)    | label 14; completed/active 600 (da `theme.ts`, non in Next)                   | 🔴 (F4)                           |
+| Timeline (`MuiTimelineDot`) | box-shadow none (da `theme.ts`)                                               | 🔴 (F4)                           |
 
 ---
 
@@ -441,8 +443,8 @@ Ogni step chiude con: story + a11y verde + parity test + baseline.
 ### Stato di avanzamento
 
 - **F1 — Token: fatto** (`packages/ui/src/styles/globals.css`, `foundations.stories.tsx`). Light su `themeNext`; dark allineato a `darkTheme` + nuovi token derivati. Build Storybook verde.
-- **F2 — Primitive: in corso.** Blocchi 1-4: Button/Card/Badge, Input/Field/Label/Textarea, Select/Combobox/NativeSelect/Menu, Switch/Checkbox/Radio. Blocco 5: **Alert/Tooltip/Tabs** (§5.5/§5.9/§5.11). Restano §5.10, §5.12 → §5.14.
-- **F3 — Storybook: da fare** (§6).
+- **F2 — Primitive: completo.** Blocchi: Button/Card/Badge, Input/Field/Label/Textarea, Select/Combobox/NativeSelect/Menu, Switch/Checkbox/Radio, Alert/Tooltip/Tabs, Table/Breadcrumb/Skeleton, Dialog/AlertDialog/Sheet/Drawer/Sonner. Restano solo gap minori marcati 🟡/🔴 nella matrice (loading Button, varianti contrastate, adornment, Stepper/Timeline → F4).
+- **F3 — Storybook: da fare** (§6: port 1:1 delle story + canvas toggle + toolbar tema).
 - **F4 — Catalogo: da fare** (§7).
 - **F5 — Guardrail: da fare** (§8).
 
