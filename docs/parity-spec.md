@@ -176,12 +176,13 @@ Fonte: `themeNext.ts` `MuiButton`, `MIButton/styles.ts`, `MIButton/types.ts`.
 
 | Aspetto        | Target                                               | ui-italia                            | Gap |
 | -------------- | ---------------------------------------------------- | ------------------------------------ | --- |
-| peso testo     | `600`                                                | `text-base` 400                      | 🔴  |
-| altezza medium | `56px` (outlined con label)                          | `h-12` (48)                          | 🟡  |
+| peso testo     | `600`                                                | ✅ `font-semibold`                   | 🟢  |
+| altezza medium | `56px` (outlined con label)                          | ✅ `h-14`                            | 🟢  |
+| radius         | `8px` (`shape.borderRadius`)                         | ✅ `rounded-lg`                      | 🟢  |
 | bordo          | `#636B82` (`grey[650]`)                              | `border-input-border` ✅             | 🟢  |
 | errore bordo   | `#D13333`                                            | `aria-invalid:border-destructive` ✅ | 🟢  |
-| label          | 16 / 600, colore `#555C70`; errore `#D13333`         | `Label` 14/600                       | 🔴  |
-| helper text    | 12 / 600 / 1.25, ls 0.5, `#555C70`; errore `#D13333` | `Field` base-nova                    | 🔴  |
+| label          | 16 / 600, colore `#555C70`; errore `#D13333`         | Label 16/600 ✅ (colore ereditato)   | 🟡  |
+| helper text    | 12 / 600 / 1.25, ls 0.5, `#555C70`; errore `#D13333` | ✅ `FieldDescription` / `FieldError` | 🟢  |
 | adornment end  | padding-right 14px                                   | base-nova                            | 🔴  |
 | floating label | dentro il bordo (TextField)                          | non presente (deciso §10.2)          | 🟡  |
 
@@ -436,7 +437,7 @@ Ogni step chiude con: story + a11y verde + parity test + baseline.
 ### Stato di avanzamento
 
 - **F1 — Token: fatto** (`packages/ui/src/styles/globals.css`, `foundations.stories.tsx`). Light su `themeNext`; dark allineato a `darkTheme` + nuovi token derivati. Build Storybook verde.
-- **F2 — Primitive: in corso.** Blocco 1 fatto: **Button** (§5.1), **Card** (§5.6), **Badge** (§5.4). Restano §5.2, §5.3, §5.5, §5.7 → §5.13.
+- **F2 — Primitive: in corso.** Blocco 1 fatto: **Button** (§5.1), **Card** (§5.6), **Badge** (§5.4). Blocco 2 fatto: **Input/Field/Label/Textarea** (§5.2). Restano §5.3, §5.5, §5.7 → §5.13.
 - **F3 — Storybook: da fare** (§6).
 - **F4 — Catalogo: da fare** (§7).
 - **F5 — Guardrail: da fare** (§8).
