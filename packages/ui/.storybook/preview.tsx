@@ -28,7 +28,7 @@ function usePrefersDark() {
  * - `theme: light | dark | system` toggles the `.dark` token scope, like the
  *   mui theme toolbar.
  */
-const withCanvas: Decorator = (Story, context) => {
+const WithCanvas: Decorator = (Story, context) => {
   const selectedTheme = context.globals.theme ?? "light"
   const canvas = context.globals.canvas ?? "plain"
   const prefersDark = usePrefersDark()
@@ -130,7 +130,7 @@ const preview: Preview = {
     },
   },
 
-  decorators: [withCanvas],
+  decorators: [WithCanvas],
 }
 
 export default preview
