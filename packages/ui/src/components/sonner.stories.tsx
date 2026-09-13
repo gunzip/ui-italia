@@ -20,20 +20,20 @@ export const Default: Story = {
   render: () => (
     <div className="flex flex-col items-center gap-2">
       <Toaster />
-      <Button onClick={() => toast("Modifiche salvate con successo")}>
-        Mostra notifica
+      <Button onClick={() => toast("Changes saved successfully")}>
+        Show notification
       </Button>
     </div>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
     await userEvent.click(
-      canvas.getByRole("button", { name: "Mostra notifica" })
+      canvas.getByRole("button", { name: "Show notification" })
     )
     // Sonner mounts toasts with `opacity: 0` and only flips them visible on
     // the next paint, so poll until the animation marks them as mounted.
     await waitFor(() =>
-      expect(screen.getByText("Modifiche salvate con successo")).toBeVisible()
+      expect(screen.getByText("Changes saved successfully")).toBeVisible()
     )
   },
 }
@@ -45,27 +45,27 @@ export const Variants: Story = {
       <div className="flex flex-wrap justify-center gap-2">
         <Button
           variant="outline"
-          onClick={() => toast.success("Operazione completata")}
+          onClick={() => toast.success("Operation completed")}
         >
-          Successo
+          Success
         </Button>
         <Button
           variant="outline"
-          onClick={() => toast.info("Nuovo aggiornamento disponibile")}
+          onClick={() => toast.info("New update available")}
         >
-          Informazione
+          Information
         </Button>
         <Button
           variant="outline"
-          onClick={() => toast.warning("Attenzione ai dati inseriti")}
+          onClick={() => toast.warning("Check the data entered")}
         >
-          Avviso
+          Warning
         </Button>
         <Button
           variant="outline"
-          onClick={() => toast.error("Si è verificato un errore")}
+          onClick={() => toast.error("An error occurred")}
         >
-          Errore
+          Error
         </Button>
       </div>
     </div>

@@ -26,20 +26,18 @@ export const Default: Story = {
       <CollapsibleTrigger
         render={<Button variant="ghost" className="w-full justify-between" />}
       >
-        Dettagli ordine
+        Order details
         <ChevronDownIcon aria-hidden="true" />
       </CollapsibleTrigger>
       <CollapsibleContent className="px-4 pb-4 text-sm text-muted-foreground">
-        Ordine n. 4821 — spedito il 12 settembre con corriere espresso.
+        Order no. 4821 — shipped on 12 September with express courier.
       </CollapsibleContent>
     </Collapsible>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
-    await userEvent.click(
-      canvas.getByRole("button", { name: "Dettagli ordine" })
-    )
-    await expect(await canvas.findByText(/Ordine n. 4821/)).toBeVisible()
+    await userEvent.click(canvas.getByRole("button", { name: "Order details" }))
+    await expect(await canvas.findByText(/Order no. 4821/)).toBeVisible()
   },
 }
 
@@ -49,11 +47,11 @@ export const DefaultOpen: Story = {
       <CollapsibleTrigger
         render={<Button variant="ghost" className="w-full justify-between" />}
       >
-        Dettagli ordine
+        Order details
         <ChevronDownIcon aria-hidden="true" />
       </CollapsibleTrigger>
       <CollapsibleContent className="px-4 pb-4 text-sm text-muted-foreground">
-        Ordine n. 4821 — spedito il 12 settembre con corriere espresso.
+        Order no. 4821 — shipped on 12 September with express courier.
       </CollapsibleContent>
     </Collapsible>
   ),
@@ -65,11 +63,11 @@ export const Disabled: Story = {
       <CollapsibleTrigger
         render={<Button variant="ghost" className="w-full justify-between" />}
       >
-        Dettagli ordine
+        Order details
         <ChevronDownIcon aria-hidden="true" />
       </CollapsibleTrigger>
       <CollapsibleContent className="px-4 pb-4 text-sm text-muted-foreground">
-        Contenuto non disponibile.
+        Content unavailable.
       </CollapsibleContent>
     </Collapsible>
   ),

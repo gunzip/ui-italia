@@ -25,13 +25,13 @@ export const Horizontal: Story = {
     >
       <ResizablePanel defaultSize="50%">
         <div className="flex h-full items-center justify-center p-6 text-sm">
-          Uno
+          One
         </div>
       </ResizablePanel>
       <ResizableHandle withHandle />
       <ResizablePanel defaultSize="50%">
         <div className="flex h-full items-center justify-center p-6 text-sm">
-          Due
+          Two
         </div>
       </ResizablePanel>
     </ResizablePanelGroup>
@@ -49,7 +49,7 @@ export const Vertical: Story = {
           tabIndex={0}
           className="flex h-full items-center justify-center p-6 text-sm"
         >
-          Sopra
+          Top
         </div>
       </ResizablePanel>
       <ResizableHandle withHandle />
@@ -58,7 +58,7 @@ export const Vertical: Story = {
           tabIndex={0}
           className="flex h-full items-center justify-center p-6 text-sm"
         >
-          Sotto
+          Bottom
         </div>
       </ResizablePanel>
     </ResizablePanelGroup>
@@ -73,13 +73,13 @@ export const WithoutHandle: Story = {
     >
       <ResizablePanel defaultSize="30%">
         <div className="flex h-full items-center justify-center p-6 text-sm">
-          Navigazione
+          Navigation
         </div>
       </ResizablePanel>
       <ResizableHandle />
       <ResizablePanel defaultSize="70%">
         <div className="flex h-full items-center justify-center p-6 text-sm">
-          Contenuto
+          Content
         </div>
       </ResizablePanel>
     </ResizablePanelGroup>

@@ -27,18 +27,16 @@ export const Default: Story = {
   render: () => (
     <Card className="w-96">
       <CardHeader>
-        <CardTitle>Accedi al servizio</CardTitle>
+        <CardTitle>Sign in to the service</CardTitle>
         <CardDescription>
-          Usa SPID o CIE per accedere ai servizi della Pubblica Amministrazione.
+          Use SPID or CIE to access Public Administration services.
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <p className="text-muted-foreground">
-          Il contenuto principale della scheda.
-        </p>
+        <p className="text-muted-foreground">The main content of the card.</p>
       </CardContent>
       <CardFooter>
-        <Button size="sm">Accedi</Button>
+        <Button size="sm">Sign in</Button>
       </CardFooter>
     </Card>
   ),
@@ -48,17 +46,17 @@ export const WithAction: Story = {
   render: () => (
     <Card className="w-96">
       <CardHeader>
-        <CardTitle>Documenti</CardTitle>
-        <CardDescription>3 file caricati.</CardDescription>
+        <CardTitle>Documents</CardTitle>
+        <CardDescription>3 files uploaded.</CardDescription>
         <CardAction>
-          <Button variant="ghost" size="icon-sm" aria-label="Altre opzioni">
+          <Button variant="ghost" size="icon-sm" aria-label="More options">
             <MoreHorizontalIcon />
           </Button>
         </CardAction>
       </CardHeader>
       <CardContent>
         <p className="text-muted-foreground">
-          Gestisci i documenti allegati alla tua pratica.
+          Manage the documents attached to your case.
         </p>
       </CardContent>
     </Card>
@@ -69,11 +67,11 @@ export const Small: Story = {
   render: () => (
     <Card size="sm" className="w-80">
       <CardHeader>
-        <CardTitle>Scheda compatta</CardTitle>
-        <CardDescription>Versione con spaziatura ridotta.</CardDescription>
+        <CardTitle>Compact card</CardTitle>
+        <CardDescription>Version with reduced spacing.</CardDescription>
       </CardHeader>
       <CardContent>
-        <p className="text-muted-foreground">Contenuto della scheda.</p>
+        <p className="text-muted-foreground">Card content.</p>
       </CardContent>
     </Card>
   ),
@@ -87,11 +85,11 @@ export const WithImage: Story = {
     <Card className="w-96">
       <img src={cover} alt="" className="h-32 w-full object-cover" />
       <CardHeader>
-        <CardTitle>Immagine di copertina</CardTitle>
-        <CardDescription>La prima immagine non ha padding.</CardDescription>
+        <CardTitle>Cover image</CardTitle>
+        <CardDescription>The first image has no padding.</CardDescription>
       </CardHeader>
       <CardContent>
-        <p className="text-muted-foreground">Contenuto della scheda.</p>
+        <p className="text-muted-foreground">Card content.</p>
       </CardContent>
     </Card>
   ),

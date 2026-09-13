@@ -20,7 +20,7 @@ export const Default: Story = {
       <MarkerIcon>
         <ClockIcon />
       </MarkerIcon>
-      <MarkerContent>Ultimo aggiornamento: 12 settembre 2026</MarkerContent>
+      <MarkerContent>Last updated: 12 September 2026</MarkerContent>
     </Marker>
   ),
 }
@@ -28,7 +28,7 @@ export const Default: Story = {
 export const Separator: Story = {
   render: () => (
     <Marker variant="separator" className="w-80">
-      <MarkerContent>oppure</MarkerContent>
+      <MarkerContent>or</MarkerContent>
     </Marker>
   ),
 }
@@ -39,9 +39,7 @@ export const Border: Story = {
       <MarkerIcon>
         <InfoIcon />
       </MarkerIcon>
-      <MarkerContent>
-        I dati vengono sincronizzati ogni 15 minuti.
-      </MarkerContent>
+      <MarkerContent>Data is synchronized every 15 minutes.</MarkerContent>
     </Marker>
   ),
 }
@@ -52,7 +50,7 @@ export const WithLink: Story = {
       render={<a href="#dettagli" />}
       className="w-80 underline underline-offset-3"
     >
-      <MarkerContent>Vedi i dettagli dell'ordine</MarkerContent>
+      <MarkerContent>View order details</MarkerContent>
     </Marker>
   ),
 }

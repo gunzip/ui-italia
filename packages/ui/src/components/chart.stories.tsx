@@ -18,12 +18,12 @@ import {
 } from "./chart"
 
 const data = [
-  { mese: "Gen", desktop: 186, mobile: 80 },
-  { mese: "Feb", desktop: 305, mobile: 200 },
-  { mese: "Mar", desktop: 237, mobile: 120 },
-  { mese: "Apr", desktop: 73, mobile: 190 },
-  { mese: "Mag", desktop: 209, mobile: 130 },
-  { mese: "Giu", desktop: 214, mobile: 140 },
+  { month: "Jan", desktop: 186, mobile: 80 },
+  { month: "Feb", desktop: 305, mobile: 200 },
+  { month: "Mar", desktop: 237, mobile: 120 },
+  { month: "Apr", desktop: 73, mobile: 190 },
+  { month: "May", desktop: 209, mobile: 130 },
+  { month: "Jun", desktop: 214, mobile: 140 },
 ]
 
 const config = {
@@ -59,7 +59,7 @@ export const Bar: Story = {
         <BarChart accessibilityLayer data={data}>
           <CartesianGrid vertical={false} />
           <XAxis
-            dataKey="mese"
+            dataKey="month"
             tickLine={false}
             axisLine={false}
             tickMargin={8}
@@ -81,7 +81,7 @@ export const Line: Story = {
         <LineChart accessibilityLayer data={data}>
           <CartesianGrid vertical={false} />
           <XAxis
-            dataKey="mese"
+            dataKey="month"
             tickLine={false}
             axisLine={false}
             tickMargin={8}
@@ -114,7 +114,7 @@ export const StackedBar: Story = {
         <BarChart accessibilityLayer data={data}>
           <CartesianGrid vertical={false} />
           <XAxis
-            dataKey="mese"
+            dataKey="month"
             tickLine={false}
             axisLine={false}
             tickMargin={8}
@@ -122,13 +122,13 @@ export const StackedBar: Story = {
           <ChartTooltip content={<ChartTooltipContent />} />
           <BarSeries
             dataKey="desktop"
-            stackId="totale"
+            stackId="total"
             fill="var(--color-desktop)"
             radius={[0, 0, 4, 4]}
           />
           <BarSeries
             dataKey="mobile"
-            stackId="totale"
+            stackId="total"
             fill="var(--color-mobile)"
             radius={[4, 4, 0, 0]}
           />

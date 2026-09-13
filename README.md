@@ -1,17 +1,17 @@
 # ui-italia
 
-Design system: porting di `mui-italia` su **shadcn/ui + Base UI**.
-Monorepo pnpm + Turborepo: `packages/ui` (`ui-italia`) + `apps/playground`.
+Design system: port of `mui-italia` to **shadcn/ui + Base UI**.
+pnpm + Turborepo monorepo: `packages/ui` (`ui-italia`) + `apps/playground`.
 
-> Piano completo: [`docs/porting-plan.md`](./docs/porting-plan.md).
-> Migrazione da mui-italia: [`docs/migration-from-mui-italia.md`](./docs/migration-from-mui-italia.md).
-> Convenzioni per agenti: [`AGENTS.md`](./AGENTS.md).
+> Full plan: [`docs/porting-plan.md`](./docs/porting-plan.md).
+> Migration from mui-italia: [`docs/migration-from-mui-italia.md`](./docs/migration-from-mui-italia.md).
+> Agent conventions: [`AGENTS.md`](./AGENTS.md).
 
-## Requisiti
+## Requirements
 
 Node ≥ 20, pnpm 10.
 
-## Comandi
+## Commands
 
 ```bash
 pnpm install
@@ -19,21 +19,21 @@ pnpm dev                                    # app playground
 pnpm lint
 pnpm typecheck
 pnpm test                                   # Storybook Test + a11y (Vitest browser)
-pnpm --filter ui-italia storybook           # Storybook su http://localhost:6006
+pnpm --filter ui-italia storybook           # Storybook at http://localhost:6006
 pnpm --filter ui-italia build-storybook
 pnpm --filter ui-italia test:visual         # visual regression self-hosted (Playwright)
-pnpm --filter ui-italia test:visual:update  # rigenera le baseline (piattaforma locale)
+pnpm --filter ui-italia test:visual:update  # regenerate baselines (local platform)
 pnpm registry:build                         # registry shadcn -> packages/ui/public/r
 ```
 
-## Storybook e registry
+## Storybook and registry
 
 - Storybook: <https://gunzip.github.io/ui-italia/>
 - Registry: <https://gunzip.github.io/ui-italia/r/registry.json>
 
-## Usare i componenti in un'app
+## Using the components in an app
 
-Configura il registry in `components.json`:
+Configure the registry in `components.json`:
 
 ```json
 {
@@ -43,22 +43,22 @@ Configura il registry in `components.json`:
 }
 ```
 
-Poi installa i componenti nel tuo progetto:
+Then install the components in your project:
 
 ```bash
 pnpm dlx shadcn@latest add @ui-italia/theme @ui-italia/button
 ```
 
-Oppure importali dal pacchetto:
+Or import them from the package:
 
 ```tsx
 import { Button } from "ui-italia/components/button"
 import "ui-italia/globals.css"
 ```
 
-## Aggiungere componenti al monorepo
+## Adding components to the monorepo
 
-Esegui la CLI dalla radice (i componenti finiscono in `packages/ui/src/components`):
+Run the CLI from the root (components land in `packages/ui/src/components`):
 
 ```bash
 pnpm dlx shadcn@latest add <component> -c packages/ui
@@ -66,4 +66,4 @@ pnpm dlx shadcn@latest add <component> -c packages/ui
 
 ## Visual test
 
-Le baseline fanno fede **su Linux (CI)** e sono committate. In locale `test:visual:update` genera baseline per la tua piattaforma (gitignorate). Dopo aver aggiunto o modificato story, lancia il workflow **Update visual baselines** su GitHub per aggiornare quelle Linux.
+The baselines are authoritative **on Linux (CI)** and are committed. Locally, `test:visual:update` generates baselines for your platform (gitignored). After adding or modifying a story, run the **Update visual baselines** workflow on GitHub to update the Linux ones.

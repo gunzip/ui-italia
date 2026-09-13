@@ -29,12 +29,12 @@ export const Default: Story = {
   render: () => (
     <FieldGroup className="max-w-sm">
       <Field>
-        <FieldLabel htmlFor="field-nome">Nome completo</FieldLabel>
-        <Input id="field-nome" placeholder="Mario Rossi" />
+        <FieldLabel htmlFor="field-full-name">Full name</FieldLabel>
+        <Input id="field-full-name" placeholder="Jane Doe" />
       </Field>
       <Field>
         <FieldLabel htmlFor="field-email">Email</FieldLabel>
-        <Input id="field-email" type="email" placeholder="nome@esempio.it" />
+        <Input id="field-email" type="email" placeholder="name@example.com" />
       </Field>
     </FieldGroup>
   ),
@@ -43,10 +43,10 @@ export const Default: Story = {
 export const WithDescription: Story = {
   render: () => (
     <Field className="max-w-sm">
-      <FieldLabel htmlFor="field-username">Nome utente</FieldLabel>
+      <FieldLabel htmlFor="field-username">Username</FieldLabel>
       <Input id="field-username" placeholder="mario.rossi" />
       <FieldDescription>
-        Il nome utente sarà visibile pubblicamente sul tuo profilo.
+        The username will be publicly visible on your profile.
       </FieldDescription>
     </Field>
   ),
@@ -55,15 +55,15 @@ export const WithDescription: Story = {
 export const WithError: Story = {
   render: () => (
     <Field className="max-w-sm" data-invalid="true">
-      <FieldLabel htmlFor="field-codice">Codice fiscale</FieldLabel>
+      <FieldLabel htmlFor="field-tax-code">Tax code</FieldLabel>
       <Input
-        id="field-codice"
+        id="field-tax-code"
         aria-invalid
-        aria-describedby="field-codice-error"
+        aria-describedby="field-tax-code-error"
         defaultValue="ABC123"
       />
-      <FieldError id="field-codice-error">
-        Il codice fiscale inserito non è valido.
+      <FieldError id="field-tax-code-error">
+        The tax code entered is not valid.
       </FieldError>
     </Field>
   ),
@@ -76,7 +76,7 @@ export const Horizontal: Story = {
       <FieldContent>
         <FieldLabel htmlFor="field-newsletter">Newsletter</FieldLabel>
         <FieldDescription>
-          Ricevi un riepilogo mensile delle novità.
+          Receive a monthly summary of updates.
         </FieldDescription>
       </FieldContent>
     </Field>
@@ -86,9 +86,9 @@ export const Horizontal: Story = {
 export const WithFieldSet: Story = {
   render: () => (
     <FieldSet className="max-w-sm">
-      <FieldLegend>Preferenze di contatto</FieldLegend>
+      <FieldLegend>Contact preferences</FieldLegend>
       <FieldDescription>
-        Scegli i canali con cui desideri essere contattato.
+        Choose the channels you want to be contacted through.
       </FieldDescription>
       <FieldGroup>
         <Field orientation="horizontal">
@@ -100,10 +100,10 @@ export const WithFieldSet: Story = {
           <FieldLabel htmlFor="field-canale-sms">SMS</FieldLabel>
         </Field>
       </FieldGroup>
-      <FieldSeparator>oppure</FieldSeparator>
+      <FieldSeparator>or</FieldSeparator>
       <FieldGroup>
         <Field>
-          <FieldLabel htmlFor="field-telefono">Telefono</FieldLabel>
+          <FieldLabel htmlFor="field-telefono">Phone</FieldLabel>
           <Input
             id="field-telefono"
             type="tel"
@@ -118,10 +118,10 @@ export const WithFieldSet: Story = {
 export const Disabled: Story = {
   render: () => (
     <Field className="max-w-sm" data-disabled="true">
-      <FieldLabel htmlFor="field-disabled">Partita IVA</FieldLabel>
+      <FieldLabel htmlFor="field-disabled">VAT number</FieldLabel>
       <Input id="field-disabled" defaultValue="01234567890" disabled />
       <FieldDescription>
-        Il campo è bloccato finché la verifica non è completata.
+        The field is locked until verification is complete.
       </FieldDescription>
     </Field>
   ),

@@ -16,26 +16,26 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  render: () => <Toggle>Mostra anteprima</Toggle>,
+  render: () => <Toggle>Show preview</Toggle>,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
-    const toggle = canvas.getByRole("button", { name: "Mostra anteprima" })
+    const toggle = canvas.getByRole("button", { name: "Show preview" })
     await userEvent.click(toggle)
     await expect(toggle).toHaveAttribute("aria-pressed", "true")
   },
 }
 
 export const Outline: Story = {
-  render: () => <Toggle variant="outline">Anteprima</Toggle>,
+  render: () => <Toggle variant="outline">Preview</Toggle>,
 }
 
 export const Icon: Story = {
   render: () => (
     <div className="flex items-center gap-2">
-      <Toggle aria-label="Grassetto">
+      <Toggle aria-label="Bold">
         <BoldIcon aria-hidden="true" />
       </Toggle>
-      <Toggle aria-label="Corsivo">
+      <Toggle aria-label="Italic">
         <ItalicIcon aria-hidden="true" />
       </Toggle>
     </div>
@@ -43,9 +43,9 @@ export const Icon: Story = {
 }
 
 export const Pressed: Story = {
-  render: () => <Toggle defaultPressed>Notifiche attive</Toggle>,
+  render: () => <Toggle defaultPressed>Notifications enabled</Toggle>,
 }
 
 export const Disabled: Story = {
-  render: () => <Toggle disabled>Non disponibile</Toggle>,
+  render: () => <Toggle disabled>Unavailable</Toggle>,
 }

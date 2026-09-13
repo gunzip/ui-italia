@@ -17,8 +17,8 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   render: () => (
     <div className="flex w-80 flex-col gap-2">
-      <Label htmlFor="textarea-default">Messaggio</Label>
-      <Textarea id="textarea-default" placeholder="Scrivi un messaggio…" />
+      <Label htmlFor="textarea-default">Message</Label>
+      <Textarea id="textarea-default" placeholder="Write a message…" />
     </div>
   ),
 }
@@ -26,10 +26,10 @@ export const Default: Story = {
 export const WithValue: Story = {
   render: () => (
     <div className="flex w-80 flex-col gap-2">
-      <Label htmlFor="textarea-value">Note</Label>
+      <Label htmlFor="textarea-value">Notes</Label>
       <Textarea
         id="textarea-value"
-        defaultValue="La pratica è stata presa in carico."
+        defaultValue="The case has been taken on."
       />
     </div>
   ),
@@ -38,12 +38,8 @@ export const WithValue: Story = {
 export const Disabled: Story = {
   render: () => (
     <div className="flex w-80 flex-col gap-2">
-      <Label htmlFor="textarea-disabled">Note</Label>
-      <Textarea
-        id="textarea-disabled"
-        disabled
-        defaultValue="Campo bloccato."
-      />
+      <Label htmlFor="textarea-disabled">Notes</Label>
+      <Textarea id="textarea-disabled" disabled defaultValue="Field locked." />
     </div>
   ),
 }
@@ -51,14 +47,14 @@ export const Disabled: Story = {
 export const Invalid: Story = {
   render: () => (
     <div className="flex w-80 flex-col gap-2">
-      <Label htmlFor="textarea-invalid">Messaggio</Label>
+      <Label htmlFor="textarea-invalid">Message</Label>
       <Textarea
         id="textarea-invalid"
         aria-invalid
         aria-describedby="textarea-invalid-error"
       />
       <p id="textarea-invalid-error" className="text-sm text-destructive">
-        Il messaggio è obbligatorio.
+        The message is required.
       </p>
     </div>
   ),

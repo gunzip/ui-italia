@@ -40,7 +40,7 @@ export const Range: Story = {
   render: () => (
     <div className="flex w-72 flex-col gap-2">
       <span id="slider-price-label" className="text-sm font-medium">
-        Fascia di prezzo
+        Price range
       </span>
       <Slider
         aria-labelledby="slider-price-label"
@@ -71,7 +71,7 @@ export const Disabled: Story = {
   render: () => (
     <div className="flex w-72 flex-col gap-2">
       <span id="slider-disabled-label" className="text-sm font-medium">
-        Luminosità
+        Brightness
       </span>
       <Slider
         aria-labelledby="slider-disabled-label"

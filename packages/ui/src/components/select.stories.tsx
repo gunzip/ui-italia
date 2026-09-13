@@ -14,9 +14,9 @@ import {
 } from "./select"
 
 const fruits = [
-  { label: "Mela", value: "mela" },
+  { label: "Apple", value: "mela" },
   { label: "Banana", value: "banana" },
-  { label: "Arancia", value: "arancia" },
+  { label: "Orange", value: "arancia" },
 ]
 
 const meta = {
@@ -33,10 +33,10 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   render: () => (
     <div className="flex w-72 flex-col gap-2">
-      <Label htmlFor="select-fruit">Frutto</Label>
+      <Label htmlFor="select-fruit">Fruit</Label>
       <Select items={fruits} defaultValue="mela">
         <SelectTrigger id="select-fruit" className="w-full">
-          <SelectValue placeholder="Seleziona un frutto" />
+          <SelectValue placeholder="Select a fruit" />
         </SelectTrigger>
         <SelectContent>
           {fruits.map((fruit) => (
@@ -50,7 +50,7 @@ export const Default: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
-    const trigger = canvas.getByRole("combobox", { name: "Frutto" })
+    const trigger = canvas.getByRole("combobox", { name: "Fruit" })
     await userEvent.click(trigger)
     // Portalled listbox animates in; wait for the enter animation first.
     const body = within(canvasElement.ownerDocument.body)
@@ -64,22 +64,22 @@ export const Default: Story = {
 export const WithGroups: Story = {
   render: () => (
     <div className="flex w-72 flex-col gap-2">
-      <Label htmlFor="select-food">Alimento</Label>
+      <Label htmlFor="select-food">Food</Label>
       <Select defaultValue="mela">
         <SelectTrigger id="select-food" className="w-full">
-          <SelectValue placeholder="Seleziona un alimento" />
+          <SelectValue placeholder="Select a food" />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
-            <SelectLabel>Frutta</SelectLabel>
-            <SelectItem value="mela">Mela</SelectItem>
+            <SelectLabel>Fruit</SelectLabel>
+            <SelectItem value="mela">Apple</SelectItem>
             <SelectItem value="banana">Banana</SelectItem>
           </SelectGroup>
           <SelectSeparator />
           <SelectGroup>
-            <SelectLabel>Verdura</SelectLabel>
-            <SelectItem value="carota">Carota</SelectItem>
-            <SelectItem value="zucchina">Zucchina</SelectItem>
+            <SelectLabel>Vegetables</SelectLabel>
+            <SelectItem value="carota">Carrot</SelectItem>
+            <SelectItem value="zucchina">Zucchini</SelectItem>
           </SelectGroup>
         </SelectContent>
       </Select>
@@ -90,7 +90,7 @@ export const WithGroups: Story = {
 export const Disabled: Story = {
   render: () => (
     <div className="flex w-72 flex-col gap-2">
-      <Label htmlFor="select-disabled">Frutto</Label>
+      <Label htmlFor="select-disabled">Fruit</Label>
       <Select items={fruits} defaultValue="mela" disabled>
         <SelectTrigger id="select-disabled" className="w-full">
           <SelectValue />
@@ -110,7 +110,7 @@ export const Disabled: Story = {
 export const Invalid: Story = {
   render: () => (
     <div className="flex w-72 flex-col gap-2">
-      <Label htmlFor="select-invalid">Frutto</Label>
+      <Label htmlFor="select-invalid">Fruit</Label>
       <Select items={fruits}>
         <SelectTrigger
           id="select-invalid"
@@ -118,7 +118,7 @@ export const Invalid: Story = {
           aria-invalid
           aria-describedby="select-invalid-error"
         >
-          <SelectValue placeholder="Seleziona un frutto" />
+          <SelectValue placeholder="Select a fruit" />
         </SelectTrigger>
         <SelectContent>
           {fruits.map((fruit) => (
@@ -129,7 +129,7 @@ export const Invalid: Story = {
         </SelectContent>
       </Select>
       <p id="select-invalid-error" className="text-sm text-destructive">
-        Seleziona un frutto per continuare.
+        Select a fruit to continue.
       </p>
     </div>
   ),
@@ -138,7 +138,7 @@ export const Invalid: Story = {
 export const Small: Story = {
   render: () => (
     <div className="flex w-72 flex-col gap-2">
-      <Label htmlFor="select-small">Frutto</Label>
+      <Label htmlFor="select-small">Fruit</Label>
       <Select items={fruits} defaultValue="banana">
         <SelectTrigger id="select-small" size="sm" className="w-full">
           <SelectValue />

@@ -20,16 +20,16 @@ export const Default: Story = {
       <TabsList>
         <TabsTrigger value="account">Account</TabsTrigger>
         <TabsTrigger value="password">Password</TabsTrigger>
-        <TabsTrigger value="notifications">Notifiche</TabsTrigger>
+        <TabsTrigger value="notifications">Notifications</TabsTrigger>
       </TabsList>
       <TabsContent value="account" className="p-4 text-muted-foreground">
-        Gestisci i dati del tuo account.
+        Manage your account data.
       </TabsContent>
       <TabsContent value="password" className="p-4 text-muted-foreground">
-        Aggiorna la password di accesso.
+        Update your sign-in password.
       </TabsContent>
       <TabsContent value="notifications" className="p-4 text-muted-foreground">
-        Configura le notifiche che ricevi.
+        Configure the notifications you receive.
       </TabsContent>
     </Tabs>
   ),
@@ -37,7 +37,7 @@ export const Default: Story = {
     const canvas = within(canvasElement)
     await userEvent.click(canvas.getByRole("tab", { name: "Password" }))
     await expect(
-      await canvas.findByText("Aggiorna la password di accesso.")
+      await canvas.findByText("Update your sign-in password.")
     ).toBeVisible()
   },
 }
@@ -50,10 +50,10 @@ export const Line: Story = {
         <TabsTrigger value="password">Password</TabsTrigger>
       </TabsList>
       <TabsContent value="account" className="p-4 text-muted-foreground">
-        Gestisci i dati del tuo account.
+        Manage your account data.
       </TabsContent>
       <TabsContent value="password" className="p-4 text-muted-foreground">
-        Aggiorna la password di accesso.
+        Update your sign-in password.
       </TabsContent>
     </Tabs>
   ),
@@ -65,16 +65,16 @@ export const Vertical: Story = {
       <TabsList>
         <TabsTrigger value="account">Account</TabsTrigger>
         <TabsTrigger value="password">Password</TabsTrigger>
-        <TabsTrigger value="notifications">Notifiche</TabsTrigger>
+        <TabsTrigger value="notifications">Notifications</TabsTrigger>
       </TabsList>
       <TabsContent value="account" className="p-4 text-muted-foreground">
-        Gestisci i dati del tuo account.
+        Manage your account data.
       </TabsContent>
       <TabsContent value="password" className="p-4 text-muted-foreground">
-        Aggiorna la password di accesso.
+        Update your sign-in password.
       </TabsContent>
       <TabsContent value="notifications" className="p-4 text-muted-foreground">
-        Configura le notifiche che ricevi.
+        Configure the notifications you receive.
       </TabsContent>
     </Tabs>
   ),
@@ -90,10 +90,10 @@ export const DisabledTab: Story = {
         </TabsTrigger>
       </TabsList>
       <TabsContent value="account" className="p-4 text-muted-foreground">
-        Gestisci i dati del tuo account.
+        Manage your account data.
       </TabsContent>
       <TabsContent value="password" className="p-4 text-muted-foreground">
-        Aggiorna la password di accesso.
+        Update your sign-in password.
       </TabsContent>
     </Tabs>
   ),

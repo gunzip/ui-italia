@@ -29,14 +29,14 @@ export const Default: Story = {
         <EmptyMedia variant="icon">
           <InboxIcon aria-hidden="true" />
         </EmptyMedia>
-        <EmptyTitle>Nessun messaggio</EmptyTitle>
+        <EmptyTitle>No messages</EmptyTitle>
         <EmptyDescription>
-          Non hai ancora ricevuto messaggi. Quando ne arriveranno, li troverai
-          qui.
+          You have not received any messages yet. When they arrive, you will
+          find them here.
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
-        <Button size="sm">Crea messaggio</Button>
+        <Button size="sm">Create message</Button>
       </EmptyContent>
     </Empty>
   ),
@@ -49,15 +49,14 @@ export const WithDefaultMedia: Story = {
         <EmptyMedia>
           <SearchXIcon aria-hidden="true" className="size-10" />
         </EmptyMedia>
-        <EmptyTitle>Nessun risultato</EmptyTitle>
+        <EmptyTitle>No results</EmptyTitle>
         <EmptyDescription>
-          Prova a modificare i filtri di ricerca o a usare parole chiave
-          diverse.
+          Try changing the search filters or using different keywords.
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
         <Button variant="outline" size="sm">
-          Azzera filtri
+          Clear filters
         </Button>
       </EmptyContent>
     </Empty>
@@ -68,7 +67,7 @@ export const TitleOnly: Story = {
   render: () => (
     <Empty className="w-96 border border-dashed border-border">
       <EmptyHeader>
-        <EmptyTitle>Nessun dato disponibile</EmptyTitle>
+        <EmptyTitle>No data available</EmptyTitle>
       </EmptyHeader>
     </Empty>
   ),
@@ -81,17 +80,17 @@ export const WithMultipleActions: Story = {
         <EmptyMedia variant="icon">
           <InboxIcon aria-hidden="true" />
         </EmptyMedia>
-        <EmptyTitle>Cartella vuota</EmptyTitle>
+        <EmptyTitle>Empty folder</EmptyTitle>
         <EmptyDescription>
-          Importa i tuoi documenti oppure iniziane uno da zero.
+          Import your documents or start one from scratch.
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
         <div className="flex items-center gap-2">
           <Button variant="outline" size="sm">
-            Importa
+            Import
           </Button>
-          <Button size="sm">Nuovo documento</Button>
+          <Button size="sm">New document</Button>
         </div>
       </EmptyContent>
     </Empty>

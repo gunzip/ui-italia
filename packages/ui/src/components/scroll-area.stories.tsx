@@ -22,7 +22,7 @@ export const Default: Story = {
             key={index}
             className="rounded-md bg-muted px-3 py-2 text-sm text-muted-foreground"
           >
-            Elemento {index + 1}
+            Item {index + 1}
           </div>
         ))}
       </div>
@@ -35,7 +35,7 @@ export const FitContent: Story = {
     <ScrollArea className="h-64 w-64 rounded-lg border">
       <div className="flex flex-col gap-2 p-4">
         <div className="rounded-md bg-muted px-3 py-2 text-sm">
-          Contenuto che non richiede scorrimento.
+          Content that does not require scrolling.
         </div>
       </div>
     </ScrollArea>
@@ -47,13 +47,13 @@ export const WithSeparators: Story = {
     <ScrollArea className="h-56 w-72 rounded-lg border">
       <div className="p-4">
         {[
-          "Anagrafe",
-          "Tributi",
-          "Scuola",
-          "Mobilità",
-          "Sanità",
-          "Ambiente",
-          "Cultura",
+          "Registry",
+          "Taxes",
+          "School",
+          "Mobility",
+          "Health",
+          "Environment",
+          "Culture",
         ].map((item) => (
           <div key={item} className="border-b py-2 text-sm last:border-b-0">
             {item}

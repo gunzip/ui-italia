@@ -28,7 +28,7 @@ export const Default: Story = {
   args: { maxLength: 6, children: null },
   render: () => (
     <div className="flex flex-col items-center gap-2">
-      <Label htmlFor="otp-default">Codice di verifica</Label>
+      <Label htmlFor="otp-default">Verification code</Label>
       <InputOTP id="otp-default" maxLength={6}>
         <InputOTPGroup>
           <InputOTPSlot index={0} />
@@ -44,7 +44,7 @@ export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
     const input = canvas.getByRole("textbox", {
-      name: "Codice di verifica",
+      name: "Verification code",
     })
     await userEvent.type(input, "123456")
     await expect(input).toHaveValue("123456")
@@ -55,7 +55,7 @@ export const WithSeparator: Story = {
   args: { maxLength: 6, children: null },
   render: () => (
     <div className="flex flex-col items-center gap-2">
-      <Label htmlFor="otp-separator">Codice di verifica</Label>
+      <Label htmlFor="otp-separator">Verification code</Label>
       <InputOTP id="otp-separator" maxLength={6}>
         <InputOTPGroup>
           <InputOTPSlot index={0} />
@@ -77,7 +77,7 @@ export const Invalid: Story = {
   args: { maxLength: 6, children: null },
   render: () => (
     <div className="flex flex-col items-center gap-2">
-      <Label htmlFor="otp-invalid">Codice di verifica</Label>
+      <Label htmlFor="otp-invalid">Verification code</Label>
       <InputOTP
         id="otp-invalid"
         maxLength={6}
@@ -94,7 +94,7 @@ export const Invalid: Story = {
         </InputOTPGroup>
       </InputOTP>
       <p id="otp-invalid-error" className="text-sm text-destructive">
-        Il codice inserito non è corretto.
+        The code entered is incorrect.
       </p>
     </div>
   ),
@@ -104,7 +104,7 @@ export const Disabled: Story = {
   args: { maxLength: 6, children: null },
   render: () => (
     <div className="flex flex-col items-center gap-2">
-      <Label htmlFor="otp-disabled">Codice di verifica</Label>
+      <Label htmlFor="otp-disabled">Verification code</Label>
       <InputOTP id="otp-disabled" maxLength={6} disabled>
         <InputOTPGroup>
           <InputOTPSlot index={0} />

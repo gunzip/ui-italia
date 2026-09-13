@@ -38,7 +38,7 @@ export const Default: Story = {
           <Button
             variant="ghost"
             size="icon-sm"
-            aria-label="Elimina Mario Rossi"
+            aria-label="Delete Mario Rossi"
           >
             <Trash2Icon />
           </Button>
@@ -56,7 +56,7 @@ export const Default: Story = {
           <Button
             variant="ghost"
             size="icon-sm"
-            aria-label="Elimina Giulia Bianchi"
+            aria-label="Delete Giulia Bianchi"
           >
             <Trash2Icon />
           </Button>
@@ -71,17 +71,17 @@ export const Outline: Story = {
     <ItemGroup className="w-96">
       <Item role="listitem" variant="outline">
         <ItemContent>
-          <ItemTitle>Servizio anagrafe</ItemTitle>
+          <ItemTitle>Registry service</ItemTitle>
           <ItemDescription>
-            Certificati, cambi di residenza e stato di famiglia.
+            Certificates, change of residence and family status.
           </ItemDescription>
         </ItemContent>
       </Item>
       <Item role="listitem" variant="outline">
         <ItemContent>
-          <ItemTitle>Servizio tributi</ItemTitle>
+          <ItemTitle>Tax service</ItemTitle>
           <ItemDescription>
-            IMU, TARI e consultazione dei pagamenti effettuati.
+            IMU, TARI and viewing of payments made.
           </ItemDescription>
         </ItemContent>
       </Item>
@@ -96,8 +96,8 @@ export const Clickable: Story = {
         <UserIcon />
       </ItemMedia>
       <ItemContent>
-        <ItemTitle>Apri il profilo</ItemTitle>
-        <ItemDescription>Visualizza e aggiorna i tuoi dati.</ItemDescription>
+        <ItemTitle>Open profile</ItemTitle>
+        <ItemDescription>View and update your data.</ItemDescription>
       </ItemContent>
       <ItemActions>
         <ChevronRightIcon

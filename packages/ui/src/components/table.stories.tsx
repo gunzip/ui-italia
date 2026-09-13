@@ -13,22 +13,22 @@ import {
 
 const invoices = [
   {
-    id: "FATT-001",
-    status: "Pagata",
-    method: "Carta di credito",
+    id: "INV-001",
+    status: "Paid",
+    method: "Credit card",
     amount: "€ 250,00",
   },
   {
-    id: "FATT-002",
-    status: "In attesa",
-    method: "Bonifico",
+    id: "INV-002",
+    status: "Pending",
+    method: "Bank transfer",
     amount: "€ 150,00",
   },
-  { id: "FATT-003", status: "Scaduta", method: "Contanti", amount: "€ 350,00" },
+  { id: "INV-003", status: "Overdue", method: "Cash", amount: "€ 350,00" },
   {
-    id: "FATT-004",
-    status: "Pagata",
-    method: "Carta di credito",
+    id: "INV-004",
+    status: "Paid",
+    method: "Credit card",
     amount: "€ 450,00",
   },
 ]
@@ -47,14 +47,14 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   render: () => (
     <Table>
-      <TableCaption>Elenco delle fatture del periodo corrente.</TableCaption>
+      <TableCaption>List of invoices for the current period.</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead scope="col">Fattura</TableHead>
-          <TableHead scope="col">Stato</TableHead>
-          <TableHead scope="col">Metodo</TableHead>
+          <TableHead scope="col">Invoice</TableHead>
+          <TableHead scope="col">Status</TableHead>
+          <TableHead scope="col">Method</TableHead>
           <TableHead scope="col" className="text-right">
-            Importo
+            Amount
           </TableHead>
         </TableRow>
       </TableHeader>
@@ -79,25 +79,25 @@ export const WithFooter: Story = {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead scope="col">Voce</TableHead>
+          <TableHead scope="col">Item</TableHead>
           <TableHead scope="col" className="text-right">
-            Importo
+            Amount
           </TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         <TableRow>
-          <TableCell>Servizio annuale</TableCell>
+          <TableCell>Annual service</TableCell>
           <TableCell className="text-right tabular-nums">€ 480,00</TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>Assistenza</TableCell>
+          <TableCell>Support</TableCell>
           <TableCell className="text-right tabular-nums">€ 120,00</TableCell>
         </TableRow>
       </TableBody>
       <TableFooter>
         <TableRow>
-          <TableCell>Totale</TableCell>
+          <TableCell>Total</TableCell>
           <TableCell className="text-right tabular-nums">€ 600,00</TableCell>
         </TableRow>
       </TableFooter>
@@ -108,12 +108,12 @@ export const WithFooter: Story = {
 export const EmptyState: Story = {
   render: () => (
     <Table>
-      <TableCaption>Nessuna pratica trovata.</TableCaption>
+      <TableCaption>No cases found.</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead scope="col">Protocollo</TableHead>
-          <TableHead scope="col">Oggetto</TableHead>
-          <TableHead scope="col">Stato</TableHead>
+          <TableHead scope="col">Protocol</TableHead>
+          <TableHead scope="col">Subject</TableHead>
+          <TableHead scope="col">Status</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -122,7 +122,7 @@ export const EmptyState: Story = {
             colSpan={3}
             className="h-24 text-center text-muted-foreground"
           >
-            Non ci sono elementi da mostrare.
+            There are no items to show.
           </TableCell>
         </TableRow>
       </TableBody>

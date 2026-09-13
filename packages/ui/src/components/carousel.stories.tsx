@@ -22,7 +22,7 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   render: () => (
-    <Carousel aria-label="Galleria di esempio" className="w-full max-w-xs">
+    <Carousel aria-label="Example gallery" className="w-full max-w-xs">
       <CarouselContent>
         {Array.from({ length: 5 }).map((_, index) => (
           <CarouselItem key={index}>
@@ -40,7 +40,7 @@ export const Default: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
-    const region = canvas.getByRole("region", { name: "Galleria di esempio" })
+    const region = canvas.getByRole("region", { name: "Example gallery" })
     await expect(region).toHaveAttribute("aria-roledescription", "carousel")
 
     const slides = canvas.getAllByRole("group")
@@ -64,7 +64,7 @@ export const Default: Story = {
 
 export const MultipleSlides: Story = {
   render: () => (
-    <Carousel aria-label="Galleria a più slide" className="w-full max-w-sm">
+    <Carousel aria-label="Multi-slide gallery" className="w-full max-w-sm">
       <CarouselContent>
         {Array.from({ length: 6 }).map((_, index) => (
           <CarouselItem key={index} className="basis-1/2">

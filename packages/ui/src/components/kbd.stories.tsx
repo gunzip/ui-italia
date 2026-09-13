@@ -32,12 +32,12 @@ export const Combination: Story = {
 export const InText: Story = {
   render: () => (
     <p className="text-sm text-muted-foreground">
-      Premi{" "}
+      Press{" "}
       <KbdGroup>
         <Kbd>Ctrl</Kbd>
         <Kbd>B</Kbd>
       </KbdGroup>{" "}
-      per aprire la command palette.
+      to open the command palette.
     </p>
   ),
 }

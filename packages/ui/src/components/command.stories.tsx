@@ -20,21 +20,21 @@ function CommandDialogDemo() {
 
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Apri command palette</Button>
+      <Button onClick={() => setOpen(true)}>Open command palette</Button>
       <CommandDialog
         open={open}
         onOpenChange={setOpen}
         title="Command palette"
-        description="Cerca un comando da eseguire."
+        description="Search for a command to run."
       >
-        <Command label="Cerca un comando">
-          <CommandInput placeholder="Cerca un comando..." />
-          <CommandList label="Suggerimenti">
-            <CommandEmpty>Nessun risultato.</CommandEmpty>
-            <CommandGroup heading="Azioni">
-              <CommandItem>Nuovo documento</CommandItem>
-              <CommandItem>Esporta come PDF</CommandItem>
-              <CommandItem>Condividi</CommandItem>
+        <Command label="Search for a command">
+          <CommandInput placeholder="Search for a command..." />
+          <CommandList label="Suggestions">
+            <CommandEmpty>No results.</CommandEmpty>
+            <CommandGroup heading="Actions">
+              <CommandItem>New document</CommandItem>
+              <CommandItem>Export as PDF</CommandItem>
+              <CommandItem>Share</CommandItem>
             </CommandGroup>
           </CommandList>
         </Command>
@@ -68,25 +68,25 @@ export const Default: Story = {
   },
   render: () => (
     <Command
-      label="Cerca un comando"
+      label="Search for a command"
       className="w-80 border border-border shadow-md"
     >
-      <CommandInput placeholder="Cerca un comando..." />
-      <CommandList label="Suggerimenti">
-        <CommandEmpty>Nessun risultato.</CommandEmpty>
-        <CommandGroup heading="Suggerimenti">
-          <CommandItem>Calendario</CommandItem>
+      <CommandInput placeholder="Search for a command..." />
+      <CommandList label="Suggestions">
+        <CommandEmpty>No results.</CommandEmpty>
+        <CommandGroup heading="Suggestions">
+          <CommandItem>Calendar</CommandItem>
           <CommandItem>Emoji</CommandItem>
-          <CommandItem>Calcolatrice</CommandItem>
+          <CommandItem>Calculator</CommandItem>
         </CommandGroup>
         <CommandSeparator />
-        <CommandGroup heading="Impostazioni">
+        <CommandGroup heading="Settings">
           <CommandItem>
-            Profilo
+            Profile
             <CommandShortcut>⌘P</CommandShortcut>
           </CommandItem>
           <CommandItem>
-            Impostazioni
+            Settings
             <CommandShortcut>⌘S</CommandShortcut>
           </CommandItem>
         </CommandGroup>
@@ -95,10 +95,12 @@ export const Default: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
-    const input = canvas.getByRole("combobox", { name: "Cerca un comando" })
+    const input = canvas.getByRole("combobox", {
+      name: "Search for a command",
+    })
     await userEvent.type(input, "emoji")
     await expect(await canvas.findByText("Emoji")).toBeVisible()
-    await expect(canvas.queryByText("Calcolatrice")).not.toBeInTheDocument()
+    await expect(canvas.queryByText("Calculator")).not.toBeInTheDocument()
   },
 }
 
@@ -108,13 +110,13 @@ export const CommandDialogStory: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
     await userEvent.click(
-      canvas.getByRole("button", { name: "Apri command palette" })
+      canvas.getByRole("button", { name: "Open command palette" })
     )
     // Portalled dialog animates in; wait for the enter animation to finish.
     const body = within(canvasElement.ownerDocument.body)
     const dialog = await body.findByRole("dialog")
     await waitFor(() =>
-      expect(within(dialog).getByText("Nuovo documento")).toBeVisible()
+      expect(within(dialog).getByText("New document")).toBeVisible()
     )
   },
 }
@@ -132,12 +134,12 @@ export const Empty: Story = {
   },
   render: () => (
     <Command
-      label="Cerca un comando"
+      label="Search for a command"
       className="w-80 border border-border shadow-md"
     >
-      <CommandInput placeholder="Cerca un comando..." />
-      <CommandList label="Suggerimenti">
-        <CommandEmpty>Nessun risultato.</CommandEmpty>
+      <CommandInput placeholder="Search for a command..." />
+      <CommandList label="Suggestions">
+        <CommandEmpty>No results.</CommandEmpty>
       </CommandList>
     </Command>
   ),

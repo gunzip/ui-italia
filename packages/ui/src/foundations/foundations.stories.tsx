@@ -107,10 +107,10 @@ export const Typography: Story = {
       <p className="text-h5 text-foreground">Heading 5</p>
       <p className="text-h6 text-foreground">Heading 6</p>
       <p className="text-body-lg text-foreground">
-        Body large — 18px. Il design system usa Titillium Web per il testo.
+        Body large — 18px. The design system uses Titillium Web for text.
       </p>
       <p className="text-body text-foreground">
-        Body — 16px. Il design system usa Titillium Web per il testo.
+        Body — 16px. The design system uses Titillium Web for text.
       </p>
       <p className="text-caption text-muted-foreground">Caption — 14px.</p>
       <p className="text-caption-strong text-foreground">
@@ -174,7 +174,7 @@ export const Focus: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
       <p className="text-body text-foreground">
-        Tab attraverso gli elementi: il focus ring è 2px con offset 2px.
+        Tab through the elements: the focus ring is 2px with a 2px offset.
       </p>
       <div className="flex flex-wrap gap-4">
         <button className="h-12 focus-ring rounded-sm bg-primary px-6 font-semibold text-primary-foreground">

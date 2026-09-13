@@ -22,9 +22,9 @@ export const Vertical: Story = {
     <div className="flex h-16 items-center gap-4 text-sm text-foreground">
       <span>Account</span>
       <Separator orientation="vertical" />
-      <span>Impostazioni</span>
+      <span>Settings</span>
       <Separator orientation="vertical" />
-      <span>Sicurezza</span>
+      <span>Security</span>
     </div>
   ),
 }

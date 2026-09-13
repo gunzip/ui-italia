@@ -32,10 +32,10 @@ const items: {
   icon: typeof HomeIcon
   isActive?: boolean
 }[] = [
-  { title: "Panoramica", icon: HomeIcon, isActive: true },
-  { title: "Pratiche", icon: InboxIcon },
-  { title: "Scadenze", icon: CalendarIcon },
-  { title: "Utenti", icon: UsersIcon },
+  { title: "Overview", icon: HomeIcon, isActive: true },
+  { title: "Cases", icon: InboxIcon },
+  { title: "Deadlines", icon: CalendarIcon },
+  { title: "Users", icon: UsersIcon },
 ]
 
 function AppShell({
@@ -59,10 +59,10 @@ function AppShell({
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-medium">
-                    Comune di Esempio
+                    Example Municipality
                   </span>
                   <span className="truncate text-xs text-sidebar-foreground/70">
-                    Servizi digitali
+                    Digital services
                   </span>
                 </div>
               </SidebarMenuButton>
@@ -72,7 +72,7 @@ function AppShell({
         <SidebarSeparator />
         <SidebarContent>
           <SidebarGroup>
-            <SidebarGroupLabel>Piattaforma</SidebarGroupLabel>
+            <SidebarGroupLabel>Platform</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 {items.map((item) => (
@@ -96,7 +96,7 @@ function AppShell({
             <SidebarMenuItem>
               <SidebarMenuButton render={<a href="#" />}>
                 <SettingsIcon />
-                <span>Impostazioni</span>
+                <span>Settings</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
@@ -105,22 +105,20 @@ function AppShell({
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
           <SidebarTrigger />
-          <h1 className="text-base font-semibold">Panoramica</h1>
+          <h1 className="text-base font-semibold">Overview</h1>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
           <label htmlFor="sidebar-search" className="sr-only">
-            Cerca nelle pratiche
+            Search cases
           </label>
           <div className="relative w-full max-w-sm">
             <SearchIcon
               className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground"
               aria-hidden="true"
             />
-            <Input id="sidebar-search" placeholder="Cerca…" className="pl-9" />
+            <Input id="sidebar-search" placeholder="Search…" className="pl-9" />
           </div>
-          <p className="text-sm text-muted-foreground">
-            Contenuto principale della pagina.
-          </p>
+          <p className="text-sm text-muted-foreground">Main page content.</p>
         </div>
       </SidebarInset>
     </SidebarProvider>

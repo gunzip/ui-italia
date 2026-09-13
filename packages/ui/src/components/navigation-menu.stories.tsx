@@ -34,67 +34,67 @@ export const Default: Story = {
     },
   },
   render: () => (
-    <NavigationMenu aria-label="Navigazione principale">
+    <NavigationMenu aria-label="Main navigation">
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Servizi</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Services</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-64 gap-1 p-1">
               <li>
-                <NavigationMenuLink href="#">Anagrafe</NavigationMenuLink>
+                <NavigationMenuLink href="#">Registry</NavigationMenuLink>
               </li>
               <li>
-                <NavigationMenuLink href="#">Tributi</NavigationMenuLink>
+                <NavigationMenuLink href="#">Taxes</NavigationMenuLink>
               </li>
               <li>
-                <NavigationMenuLink href="#">Scuola</NavigationMenuLink>
+                <NavigationMenuLink href="#">School</NavigationMenuLink>
               </li>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Novità</NavigationMenuTrigger>
+          <NavigationMenuTrigger>News</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-64 gap-1 p-1">
               <li>
-                <NavigationMenuLink href="#">Comunicati</NavigationMenuLink>
+                <NavigationMenuLink href="#">Press releases</NavigationMenuLink>
               </li>
               <li>
                 <NavigationMenuLink href="#">
-                  Bandi e concorsi
+                  Notices and competitions
                 </NavigationMenuLink>
               </li>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuLink href="#">Documentazione</NavigationMenuLink>
+          <NavigationMenuLink href="#">Documentation</NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
-    await userEvent.hover(canvas.getByRole("button", { name: "Servizi" }))
+    await userEvent.hover(canvas.getByRole("button", { name: "Services" }))
     // Portalled panel animates in; wait for the enter animation to finish.
     const body = within(canvasElement.ownerDocument.body)
-    const link = await body.findByRole("link", { name: "Anagrafe" })
+    const link = await body.findByRole("link", { name: "Registry" })
     await waitFor(() => expect(link).toBeVisible())
   },
 }
 
 export const SingleLevel: Story = {
   render: () => (
-    <NavigationMenu aria-label="Navigazione principale">
+    <NavigationMenu aria-label="Main navigation">
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuLink href="#">Home</NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuLink href="#">Servizi</NavigationMenuLink>
+          <NavigationMenuLink href="#">Services</NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuLink href="#">Contatti</NavigationMenuLink>
+          <NavigationMenuLink href="#">Contacts</NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

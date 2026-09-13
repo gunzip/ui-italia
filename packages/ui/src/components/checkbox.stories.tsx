@@ -18,14 +18,13 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   render: () => (
     <Label>
-      <Checkbox />
-      Accetto i termini e le condizioni
+      <Checkbox />I accept the terms and conditions
     </Label>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
     const checkbox = canvas.getByRole("checkbox", {
-      name: "Accetto i termini e le condizioni",
+      name: "I accept the terms and conditions",
     })
     await userEvent.click(checkbox)
     await expect(checkbox).toBeChecked()
@@ -35,8 +34,7 @@ export const Default: Story = {
 export const Checked: Story = {
   render: () => (
     <Label>
-      <Checkbox defaultChecked />
-      Accetto i termini e le condizioni
+      <Checkbox defaultChecked />I accept the terms and conditions
     </Label>
   ),
 }
@@ -45,7 +43,7 @@ export const Indeterminate: Story = {
   render: () => (
     <Label>
       <Checkbox indeterminate />
-      Seleziona tutte le voci
+      Select all items
     </Label>
   ),
 }
@@ -54,7 +52,7 @@ export const Disabled: Story = {
   render: () => (
     <Label>
       <Checkbox disabled />
-      Opzione non disponibile
+      Option unavailable
     </Label>
   ),
 }
@@ -63,11 +61,11 @@ export const Invalid: Story = {
   render: () => (
     <div className="flex flex-col gap-2">
       <Label>
-        <Checkbox aria-invalid aria-describedby="checkbox-error" />
-        Accetto i termini e le condizioni
+        <Checkbox aria-invalid aria-describedby="checkbox-error" />I accept the
+        terms and conditions
       </Label>
       <p id="checkbox-error" className="text-sm text-destructive">
-        Devi accettare i termini per continuare.
+        You must accept the terms to continue.
       </p>
     </div>
   ),

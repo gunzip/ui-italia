@@ -25,7 +25,7 @@ function SingleCalendar() {
       mode="single"
       selected={selected}
       onSelect={setSelected}
-      aria-label="Seleziona una data"
+      aria-label="Select a date"
       className="rounded-lg border"
     />
   )
@@ -42,7 +42,7 @@ function RangeCalendar() {
       mode="range"
       selected={range}
       onSelect={setRange}
-      aria-label="Seleziona un intervallo di date"
+      aria-label="Select a date range"
       className="rounded-lg border"
     />
   )
@@ -59,7 +59,7 @@ function DropdownCalendar() {
       captionLayout="dropdown"
       startMonth={new Date(2020, 0)}
       endMonth={new Date(2030, 11)}
-      aria-label="Seleziona una data di nascita"
+      aria-label="Select a date of birth"
       className="rounded-lg border"
     />
   )

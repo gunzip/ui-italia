@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   render: () => (
     <div className="flex w-72 flex-col gap-2">
-      <Label htmlFor="label-default">Nome utente</Label>
+      <Label htmlFor="label-default">Username</Label>
       <Input id="label-default" placeholder="mario.rossi" />
     </div>
   ),
@@ -40,7 +40,7 @@ export const Required: Story = {
 export const Disabled: Story = {
   render: () => (
     <div className="flex w-72 flex-col gap-2">
-      <Label htmlFor="label-disabled">Codice fiscale</Label>
+      <Label htmlFor="label-disabled">Tax code</Label>
       <Input id="label-disabled" disabled />
     </div>
   ),

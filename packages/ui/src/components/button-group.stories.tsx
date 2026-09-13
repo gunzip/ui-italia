@@ -30,14 +30,14 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   render: () => (
-    <ButtonGroup aria-label="Formattazione del testo">
-      <Button variant="outline" size="icon-sm" aria-label="Grassetto">
+    <ButtonGroup aria-label="Text formatting">
+      <Button variant="outline" size="icon-sm" aria-label="Bold">
         <BoldIcon />
       </Button>
-      <Button variant="outline" size="icon-sm" aria-label="Corsivo">
+      <Button variant="outline" size="icon-sm" aria-label="Italic">
         <ItalicIcon />
       </Button>
-      <Button variant="outline" size="icon-sm" aria-label="Sottolineato">
+      <Button variant="outline" size="icon-sm" aria-label="Underline">
         <UnderlineIcon />
       </Button>
     </ButtonGroup>
@@ -47,10 +47,10 @@ export const Default: Story = {
 export const Vertical: Story = {
   render: () => (
     <ButtonGroup orientation="vertical" aria-label="Zoom">
-      <Button variant="outline" size="icon-sm" aria-label="Aumenta zoom">
+      <Button variant="outline" size="icon-sm" aria-label="Zoom in">
         <PlusIcon />
       </Button>
-      <Button variant="outline" size="icon-sm" aria-label="Riduci zoom">
+      <Button variant="outline" size="icon-sm" aria-label="Zoom out">
         <MinusIcon />
       </Button>
     </ButtonGroup>
@@ -59,24 +59,24 @@ export const Vertical: Story = {
 
 export const WithText: Story = {
   render: () => (
-    <ButtonGroup aria-label="Indirizzo del sito">
+    <ButtonGroup aria-label="Site address">
       <ButtonGroupText>https://</ButtonGroupText>
-      <Button variant="outline">Apri</Button>
+      <Button variant="outline">Open</Button>
     </ButtonGroup>
   ),
 }
 
 export const WithSeparator: Story = {
   render: () => (
-    <ButtonGroup aria-label="Allineamento">
-      <Button variant="outline" size="icon-sm" aria-label="Allinea a sinistra">
+    <ButtonGroup aria-label="Alignment">
+      <Button variant="outline" size="icon-sm" aria-label="Align left">
         <AlignLeftIcon />
       </Button>
-      <Button variant="outline" size="icon-sm" aria-label="Allinea al centro">
+      <Button variant="outline" size="icon-sm" aria-label="Align center">
         <AlignCenterIcon />
       </Button>
       <ButtonGroupSeparator />
-      <Button variant="outline" size="icon-sm" aria-label="Allinea a destra">
+      <Button variant="outline" size="icon-sm" aria-label="Align right">
         <AlignRightIcon />
       </Button>
     </ButtonGroup>

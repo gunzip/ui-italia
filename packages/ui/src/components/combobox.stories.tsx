@@ -45,14 +45,14 @@ function MultipleCombobox() {
                   {value.label}
                 </ComboboxChip>
               ))}
-              <ComboboxChipsInput aria-label="Framework selezionati" />
+              <ComboboxChipsInput aria-label="Selected frameworks" />
             </>
           )}
         </ComboboxValue>
       </ComboboxChips>
       <ComboboxContent anchor={anchor}>
-        <ComboboxEmpty>Nessun framework trovato.</ComboboxEmpty>
-        <ComboboxList aria-label="Suggerimenti">
+        <ComboboxEmpty>No framework found.</ComboboxEmpty>
+        <ComboboxList aria-label="Suggestions">
           {(item: Framework) => (
             <ComboboxItem key={item.value} value={item}>
               {item.label}
@@ -84,11 +84,11 @@ export const Default: Story = {
           showTrigger={false}
           id="combobox-framework"
           className="w-full"
-          placeholder="Cerca un framework"
+          placeholder="Search for a framework"
         />
         <ComboboxContent>
-          <ComboboxEmpty>Nessun framework trovato.</ComboboxEmpty>
-          <ComboboxList aria-label="Suggerimenti">
+          <ComboboxEmpty>No framework found.</ComboboxEmpty>
+          <ComboboxList aria-label="Suggestions">
             {(item: Framework) => (
               <ComboboxItem key={item.value} value={item}>
                 {item.label}
@@ -121,10 +121,10 @@ export const WithGroups: Story = {
           showTrigger={false}
           id="combobox-grouped"
           className="w-full"
-          placeholder="Cerca un framework"
+          placeholder="Search for a framework"
         />
         <ComboboxContent>
-          <ComboboxList aria-label="Suggerimenti">
+          <ComboboxList aria-label="Suggestions">
             <ComboboxGroup>
               <ComboboxLabel>Frontend</ComboboxLabel>
               <ComboboxItem value="react">React</ComboboxItem>
@@ -147,7 +147,7 @@ export const Multiple: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
     await userEvent.click(
-      canvas.getByRole("combobox", { name: "Framework selezionati" })
+      canvas.getByRole("combobox", { name: "Selected frameworks" })
     )
     // Portalled listbox animates in; wait for the enter animation first.
     const body = within(canvasElement.ownerDocument.body)
@@ -169,11 +169,11 @@ export const Empty: Story = {
           showTrigger={false}
           id="combobox-empty"
           className="w-full"
-          placeholder="Cerca un framework"
+          placeholder="Search for a framework"
         />
         <ComboboxContent>
-          <ComboboxEmpty>Nessun framework trovato.</ComboboxEmpty>
-          <ComboboxList aria-label="Suggerimenti">
+          <ComboboxEmpty>No framework found.</ComboboxEmpty>
+          <ComboboxList aria-label="Suggestions">
             {(item: Framework) => (
               <ComboboxItem key={item.value} value={item}>
                 {item.label}
@@ -195,10 +195,10 @@ export const Disabled: Story = {
           showTrigger={false}
           id="combobox-disabled"
           className="w-full"
-          placeholder="Cerca un framework"
+          placeholder="Search for a framework"
         />
         <ComboboxContent>
-          <ComboboxList aria-label="Suggerimenti">
+          <ComboboxList aria-label="Suggestions">
             {(item: Framework) => (
               <ComboboxItem key={item.value} value={item}>
                 {item.label}

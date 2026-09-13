@@ -17,13 +17,13 @@ export const Conversation: Story = {
   render: () => (
     <BubbleGroup className="w-80">
       <Bubble>
-        <BubbleContent>Buongiorno, come posso aiutarla?</BubbleContent>
+        <BubbleContent>Good morning, how can I help you?</BubbleContent>
       </Bubble>
       <Bubble align="end">
-        <BubbleContent>Vorrei prenotare un appuntamento.</BubbleContent>
+        <BubbleContent>I would like to book an appointment.</BubbleContent>
       </Bubble>
       <Bubble>
-        <BubbleContent>Certamente, quale giorno preferisce?</BubbleContent>
+        <BubbleContent>Certainly, which day do you prefer?</BubbleContent>
       </Bubble>
     </BubbleGroup>
   ),
@@ -43,7 +43,7 @@ export const Variants: Story = {
         ] as const
       ).map((variant) => (
         <Bubble key={variant} variant={variant}>
-          <BubbleContent>Variante “{variant}”</BubbleContent>
+          <BubbleContent>Variant “{variant}”</BubbleContent>
         </Bubble>
       ))}
     </BubbleGroup>
@@ -54,9 +54,9 @@ export const WithReactions: Story = {
   render: () => (
     <div className="w-80">
       <Bubble align="end">
-        <BubbleContent>Ci vediamo domani alle 15?</BubbleContent>
-        <BubbleReactions aria-label="Reazioni: 2">
-          <span role="img" aria-label="Pollice in su">
+        <BubbleContent>See you tomorrow at 3 PM?</BubbleContent>
+        <BubbleReactions aria-label="Reactions: 2">
+          <span role="img" aria-label="Thumbs up">
             👍
           </span>
           <span className="text-xs" aria-hidden="true">

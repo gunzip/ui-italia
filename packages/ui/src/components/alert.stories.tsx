@@ -32,9 +32,9 @@ export const Default: Story = {
   },
   render: (args) => (
     <Alert {...args} className="w-96">
-      <AlertTitle>Aggiornamento disponibile</AlertTitle>
+      <AlertTitle>Update available</AlertTitle>
       <AlertDescription>
-        È disponibile una nuova versione del servizio.
+        A new version of the service is available.
       </AlertDescription>
     </Alert>
   ),
@@ -44,9 +44,9 @@ export const WithIcon: Story = {
   render: () => (
     <Alert className="w-96">
       <InfoIcon aria-hidden="true" />
-      <AlertTitle>Nota</AlertTitle>
+      <AlertTitle>Note</AlertTitle>
       <AlertDescription>
-        La sessione scade dopo 15 minuti di inattività.
+        The session expires after 15 minutes of inactivity.
       </AlertDescription>
     </Alert>
   ),
@@ -59,10 +59,8 @@ export const Destructive: Story = {
   render: (args) => (
     <Alert {...args} className="w-96">
       <TriangleAlertIcon aria-hidden="true" />
-      <AlertTitle>Errore</AlertTitle>
-      <AlertDescription>
-        Non è stato possibile salvare le modifiche.
-      </AlertDescription>
+      <AlertTitle>Error</AlertTitle>
+      <AlertDescription>The changes could not be saved.</AlertDescription>
     </Alert>
   ),
 }
@@ -74,8 +72,8 @@ export const Success: Story = {
   render: (args) => (
     <Alert {...args} className="w-96">
       <CheckCircle2Icon aria-hidden="true" />
-      <AlertTitle>Operazione completata</AlertTitle>
-      <AlertDescription>Le modifiche sono state salvate.</AlertDescription>
+      <AlertTitle>Operation completed</AlertTitle>
+      <AlertDescription>The changes have been saved.</AlertDescription>
     </Alert>
   ),
 }
@@ -87,8 +85,8 @@ export const Warning: Story = {
   render: (args) => (
     <Alert {...args} className="w-96">
       <TriangleAlertIcon aria-hidden="true" />
-      <AlertTitle>Attenzione</AlertTitle>
-      <AlertDescription>La sessione sta per scadere.</AlertDescription>
+      <AlertTitle>Warning</AlertTitle>
+      <AlertDescription>The session is about to expire.</AlertDescription>
     </Alert>
   ),
 }
@@ -100,8 +98,8 @@ export const Info: Story = {
   render: (args) => (
     <Alert {...args} className="w-96">
       <InfoIcon aria-hidden="true" />
-      <AlertTitle>Informazione</AlertTitle>
-      <AlertDescription>Consulta le linee guida del servizio.</AlertDescription>
+      <AlertTitle>Information</AlertTitle>
+      <AlertDescription>See the service guidelines.</AlertDescription>
     </Alert>
   ),
 }
@@ -111,10 +109,10 @@ export const WithAction: Story = {
     <Alert className="w-96">
       <AlertTitle>Cookie</AlertTitle>
       <AlertDescription>
-        Questo sito utilizza cookie tecnici necessari al funzionamento.
+        This site uses technical cookies required for it to work.
       </AlertDescription>
       <AlertAction>
-        <Button variant="ghost" size="icon-sm" aria-label="Chiudi avviso">
+        <Button variant="ghost" size="icon-sm" aria-label="Close notification">
           <XIcon />
         </Button>
       </AlertAction>

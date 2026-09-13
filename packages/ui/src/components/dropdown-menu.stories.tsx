@@ -35,33 +35,33 @@ export const Default: Story = {
   render: () => (
     <DropdownMenu>
       <DropdownMenuTrigger render={<Button variant="outline" />}>
-        Apri menu
+        Open menu
       </DropdownMenuTrigger>
-      <DropdownMenuContent aria-label="Azioni account">
+      <DropdownMenuContent aria-label="Account actions">
         <DropdownMenuGroup>
           <DropdownMenuLabel>Account</DropdownMenuLabel>
           <DropdownMenuItem>
             <UserIcon aria-hidden="true" />
-            Profilo
+            Profile
             <DropdownMenuShortcut>⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <SettingsIcon aria-hidden="true" />
-            Impostazioni
+            Settings
             <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem variant="destructive">
           <LogOutIcon aria-hidden="true" />
-          Esci
+          Sign out
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
-    await userEvent.click(canvas.getByRole("button", { name: "Apri menu" }))
+    await userEvent.click(canvas.getByRole("button", { name: "Open menu" }))
     // Base UI labels the popup via `aria-labelledby` pointing at the trigger,
     // so the menu's accessible name is the trigger label, not `aria-label`.
     // The menu is portalled and animates in; wait for the enter animation.
@@ -69,7 +69,7 @@ export const Default: Story = {
     const menu = await body.findByRole("menu")
     await waitFor(() =>
       expect(
-        within(menu).getByRole("menuitem", { name: /Profilo/ })
+        within(menu).getByRole("menuitem", { name: /Profile/ })
       ).toBeVisible()
     )
   },
@@ -79,14 +79,14 @@ export const WithSubmenu: Story = {
   render: () => (
     <DropdownMenu>
       <DropdownMenuTrigger render={<Button variant="outline" />}>
-        Nuovo
+        New
       </DropdownMenuTrigger>
-      <DropdownMenuContent aria-label="Nuovo elemento">
-        <DropdownMenuItem>Documento</DropdownMenuItem>
+      <DropdownMenuContent aria-label="New item">
+        <DropdownMenuItem>Document</DropdownMenuItem>
         <DropdownMenuSub>
-          <DropdownMenuSubTrigger>Importa da</DropdownMenuSubTrigger>
+          <DropdownMenuSubTrigger>Import from</DropdownMenuSubTrigger>
           <DropdownMenuSubContent>
-            <DropdownMenuItem>File locale</DropdownMenuItem>
+            <DropdownMenuItem>Local file</DropdownMenuItem>
             <DropdownMenuItem>URL</DropdownMenuItem>
           </DropdownMenuSubContent>
         </DropdownMenuSub>
@@ -99,18 +99,18 @@ export const WithCheckboxItems: Story = {
   render: () => (
     <DropdownMenu>
       <DropdownMenuTrigger render={<Button variant="outline" />}>
-        Colonne
+        Columns
       </DropdownMenuTrigger>
-      <DropdownMenuContent aria-label="Colonne visibili">
+      <DropdownMenuContent aria-label="Visible columns">
         <DropdownMenuGroup>
-          <DropdownMenuLabel>Colonne visibili</DropdownMenuLabel>
+          <DropdownMenuLabel>Visible columns</DropdownMenuLabel>
           <DropdownMenuCheckboxItem defaultChecked>
-            Nome
+            Name
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem defaultChecked>
-            Data
+            Date
           </DropdownMenuCheckboxItem>
-          <DropdownMenuCheckboxItem>Stato</DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem>Status</DropdownMenuCheckboxItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
@@ -121,16 +121,14 @@ export const WithRadioItems: Story = {
   render: () => (
     <DropdownMenu>
       <DropdownMenuTrigger render={<Button variant="outline" />}>
-        Ordina per
+        Sort by
       </DropdownMenuTrigger>
-      <DropdownMenuContent aria-label="Ordina per">
-        <DropdownMenuRadioGroup defaultValue="nome">
-          <DropdownMenuLabel>Ordina per</DropdownMenuLabel>
-          <DropdownMenuRadioItem value="nome">Nome</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="data">Data</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="dimensione">
-            Dimensione
-          </DropdownMenuRadioItem>
+      <DropdownMenuContent aria-label="Sort by">
+        <DropdownMenuRadioGroup defaultValue="name">
+          <DropdownMenuLabel>Sort by</DropdownMenuLabel>
+          <DropdownMenuRadioItem value="name">Name</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="data">Date</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="size">Size</DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>
@@ -141,10 +139,10 @@ export const Disabled: Story = {
   render: () => (
     <DropdownMenu disabled>
       <DropdownMenuTrigger render={<Button variant="outline" />}>
-        Menu disabilitato
+        Disabled menu
       </DropdownMenuTrigger>
-      <DropdownMenuContent aria-label="Azioni non disponibili">
-        <DropdownMenuItem>Non disponibile</DropdownMenuItem>
+      <DropdownMenuContent aria-label="Unavailable actions">
+        <DropdownMenuItem>Unavailable</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   ),

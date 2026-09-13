@@ -31,32 +31,32 @@ export const Default: Story = {
   render: () => (
     <AlertDialog>
       <AlertDialogTrigger render={<Button variant="outline" />}>
-        Elimina bozza
+        Delete draft
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Eliminare la bozza?</AlertDialogTitle>
+          <AlertDialogTitle>Delete draft?</AlertDialogTitle>
           <AlertDialogDescription>
-            L'operazione non può essere annullata e la bozza verrà rimossa
-            definitivamente.
+            This action cannot be undone and the draft will be permanently
+            removed.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Annulla</AlertDialogCancel>
-          <AlertDialogAction variant="destructive">Elimina</AlertDialogAction>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction variant="destructive">Delete</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
-    await userEvent.click(canvas.getByRole("button", { name: "Elimina bozza" }))
+    await userEvent.click(canvas.getByRole("button", { name: "Delete draft" }))
     // The dialog is portalled outside the canvas and animates in; wait for the
     // enter animation to finish before asserting visibility.
     const body = within(canvasElement.ownerDocument.body)
     const dialog = await body.findByRole("alertdialog")
     await waitFor(() =>
-      expect(within(dialog).getByText("Eliminare la bozza?")).toBeVisible()
+      expect(within(dialog).getByText("Delete draft?")).toBeVisible()
     )
   },
 }
@@ -65,21 +65,21 @@ export const WithMedia: Story = {
   render: () => (
     <AlertDialog>
       <AlertDialogTrigger render={<Button variant="outline" />}>
-        Esci dall'area personale
+        Sign out of your account
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogMedia>
             <TriangleAlertIcon aria-hidden="true" />
           </AlertDialogMedia>
-          <AlertDialogTitle>Vuoi uscire?</AlertDialogTitle>
+          <AlertDialogTitle>Do you want to sign out?</AlertDialogTitle>
           <AlertDialogDescription>
-            Dovrai effettuare di nuovo l'accesso per continuare.
+            You will need to sign in again to continue.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Resta</AlertDialogCancel>
-          <AlertDialogAction>Esci</AlertDialogAction>
+          <AlertDialogCancel>Stay</AlertDialogCancel>
+          <AlertDialogAction>Sign out</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
@@ -90,18 +90,18 @@ export const Small: Story = {
   render: () => (
     <AlertDialog>
       <AlertDialogTrigger render={<Button variant="outline" />}>
-        Apri avviso
+        Open alert
       </AlertDialogTrigger>
       <AlertDialogContent size="sm">
         <AlertDialogHeader>
-          <AlertDialogTitle>Sessione in scadenza</AlertDialogTitle>
+          <AlertDialogTitle>Session expiring</AlertDialogTitle>
           <AlertDialogDescription>
-            La sessione scadrà tra 5 minuti.
+            The session will expire in 5 minutes.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Ignora</AlertDialogCancel>
-          <AlertDialogAction>Continua</AlertDialogAction>
+          <AlertDialogCancel>Dismiss</AlertDialogCancel>
+          <AlertDialogAction>Continue</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
@@ -112,18 +112,18 @@ export const Closed: Story = {
   render: () => (
     <AlertDialog>
       <AlertDialogTrigger render={<Button variant="outline" />}>
-        Elimina account
+        Delete account
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Eliminare l'account?</AlertDialogTitle>
+          <AlertDialogTitle>Delete account?</AlertDialogTitle>
           <AlertDialogDescription>
-            Tutti i dati associati verranno cancellati.
+            All associated data will be deleted.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Annulla</AlertDialogCancel>
-          <AlertDialogAction variant="destructive">Elimina</AlertDialogAction>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction variant="destructive">Delete</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

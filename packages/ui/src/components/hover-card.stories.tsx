@@ -25,7 +25,7 @@ export const Default: Story = {
         <div className="flex flex-col gap-1">
           <p className="font-medium text-foreground">Mario Rossi</p>
           <p className="text-muted-foreground">
-            Progettista di interfacce per i servizi pubblici.
+            Interface designer for public services.
           </p>
         </div>
       </HoverCardContent>
@@ -46,26 +46,26 @@ export const Sides: Story = {
     <div className="flex items-center gap-4">
       <HoverCard>
         <HoverCardTrigger delay={0} render={<Button variant="outline" />}>
-          Sopra
+          Top
         </HoverCardTrigger>
         <HoverCardContent side="top">
-          Anteprima sopra il trigger.
+          Preview above the trigger.
         </HoverCardContent>
       </HoverCard>
       <HoverCard>
         <HoverCardTrigger delay={0} render={<Button variant="outline" />}>
-          Sotto
+          Bottom
         </HoverCardTrigger>
         <HoverCardContent side="bottom">
-          Anteprima sotto il trigger.
+          Preview below the trigger.
         </HoverCardContent>
       </HoverCard>
       <HoverCard>
         <HoverCardTrigger delay={0} render={<Button variant="outline" />}>
-          Destra
+          Right
         </HoverCardTrigger>
         <HoverCardContent side="right">
-          Anteprima a destra del trigger.
+          Preview to the right of the trigger.
         </HoverCardContent>
       </HoverCard>
     </div>
@@ -77,12 +77,12 @@ export const LinkTrigger: Story = {
     <HoverCard>
       <HoverCardTrigger
         delay={0}
-        render={<a href="#profilo" />}
+        render={<a href="#profile" />}
         className="text-primary underline underline-offset-4"
       >
-        Vedi il profilo completo
+        View full profile
       </HoverCardTrigger>
-      <HoverCardContent>Ultimo accesso il 12 settembre 2026.</HoverCardContent>
+      <HoverCardContent>Last access on 12 September 2026.</HoverCardContent>
     </HoverCard>
   ),
 }

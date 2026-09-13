@@ -31,29 +31,27 @@ export const Default: Story = {
   render: () => (
     <ContextMenu>
       <ContextMenuTrigger className="flex h-32 w-64 items-center justify-center rounded-lg border border-dashed border-border px-4 text-center text-sm text-muted-foreground">
-        Clicca con il tasto destro
+        Right-click here
       </ContextMenuTrigger>
-      <ContextMenuContent aria-label="Azioni contestuali">
-        <ContextMenuItem>Modifica</ContextMenuItem>
-        <ContextMenuItem>Duplica</ContextMenuItem>
-        <ContextMenuItem disabled>Sposta</ContextMenuItem>
+      <ContextMenuContent aria-label="Context actions">
+        <ContextMenuItem>Edit</ContextMenuItem>
+        <ContextMenuItem>Duplicate</ContextMenuItem>
+        <ContextMenuItem disabled>Move</ContextMenuItem>
         <ContextMenuSeparator />
-        <ContextMenuItem variant="destructive">Elimina</ContextMenuItem>
+        <ContextMenuItem variant="destructive">Delete</ContextMenuItem>
       </ContextMenuContent>
     </ContextMenu>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
-    fireEvent.contextMenu(canvas.getByText("Clicca con il tasto destro"))
+    fireEvent.contextMenu(canvas.getByText("Right-click here"))
     // Portalled menu animates in; wait for the enter animation to finish.
     const body = within(canvasElement.ownerDocument.body)
     const menu = await body.findByRole("menu", {
-      name: "Azioni contestuali",
+      name: "Context actions",
     })
     await waitFor(() =>
-      expect(
-        within(menu).getByRole("menuitem", { name: "Modifica" })
-      ).toBeVisible()
+      expect(within(menu).getByRole("menuitem", { name: "Edit" })).toBeVisible()
     )
   },
 }
@@ -62,15 +60,15 @@ export const WithSubmenu: Story = {
   render: () => (
     <ContextMenu>
       <ContextMenuTrigger className="flex h-32 w-64 items-center justify-center rounded-lg border border-dashed border-border px-4 text-center text-sm text-muted-foreground">
-        Clicca con il tasto destro
+        Right-click here
       </ContextMenuTrigger>
-      <ContextMenuContent aria-label="Azioni contestuali">
-        <ContextMenuItem>Nuovo</ContextMenuItem>
+      <ContextMenuContent aria-label="Context actions">
+        <ContextMenuItem>New</ContextMenuItem>
         <ContextMenuSub>
-          <ContextMenuSubTrigger>Apri con</ContextMenuSubTrigger>
+          <ContextMenuSubTrigger>Open with</ContextMenuSubTrigger>
           <ContextMenuSubContent>
-            <ContextMenuItem>Editor di testo</ContextMenuItem>
-            <ContextMenuItem>Anteprima</ContextMenuItem>
+            <ContextMenuItem>Text editor</ContextMenuItem>
+            <ContextMenuItem>Preview</ContextMenuItem>
           </ContextMenuSubContent>
         </ContextMenuSub>
       </ContextMenuContent>
@@ -82,22 +80,20 @@ export const WithCheckboxAndRadio: Story = {
   render: () => (
     <ContextMenu>
       <ContextMenuTrigger className="flex h-32 w-64 items-center justify-center rounded-lg border border-dashed border-border px-4 text-center text-sm text-muted-foreground">
-        Clicca con il tasto destro
+        Right-click here
       </ContextMenuTrigger>
-      <ContextMenuContent aria-label="Preferenze di visualizzazione">
-        <ContextMenuLabel>Visualizzazione</ContextMenuLabel>
+      <ContextMenuContent aria-label="View preferences">
+        <ContextMenuLabel>View</ContextMenuLabel>
         <ContextMenuCheckboxItem defaultChecked>
-          Mostra barra laterale
+          Show sidebar
         </ContextMenuCheckboxItem>
-        <ContextMenuCheckboxItem>Mostra righello</ContextMenuCheckboxItem>
+        <ContextMenuCheckboxItem>Show ruler</ContextMenuCheckboxItem>
         <ContextMenuSeparator />
-        <ContextMenuLabel>Ordina per</ContextMenuLabel>
-        <ContextMenuRadioGroup defaultValue="nome">
-          <ContextMenuRadioItem value="nome">Nome</ContextMenuRadioItem>
-          <ContextMenuRadioItem value="data">Data</ContextMenuRadioItem>
-          <ContextMenuRadioItem value="dimensione">
-            Dimensione
-          </ContextMenuRadioItem>
+        <ContextMenuLabel>Sort by</ContextMenuLabel>
+        <ContextMenuRadioGroup defaultValue="name">
+          <ContextMenuRadioItem value="name">Name</ContextMenuRadioItem>
+          <ContextMenuRadioItem value="data">Date</ContextMenuRadioItem>
+          <ContextMenuRadioItem value="size">Size</ContextMenuRadioItem>
         </ContextMenuRadioGroup>
       </ContextMenuContent>
     </ContextMenu>

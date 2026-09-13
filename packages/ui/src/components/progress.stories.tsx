@@ -20,7 +20,7 @@ export const Default: Story = {
   render: ({ value }) => (
     <Progress value={value} className="w-72 flex-col">
       <div className="flex w-full items-center justify-between">
-        <ProgressLabel>Avanzamento</ProgressLabel>
+        <ProgressLabel>Progress</ProgressLabel>
         <ProgressValue />
       </div>
     </Progress>
@@ -34,7 +34,7 @@ export const Indeterminate: Story = {
   render: ({ value }) => (
     <Progress value={value} className="w-72 flex-col">
       <div className="flex w-full items-center justify-between">
-        <ProgressLabel>Caricamento in corso</ProgressLabel>
+        <ProgressLabel>Loading</ProgressLabel>
         <ProgressValue />
       </div>
     </Progress>
@@ -48,7 +48,7 @@ export const Complete: Story = {
   render: ({ value }) => (
     <Progress value={value} className="w-72 flex-col">
       <div className="flex w-full items-center justify-between">
-        <ProgressLabel>Completato</ProgressLabel>
+        <ProgressLabel>Complete</ProgressLabel>
         <ProgressValue />
       </div>
     </Progress>

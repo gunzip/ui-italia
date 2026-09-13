@@ -30,11 +30,11 @@ export const Default: Story = {
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href="/servizi">Servizi</BreadcrumbLink>
+          <BreadcrumbLink href="/services">Services</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbPage>Pagamenti</BreadcrumbPage>
+          <BreadcrumbPage>Payments</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
@@ -54,7 +54,7 @@ export const WithEllipsis: Story = {
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href="/servizi/pagamenti">Pagamenti</BreadcrumbLink>
+          <BreadcrumbLink href="/services/payments">Payments</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
@@ -74,11 +74,11 @@ export const CustomSeparator: Story = {
         </BreadcrumbItem>
         <BreadcrumbSeparator>/</BreadcrumbSeparator>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/servizi">Servizi</BreadcrumbLink>
+          <BreadcrumbLink href="/services">Services</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>/</BreadcrumbSeparator>
         <BreadcrumbItem>
-          <BreadcrumbPage>Pagamenti</BreadcrumbPage>
+          <BreadcrumbPage>Payments</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>

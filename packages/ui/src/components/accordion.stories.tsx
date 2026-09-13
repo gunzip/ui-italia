@@ -12,19 +12,18 @@ import {
 const faqs = [
   {
     value: "spedizioni",
-    trigger: "Spedizioni e consegne",
-    content: "Gli ordini vengono affidati al corriere entro 24 ore lavorative.",
+    trigger: "Shipping and delivery",
+    content: "Orders are handed to the courier within 24 working hours.",
   },
   {
     value: "pagamenti",
-    trigger: "Metodi di pagamento",
-    content:
-      "Sono accettate carte di credito, bonifico e pagamento alla consegna.",
+    trigger: "Payment methods",
+    content: "Credit cards, bank transfers and cash on delivery are accepted.",
   },
   {
     value: "resi",
-    trigger: "Resi e rimborsi",
-    content: "Puoi richiedere il reso entro 30 giorni dalla consegna.",
+    trigger: "Returns and refunds",
+    content: "You can request a return within 30 days of delivery.",
   },
 ]
 
@@ -56,10 +55,10 @@ export const Default: Story = {
   render: () => <FaqAccordion />,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
-    const trigger = canvas.getByRole("button", { name: "Metodi di pagamento" })
+    const trigger = canvas.getByRole("button", { name: "Payment methods" })
     await userEvent.click(trigger)
     await expect(trigger).toHaveAttribute("aria-expanded", "true")
-    await expect(await canvas.findByText(/carte di credito/i)).toBeVisible()
+    await expect(await canvas.findByText(/credit cards/i)).toBeVisible()
   },
 }
 

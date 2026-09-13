@@ -28,29 +28,29 @@ export const Default: Story = {
   render: () => (
     <Sheet>
       <SheetTrigger render={<Button variant="outline" />}>
-        Apri pannello
+        Open panel
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
-          <SheetTitle>Modifica profilo</SheetTitle>
-          <SheetDescription>Aggiorna i tuoi dati personali.</SheetDescription>
+          <SheetTitle>Edit profile</SheetTitle>
+          <SheetDescription>Update your personal data.</SheetDescription>
         </SheetHeader>
         <div className="px-4 text-sm text-muted-foreground">
-          Le modifiche verranno salvate automaticamente come bozza.
+          Changes will be saved automatically as a draft.
         </div>
         <SheetFooter>
-          <SheetClose render={<Button variant="outline" />}>Annulla</SheetClose>
-          <Button>Salva</Button>
+          <SheetClose render={<Button variant="outline" />}>Cancel</SheetClose>
+          <Button>Save</Button>
         </SheetFooter>
       </SheetContent>
     </Sheet>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
-    await userEvent.click(canvas.getByRole("button", { name: "Apri pannello" }))
+    await userEvent.click(canvas.getByRole("button", { name: "Open panel" }))
     // Portalled sheet animates in; wait for the enter animation to finish.
     const body = within(canvasElement.ownerDocument.body)
-    const sheet = await body.findByRole("dialog", { name: "Modifica profilo" })
+    const sheet = await body.findByRole("dialog", { name: "Edit profile" })
     await waitFor(() => expect(sheet).toBeVisible())
   },
 }
@@ -59,15 +59,15 @@ export const Left: Story = {
   render: () => (
     <Sheet>
       <SheetTrigger render={<Button variant="outline" />}>
-        Apri da sinistra
+        Open from left
       </SheetTrigger>
       <SheetContent side="left">
         <SheetHeader>
-          <SheetTitle>Menu di navigazione</SheetTitle>
-          <SheetDescription>Passa rapidamente a una sezione.</SheetDescription>
+          <SheetTitle>Navigation menu</SheetTitle>
+          <SheetDescription>Quickly switch to a section.</SheetDescription>
         </SheetHeader>
         <SheetFooter>
-          <SheetClose render={<Button variant="outline" />}>Chiudi</SheetClose>
+          <SheetClose render={<Button variant="outline" />}>Close</SheetClose>
         </SheetFooter>
       </SheetContent>
     </Sheet>
@@ -78,19 +78,15 @@ export const Top: Story = {
   render: () => (
     <Sheet>
       <SheetTrigger render={<Button variant="outline" />}>
-        Apri dall'alto
+        Open from top
       </SheetTrigger>
       <SheetContent side="top">
         <SheetHeader>
-          <SheetTitle>Avvisi di sistema</SheetTitle>
-          <SheetDescription>
-            Manutenzione programmata per domenica.
-          </SheetDescription>
+          <SheetTitle>System alerts</SheetTitle>
+          <SheetDescription>Scheduled maintenance on Sunday.</SheetDescription>
         </SheetHeader>
         <SheetFooter>
-          <SheetClose render={<Button variant="outline" />}>
-            Ho capito
-          </SheetClose>
+          <SheetClose render={<Button variant="outline" />}>Got it</SheetClose>
         </SheetFooter>
       </SheetContent>
     </Sheet>
@@ -101,18 +97,16 @@ export const WithoutCloseButton: Story = {
   render: () => (
     <Sheet>
       <SheetTrigger render={<Button variant="outline" />}>
-        Apri senza pulsante di chiusura
+        Open without close button
       </SheetTrigger>
       <SheetContent showCloseButton={false}>
         <SheetHeader>
-          <SheetTitle>Conferma operazione</SheetTitle>
-          <SheetDescription>
-            Usa i pulsanti in basso per procedere.
-          </SheetDescription>
+          <SheetTitle>Confirm operation</SheetTitle>
+          <SheetDescription>Use the buttons below to proceed.</SheetDescription>
         </SheetHeader>
         <SheetFooter>
-          <SheetClose render={<Button variant="outline" />}>Annulla</SheetClose>
-          <SheetClose render={<Button />}>Conferma</SheetClose>
+          <SheetClose render={<Button variant="outline" />}>Cancel</SheetClose>
+          <SheetClose render={<Button />}>Confirm</SheetClose>
         </SheetFooter>
       </SheetContent>
     </Sheet>

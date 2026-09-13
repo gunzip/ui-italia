@@ -25,17 +25,17 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   render: () => (
     <div className="flex w-80 flex-col gap-2">
-      <Label htmlFor="input-group-search">Cerca</Label>
+      <Label htmlFor="input-group-search">Search</Label>
       <InputGroup>
         <InputGroupAddon>
           <SearchIcon aria-hidden="true" />
         </InputGroupAddon>
         <InputGroupInput
           id="input-group-search"
-          placeholder="Cerca nel catalogo"
+          placeholder="Search the catalog"
         />
         <InputGroupAddon align="inline-end">
-          <InputGroupText>Invio</InputGroupText>
+          <InputGroupText>Enter</InputGroupText>
         </InputGroupAddon>
       </InputGroup>
     </div>
@@ -45,7 +45,7 @@ export const Default: Story = {
 export const WithButton: Story = {
   render: () => (
     <div className="flex w-80 flex-col gap-2">
-      <Label htmlFor="input-group-url">Indirizzo del sito</Label>
+      <Label htmlFor="input-group-url">Site address</Label>
       <InputGroup>
         <InputGroupInput
           id="input-group-url"
@@ -53,7 +53,7 @@ export const WithButton: Story = {
           readOnly
         />
         <InputGroupAddon align="inline-end">
-          <InputGroupButton size="icon-xs" aria-label="Copia indirizzo">
+          <InputGroupButton size="icon-xs" aria-label="Copy address">
             <CopyIcon aria-hidden="true" />
           </InputGroupButton>
         </InputGroupAddon>
@@ -65,14 +65,14 @@ export const WithButton: Story = {
 export const WithTextarea: Story = {
   render: () => (
     <div className="flex w-80 flex-col gap-2">
-      <Label htmlFor="input-group-message">Messaggio</Label>
+      <Label htmlFor="input-group-message">Message</Label>
       <InputGroup>
         <InputGroupAddon align="block-start">
-          <InputGroupText>Nota</InputGroupText>
+          <InputGroupText>Note</InputGroupText>
         </InputGroupAddon>
         <InputGroupTextarea
           id="input-group-message"
-          placeholder="Scrivi un messaggio"
+          placeholder="Write a message"
         />
       </InputGroup>
     </div>
@@ -88,14 +88,14 @@ export const Invalid: Story = {
           id="input-group-email"
           aria-invalid
           aria-describedby="input-group-email-error"
-          placeholder="nome@esempio.it"
+          placeholder="name@example.com"
         />
         <InputGroupAddon align="inline-end">
           <InputGroupText>@</InputGroupText>
         </InputGroupAddon>
       </InputGroup>
       <p id="input-group-email-error" className="text-sm text-destructive">
-        Inserisci un indirizzo email valido.
+        Enter a valid email address.
       </p>
     </div>
   ),
@@ -104,7 +104,7 @@ export const Invalid: Story = {
 export const Disabled: Story = {
   render: () => (
     <div className="flex w-80 flex-col gap-2">
-      <Label htmlFor="input-group-disabled">Codice fiscale</Label>
+      <Label htmlFor="input-group-disabled">Tax code</Label>
       <InputGroup>
         <InputGroupInput
           id="input-group-disabled"
@@ -112,7 +112,7 @@ export const Disabled: Story = {
           defaultValue="RSSMRA80A01H501U"
         />
         <InputGroupAddon align="inline-end">
-          <InputGroupText>Verificato</InputGroupText>
+          <InputGroupText>Verified</InputGroupText>
         </InputGroupAddon>
       </InputGroup>
     </div>

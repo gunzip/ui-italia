@@ -31,31 +31,31 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   render: () => (
-    <Menubar aria-label="Menu principale">
+    <Menubar aria-label="Main menu">
       <MenubarMenu>
         <MenubarTrigger>File</MenubarTrigger>
         <MenubarContent>
           <MenubarItem>
-            Nuovo
+            New
             <MenubarShortcut>⌘N</MenubarShortcut>
           </MenubarItem>
           <MenubarItem>
-            Apri
+            Open
             <MenubarShortcut>⌘O</MenubarShortcut>
           </MenubarItem>
           <MenubarSeparator />
-          <MenubarItem variant="destructive">Esci</MenubarItem>
+          <MenubarItem variant="destructive">Exit</MenubarItem>
         </MenubarContent>
       </MenubarMenu>
       <MenubarMenu>
-        <MenubarTrigger>Modifica</MenubarTrigger>
+        <MenubarTrigger>Edit</MenubarTrigger>
         <MenubarContent>
           <MenubarItem>
-            Annulla
+            Undo
             <MenubarShortcut>⌘Z</MenubarShortcut>
           </MenubarItem>
           <MenubarItem>
-            Ripeti
+            Redo
             <MenubarShortcut>⇧⌘Z</MenubarShortcut>
           </MenubarItem>
         </MenubarContent>
@@ -67,28 +67,26 @@ export const Default: Story = {
     await userEvent.click(canvas.getByRole("menuitem", { name: "File" }))
     // Portalled menu animates in; wait for the enter animation to finish.
     const body = within(canvasElement.ownerDocument.body)
-    const item = await body.findByText("Nuovo")
+    const item = await body.findByText("New")
     await waitFor(() => expect(item).toBeVisible())
   },
 }
 
 export const WithCheckboxAndRadio: Story = {
   render: () => (
-    <Menubar aria-label="Menu principale">
+    <Menubar aria-label="Main menu">
       <MenubarMenu>
-        <MenubarTrigger>Visualizza</MenubarTrigger>
+        <MenubarTrigger>View</MenubarTrigger>
         <MenubarContent>
-          <MenubarLabel>Pannelli</MenubarLabel>
-          <MenubarCheckboxItem defaultChecked>
-            Barra laterale
-          </MenubarCheckboxItem>
+          <MenubarLabel>Panels</MenubarLabel>
+          <MenubarCheckboxItem defaultChecked>Sidebar</MenubarCheckboxItem>
           <MenubarCheckboxItem>Console</MenubarCheckboxItem>
           <MenubarSeparator />
-          <MenubarLabel>Tema</MenubarLabel>
+          <MenubarLabel>Theme</MenubarLabel>
           <MenubarRadioGroup defaultValue="system">
-            <MenubarRadioItem value="light">Chiaro</MenubarRadioItem>
-            <MenubarRadioItem value="dark">Scuro</MenubarRadioItem>
-            <MenubarRadioItem value="system">Sistema</MenubarRadioItem>
+            <MenubarRadioItem value="light">Light</MenubarRadioItem>
+            <MenubarRadioItem value="dark">Dark</MenubarRadioItem>
+            <MenubarRadioItem value="system">System</MenubarRadioItem>
           </MenubarRadioGroup>
         </MenubarContent>
       </MenubarMenu>
@@ -98,13 +96,13 @@ export const WithCheckboxAndRadio: Story = {
 
 export const WithSubmenu: Story = {
   render: () => (
-    <Menubar aria-label="Menu principale">
+    <Menubar aria-label="Main menu">
       <MenubarMenu>
         <MenubarTrigger>File</MenubarTrigger>
         <MenubarContent>
-          <MenubarItem>Salva</MenubarItem>
+          <MenubarItem>Save</MenubarItem>
           <MenubarSub>
-            <MenubarSubTrigger>Esporta</MenubarSubTrigger>
+            <MenubarSubTrigger>Export</MenubarSubTrigger>
             <MenubarSubContent>
               <MenubarItem>PDF</MenubarItem>
               <MenubarItem>CSV</MenubarItem>

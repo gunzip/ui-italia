@@ -1,26 +1,26 @@
 # AGENTS.md
 
-## Cosa è questo repo
+## What this repo is
 
-Design system: porting di `mui-italia` su **shadcn/ui + Base UI**.
-Monorepo pnpm + Turborepo.
+Design system: port of `mui-italia` to **shadcn/ui + Base UI**.
+pnpm + Turborepo monorepo.
 
-- `packages/ui` (`ui-italia`) — componenti, token, stili, Storybook, registry shadcn.
-- `packages/compat` (`ui-italia-compat`) — shim **opzionale** con i vecchi nomi MUI; temporaneo.
-- `apps/playground` — app Vite che consuma `ui-italia` per test di integrazione.
-- `docs/porting-plan.md` — **piano di porting**: leggilo prima di modifiche significative.
-- `docs/migration-from-mui-italia.md` — guida di migrazione agent-oriented.
+- `packages/ui` (`ui-italia`) — components, tokens, styles, Storybook, shadcn registry.
+- `packages/compat` (`ui-italia-compat`) — **optional** shim with the old MUI names; temporary.
+- `apps/playground` — Vite app that consumes `ui-italia` for integration tests.
+- `docs/porting-plan.md` — **porting plan**: read it before significant changes.
+- `docs/migration-from-mui-italia.md` — agent-oriented migration guide.
 
 ## Stack
 
 React 19 · Vite 8 · TypeScript 6 · Tailwind v4 · `@base-ui/react` · shadcn `base-nova`
 · Storybook 10.6 · Vitest 5 (browser) · ESLint 10 · pnpm 10.
 
-## Comandi
+## Commands
 
 ```bash
 pnpm dev                 # playground
-pnpm --filter ui-italia storybook      # Storybook su :6006
+pnpm --filter ui-italia storybook      # Storybook on :6006
 pnpm --filter ui-italia typecheck
 pnpm test                              # Storybook Test + a11y
 pnpm --filter ui-italia test:visual    # visual regression (Playwright)
@@ -28,41 +28,41 @@ pnpm registry:build
 pnpm lint
 ```
 
-## Convenzioni componenti
+## Component conventions
 
-- **Idiomatico shadcn/Base UI**, niente wrapper MUI-style, niente prop di stile (`sx`/`style`).
-- Styling **solo** con token semantici (`bg-primary`, `text-muted-foreground`, `border-border`, `ring-ring`…). **Mai** colori hard-coded: il tema Italia vive in `packages/ui/src/styles/globals.css`.
-- Composizione con sotto-componenti (`Card`/`CardHeader`/…), varianti con `cva`, merge classi con `cn` da `cn`, `data-slot` su ogni parte, ref forwarding.
-- Base UI: polimorfismo con il prop `render`. Per i link usare `buttonVariants` + `<a>` (non `render={<a/>}` su `Button`).
-- Accessibilità **WCAG 2.2 AA obbligatoria**: label associate, focus visibile, ruoli/`aria-*`, target ≥ 24px. Le storie devono passare `@storybook/addon-a11y` (impostato su `test: 'error'`).
+- **Idiomatic shadcn/Base UI**, no MUI-style wrappers, no style props (`sx`/`style`).
+- Styling **only** with semantic tokens (`bg-primary`, `text-muted-foreground`, `border-border`, `ring-ring`…). **Never** hard-coded colors: the Italia theme lives in `packages/ui/src/styles/globals.css`.
+- Composition with sub-components (`Card`/`CardHeader`/…), variants with `cva`, class merging with `cn` from `cn`, `data-slot` on every part, ref forwarding.
+- Base UI: polymorphism with the `render` prop. For links use `buttonVariants` + `<a>` (not `render={<a/>}` on `Button`).
+- **WCAG 2.2 AA accessibility is mandatory**: associated labels, visible focus, roles/`aria-*`, targets ≥ 24px. Stories must pass `@storybook/addon-a11y` (set to `test: 'error'`).
 
 ## Storybook MCP (`storybook`)
 
-Quando lavori su componenti UI, **usa gli strumenti MCP Storybook** prima di rispondere o agire:
+When working on UI components, **use the Storybook MCP tools** before answering or acting:
 
-- `docs-list` per l'elenco dei componenti documentati; `docs-show` per props ed esempi.
-- **Non inventare mai props**: verifica che siano documentate o presenti in una story.
-- `get-storybook-story-instructions` per le convenzioni delle story.
-- `test-run` per eseguire i test (incluse le verifiche a11y) e correggere in autonomia.
-- Il server richiede Storybook in esecuzione (`pnpm --filter ui-italia storybook` → `http://localhost:6006/mcp`).
+- `docs-list` for the list of documented components; `docs-show` for props and examples.
+- **Never invent props**: verify they are documented or present in a story.
+- `get-storybook-story-instructions` for story conventions.
+- `test-run` to run the tests (including a11y checks) and fix issues autonomously.
+- The server requires Storybook to be running (`pnpm --filter ui-italia storybook` → `http://localhost:6006/mcp`).
 
 ## shadcn MCP (`shadcn`)
 
-Usa il MCP `shadcn` per cercare/consultare/installare item dei registry (es. `@shadcn/button`) invece di scrivere markup a mano.
+Use the `shadcn` MCP to search/consult/install registry items (e.g. `@shadcn/button`) instead of writing markup by hand.
 
-## Documentazione
+## Documentation
 
-- Piano: `docs/porting-plan.md`
+- Plan: `docs/porting-plan.md`
 - shadcn: <https://ui.shadcn.com/docs>
 - Base UI: <https://base-ui.com>
 - Storybook: <https://storybook.js.org/docs>
 
-## Provider richiesti
+## Required providers
 
-- `TooltipProvider` per i tooltip (avvolgilo una volta a livello root).
-- `<Toaster />` (da `sonner`) per i toast.
-- `DirectionProvider` per il supporto direzionale (opzionale, LTR di default).
+- `TooltipProvider` for tooltips (wrap it once at the root level).
+- `<Toaster />` (from `sonner`) for toasts.
+- `DirectionProvider` for directional support (optional, LTR by default).
 
 ## Visual test
 
-Le baseline fanno fede **su Linux (CI)** e sono committate. In locale `pnpm --filter ui-italia test:visual:update` genera baseline per la tua piattaforma (gitignorate). Dopo aver aggiunto/modificato story, lancia il workflow **Update visual baselines** su GitHub per aggiornare quelle Linux, altrimenti il job `visual` della CI fallisce.
+The baselines are authoritative **on Linux (CI)** and are committed. Locally, `pnpm --filter ui-italia test:visual:update` generates baselines for your platform (gitignored). After adding/modifying a story, run the **Update visual baselines** workflow on GitHub to update the Linux ones, otherwise the CI `visual` job fails.

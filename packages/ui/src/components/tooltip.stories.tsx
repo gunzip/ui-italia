@@ -26,18 +26,18 @@ export const Default: Story = {
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger render={<Button variant="outline" />}>
-          Salva
+          Save
         </TooltipTrigger>
-        <TooltipContent>Salva le modifiche</TooltipContent>
+        <TooltipContent>Save changes</TooltipContent>
       </Tooltip>
     </TooltipProvider>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
-    await userEvent.hover(canvas.getByRole("button", { name: "Salva" }))
+    await userEvent.hover(canvas.getByRole("button", { name: "Save" }))
     // Portalled tooltip animates in; wait for the enter animation to finish.
     const body = within(canvasElement.ownerDocument.body)
-    const tooltip = await body.findByText("Salva le modifiche")
+    const tooltip = await body.findByText("Save changes")
     await waitFor(() => expect(tooltip).toBeVisible())
   },
 }
@@ -47,13 +47,11 @@ export const IconTrigger: Story = {
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger
-          render={
-            <Button variant="ghost" size="icon-sm" aria-label="Elimina" />
-          }
+          render={<Button variant="ghost" size="icon-sm" aria-label="Delete" />}
         >
           <Trash2Icon aria-hidden="true" />
         </TooltipTrigger>
-        <TooltipContent>Elimina definitivamente</TooltipContent>
+        <TooltipContent>Delete permanently</TooltipContent>
       </Tooltip>
     </TooltipProvider>
   ),
@@ -65,21 +63,21 @@ export const Sides: Story = {
       <div className="flex items-center gap-4">
         <Tooltip>
           <TooltipTrigger render={<Button variant="outline" />}>
-            Sopra
+            Top
           </TooltipTrigger>
-          <TooltipContent side="top">Tooltip in alto</TooltipContent>
+          <TooltipContent side="top">Tooltip on top</TooltipContent>
         </Tooltip>
         <Tooltip>
           <TooltipTrigger render={<Button variant="outline" />}>
-            Sotto
+            Bottom
           </TooltipTrigger>
-          <TooltipContent side="bottom">Tooltip in basso</TooltipContent>
+          <TooltipContent side="bottom">Tooltip at the bottom</TooltipContent>
         </Tooltip>
         <Tooltip>
           <TooltipTrigger render={<Button variant="outline" />}>
-            Destra
+            Right
           </TooltipTrigger>
-          <TooltipContent side="right">Tooltip a destra</TooltipContent>
+          <TooltipContent side="right">Tooltip on the right</TooltipContent>
         </Tooltip>
       </div>
     </TooltipProvider>

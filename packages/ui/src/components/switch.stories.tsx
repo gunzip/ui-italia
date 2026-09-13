@@ -19,12 +19,12 @@ export const Default: Story = {
   render: () => (
     <Label>
       <Switch />
-      Notifiche via email
+      Email notifications
     </Label>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
-    const toggle = canvas.getByRole("switch", { name: "Notifiche via email" })
+    const toggle = canvas.getByRole("switch", { name: "Email notifications" })
     await userEvent.click(toggle)
     await expect(toggle).toBeChecked()
   },
@@ -34,7 +34,7 @@ export const Checked: Story = {
   render: () => (
     <Label>
       <Switch defaultChecked />
-      Notifiche via email
+      Email notifications
     </Label>
   ),
 }
@@ -43,7 +43,7 @@ export const Small: Story = {
   render: () => (
     <Label>
       <Switch size="sm" defaultChecked />
-      Modalità compatta
+      Compact mode
     </Label>
   ),
 }
@@ -52,7 +52,7 @@ export const Disabled: Story = {
   render: () => (
     <Label>
       <Switch disabled />
-      Notifiche via email
+      Email notifications
     </Label>
   ),
 }

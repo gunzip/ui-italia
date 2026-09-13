@@ -30,33 +30,31 @@ export const Default: Story = {
   render: () => (
     <Dialog>
       <DialogTrigger render={<Button variant="outline" />}>
-        Apri dialog
+        Open dialog
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Confermi l'operazione?</DialogTitle>
-          <DialogDescription>
-            Questa azione non può essere annullata.
-          </DialogDescription>
+          <DialogTitle>Confirm the operation?</DialogTitle>
+          <DialogDescription>This action cannot be undone.</DialogDescription>
         </DialogHeader>
         <DialogFooter>
           <DialogClose render={<Button variant="outline" />}>
-            Annulla
+            Cancel
           </DialogClose>
-          <Button>Conferma</Button>
+          <Button>Confirm</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
-    await userEvent.click(canvas.getByRole("button", { name: "Apri dialog" }))
+    await userEvent.click(canvas.getByRole("button", { name: "Open dialog" }))
     // Portalled dialog animates in; wait for the enter animation to finish.
     const body = within(canvasElement.ownerDocument.body)
     const dialog = await body.findByRole("dialog")
     await waitFor(() => {
       expect(dialog).toBeVisible()
-      expect(within(dialog).getByText("Confermi l'operazione?")).toBeVisible()
+      expect(within(dialog).getByText("Confirm the operation?")).toBeVisible()
     })
   },
 }
@@ -65,17 +63,17 @@ export const WithoutCloseButton: Story = {
   render: () => (
     <Dialog>
       <DialogTrigger render={<Button variant="outline" />}>
-        Apri dialog
+        Open dialog
       </DialogTrigger>
       <DialogContent showCloseButton={false}>
         <DialogHeader>
-          <DialogTitle>Sessione scaduta</DialogTitle>
+          <DialogTitle>Session expired</DialogTitle>
           <DialogDescription>
-            Accedi di nuovo per continuare a usare il servizio.
+            Sign in again to continue using the service.
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button>Accedi</Button>
+          <Button>Sign in</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
@@ -85,21 +83,21 @@ export const WithoutCloseButton: Story = {
 export const WithForm: Story = {
   render: () => (
     <Dialog>
-      <DialogTrigger render={<Button />}>Modifica profilo</DialogTrigger>
+      <DialogTrigger render={<Button />}>Edit profile</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Modifica profilo</DialogTitle>
-          <DialogDescription>Aggiorna i tuoi dati personali.</DialogDescription>
+          <DialogTitle>Edit profile</DialogTitle>
+          <DialogDescription>Update your personal data.</DialogDescription>
         </DialogHeader>
         <div className="flex flex-col gap-2">
-          <Label htmlFor="dialog-name">Nome</Label>
+          <Label htmlFor="dialog-name">Name</Label>
           <Input id="dialog-name" defaultValue="Mario" />
         </div>
         <DialogFooter>
           <DialogClose render={<Button variant="outline" />}>
-            Annulla
+            Cancel
           </DialogClose>
-          <Button>Salva</Button>
+          <Button>Save</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
