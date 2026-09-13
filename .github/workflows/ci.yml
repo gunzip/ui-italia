@@ -65,8 +65,8 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - name: Install Playwright browsers
-        run: pnpm --filter ui-italia exec playwright install --with-deps
+      - name: Install Playwright (Chromium)
+        run: pnpm --filter ui-italia exec playwright install --with-deps chromium
 
       - name: Run visual tests
         run: pnpm --filter ui-italia test:visual

@@ -1,5 +1,7 @@
 import type { StorybookConfig } from "@storybook/react-vite"
 
+import tailwindcss from "@tailwindcss/vite"
+
 import { dirname } from "path"
 
 import { fileURLToPath } from "url"
@@ -24,6 +26,13 @@ const config: StorybookConfig = {
   // (docs-list / docs-show) so agents can read our component API instead of guessing.
   features: {
     componentsManifest: true,
+  },
+  // Compile the design system CSS (Tailwind v4 + Italia tokens) in Storybook.
+  // Without this, `@import "tailwindcss"` / `@theme` / `@utility` are not processed.
+  viteFinal: async (config) => {
+    config.plugins ??= []
+    config.plugins.push(tailwindcss())
+    return config
   },
 }
 export default config
