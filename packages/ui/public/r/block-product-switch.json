@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "block-product-switch",
+  "description": "Italia product-switch block (composition).",
+  "dependencies": [
+    "@base-ui/react",
+    "class-variance-authority",
+    "cn",
+    "lucide-react"
+  ],
+  "registryDependencies": ["utils", "theme"],
+  "files": [
+    {
+      "path": "src/blocks/product-switch.tsx",
+      "content": "import * as React from \"react\"\nimport { ChevronDownIcon } from \"lucide-react\"\n\nimport { Button } from \"ui-italia/components/button\"\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuItem,\n  DropdownMenuTrigger,\n} from \"ui-italia/components/dropdown-menu\"\n\nexport type ProductSwitchLinkType = \"internal\" | \"external\"\n\nexport interface ProductSwitchItem {\n  id: string\n  title: string\n  productUrl: string\n  linkType?: ProductSwitchLinkType\n  icon?: React.ReactNode\n}\n\ninterface ProductSwitchProps {\n  currentProductId: string\n  products: ProductSwitchItem[]\n  onExit?: (product: ProductSwitchItem) => void\n}\n\n/**\n * Port of mui-italia `ProductSwitch`: current product title + dropdown to\n * switch product.\n */\nfunction ProductSwitch({\n  currentProductId,\n  products,\n  onExit,\n}: ProductSwitchProps) {\n  const [selectedId, setSelectedId] = React.useState(currentProductId)\n\n  React.useEffect(() => setSelectedId(currentProductId), [currentProductId])\n\n  const selected = products.find((product) => product.id === selectedId)\n\n  return (\n    <DropdownMenu>\n      <DropdownMenuTrigger\n        render={\n          <Button\n            variant=\"link\"\n            className=\"text-xl font-bold sm:text-[28px]\"\n            aria-label=\"Seleziona prodotto\"\n          />\n        }\n      >\n        {selected?.title}\n        <ChevronDownIcon data-icon=\"inline-end\" aria-hidden=\"true\" />\n      </DropdownMenuTrigger>\n      <DropdownMenuContent align=\"start\" aria-label=\"Seleziona i tuoi prodotti\">\n        {products.map((product) => (\n          <DropdownMenuItem\n            key={product.id}\n            onClick={() => {\n              if ((product.linkType ?? \"internal\") === \"internal\") {\n                setSelectedId(product.id)\n              }\n              onExit?.(product)\n            }}\n          >\n            {product.icon}\n            {product.title}\n          </DropdownMenuItem>\n        ))}\n      </DropdownMenuContent>\n    </DropdownMenu>\n  )\n}\n\nexport { ProductSwitch }\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

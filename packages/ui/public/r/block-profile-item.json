@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "block-profile-item",
+  "description": "Italia profile-item block (composition).",
+  "dependencies": [
+    "@base-ui/react",
+    "class-variance-authority",
+    "cn",
+    "lucide-react"
+  ],
+  "registryDependencies": ["utils", "theme"],
+  "files": [
+    {
+      "path": "src/blocks/profile-item.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"cn\"\n\nimport { Button } from \"ui-italia/components/button\"\n\ninterface ProfileItemProps extends React.ComponentProps<\"div\"> {\n  /** Label shown above the profile name. */\n  caption?: string\n  profileName: string\n  /** Initials displayed inside the circle. */\n  profileInitials: string\n  switchLabel?: string\n  switchAriaLabel?: string\n  showSwitchProfile?: boolean\n  onSwitchProfile: (event: React.MouseEvent<HTMLButtonElement>) => void\n}\n\n/**\n * Port of mui-italia `ProfileItem`: avatar + caption + name with an optional\n * \"switch profile\" action. Below 160px the text collapses to the avatar.\n */\nfunction ProfileItem({\n  caption = \"Stai operando come\",\n  profileName,\n  profileInitials,\n  switchLabel = \"Cambia profilo\",\n  switchAriaLabel,\n  showSwitchProfile = true,\n  onSwitchProfile,\n  className,\n  ...props\n}: ProfileItemProps) {\n  const ariaLabel = switchAriaLabel ?? `${switchLabel}: ${profileName}`\n\n  const avatar = (\n    <span\n      aria-hidden=\"true\"\n      className=\"flex size-[45px] shrink-0 items-center justify-center rounded-full bg-muted-foreground text-[23px] font-semibold text-white\"\n    >\n      {profileInitials}\n    </span>\n  )\n\n  return (\n    <div\n      data-slot=\"profile-item\"\n      className={cn(\n        \"@container flex w-full items-center justify-center gap-3 bg-card px-2 py-2 @max-[160px]:gap-0 @max-[160px]:px-1\",\n        className\n      )}\n      {...props}\n    >\n      {showSwitchProfile ? (\n        <button\n          type=\"button\"\n          aria-label={ariaLabel}\n          onClick={onSwitchProfile}\n          className=\"rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring\"\n        >\n          {avatar}\n        </button>\n      ) : (\n        avatar\n      )}\n\n      <div className=\"min-w-0 flex-[0_1_auto] @max-[160px]:hidden\">\n        <span className=\"block text-caption leading-[1.2] text-muted-foreground\">\n          {caption}\n        </span>\n        <p\n          title={profileName}\n          className=\"truncate text-[21px] leading-[1.25] font-semibold text-foreground\"\n        >\n          {profileName}\n        </p>\n        {showSwitchProfile ? (\n          <Button\n            variant=\"link\"\n            aria-label={ariaLabel}\n            onClick={onSwitchProfile}\n            className=\"mt-0.5 justify-start text-[15px] leading-[1.3] underline\"\n          >\n            {switchLabel}\n          </Button>\n        ) : null}\n      </div>\n    </div>\n  )\n}\n\nexport { ProfileItem }\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "block-showcase",
+  "description": "Italia showcase block (composition).",
+  "dependencies": [
+    "@base-ui/react",
+    "class-variance-authority",
+    "cn",
+    "lucide-react"
+  ],
+  "registryDependencies": ["utils", "theme"],
+  "files": [
+    {
+      "path": "src/blocks/showcase.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"cn\"\n\nexport interface ShowcaseItem {\n  icon?: React.ReactNode\n  title: string\n  subtitle: React.ReactNode\n}\n\ninterface ShowcaseProps extends React.ComponentProps<\"section\"> {\n  title: string\n  items: ShowcaseItem[]\n}\n\n/**\n * Port of mui-italia `Showcase`: centered title + a row of icon features.\n */\nfunction Showcase({ title, items, className, ...props }: ShowcaseProps) {\n  return (\n    <section\n      data-slot=\"showcase\"\n      className={cn(\"bg-muted\", className)}\n      {...props}\n    >\n      <div className=\"mx-auto w-full max-w-7xl px-4 py-8 md:py-16\">\n        <div className=\"flex flex-col items-center gap-8 text-center\">\n          <h2 className=\"text-h4 text-foreground\">{title}</h2>\n          <ul className=\"flex flex-col justify-center gap-6 md:flex-row md:gap-4\">\n            {items.map((item, index) => (\n              <li key={index} className=\"flex flex-1 flex-col gap-1 md:gap-4\">\n                {item.icon ? (\n                  <span\n                    aria-hidden=\"true\"\n                    className=\"mx-auto text-primary-hover [&_svg]:size-16\"\n                  >\n                    {item.icon}\n                  </span>\n                ) : null}\n                <div className=\"flex flex-col gap-1\">\n                  <h3 className=\"text-h6 text-foreground\">{item.title}</h3>\n                  {typeof item.subtitle === \"string\" ? (\n                    <p className=\"text-body text-muted-foreground\">\n                      {item.subtitle}\n                    </p>\n                  ) : (\n                    item.subtitle\n                  )}\n                </div>\n              </li>\n            ))}\n          </ul>\n        </div>\n      </div>\n    </section>\n  )\n}\n\nexport { Showcase }\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

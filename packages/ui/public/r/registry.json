@@ -28,15 +28,1926 @@
       ]
     },
     {
+      "name": "accordion",
+      "type": "registry:ui",
+      "description": "Italia accordion component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "description": "Italia alert-dialog component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "description": "Italia alert component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/alert.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "description": "Italia aspect-ratio component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/aspect-ratio.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "description": "Italia avatar component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "description": "Italia badge component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "description": "Italia breadcrumb component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "bubble",
+      "type": "registry:ui",
+      "description": "Italia bubble component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/bubble.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button-group",
+      "type": "registry:ui",
+      "description": "Italia button-group component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/button-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "button",
       "type": "registry:ui",
-      "description": "Italia button: variants (default, outline, secondary, ghost, destructive, link) and sizes (sm, default, lg, icon).",
-      "dependencies": ["@base-ui/react", "class-variance-authority", "cn"],
-      "registryDependencies": ["utils"],
+      "description": "Italia button component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
       "files": [
         {
           "path": "src/components/button.tsx",
           "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "description": "Italia calendar component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "description": "Italia card component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "description": "Italia carousel component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/carousel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chart",
+      "type": "registry:ui",
+      "description": "Italia chart component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/chart.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "description": "Italia checkbox component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "description": "Italia collapsible component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "description": "Italia combobox component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "description": "Italia command component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/command.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "description": "Italia context-menu component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "description": "Italia dialog component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "direction",
+      "type": "registry:ui",
+      "description": "Italia direction component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/direction.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "description": "Italia drawer component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/drawer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "description": "Italia dropdown-menu component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "empty",
+      "type": "registry:ui",
+      "description": "Italia empty component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/empty.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "description": "Italia field component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "description": "Italia hover-card component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/hover-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input-group",
+      "type": "registry:ui",
+      "description": "Italia input-group component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/input-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "description": "Italia input-otp component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/input-otp.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "description": "Italia input component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "item",
+      "type": "registry:ui",
+      "description": "Italia item component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/item.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "description": "Italia kbd component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/kbd.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "description": "Italia label component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/label.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "marker",
+      "type": "registry:ui",
+      "description": "Italia marker component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/marker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "description": "Italia menubar component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/menubar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "native-select",
+      "type": "registry:ui",
+      "description": "Italia native-select component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/native-select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "description": "Italia navigation-menu component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/navigation-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "description": "Italia pagination component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/pagination.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "description": "Italia progress component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "description": "Italia radio-group component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "resizable",
+      "type": "registry:ui",
+      "description": "Italia resizable component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/resizable.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "description": "Italia scroll-area component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/scroll-area.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "description": "Italia select component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "description": "Italia separator component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "description": "Italia sheet component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "description": "Italia sidebar component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "description": "Italia skeleton component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "description": "Italia slider component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/slider.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sonner",
+      "type": "registry:ui",
+      "description": "Italia sonner component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/sonner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "description": "Italia spinner component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "description": "Italia switch component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/switch.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "description": "Italia table component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/table.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "description": "Italia tabs component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "description": "Italia textarea component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "description": "Italia toggle-group component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/toggle-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "description": "Italia toggle component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/toggle.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "description": "Italia tooltip component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/components/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "block-account-dropdown",
+      "type": "registry:component",
+      "description": "Italia account-dropdown block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/account-dropdown.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "block-banner",
+      "type": "registry:component",
+      "description": "Italia banner block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/banner.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "block-boxed-module",
+      "type": "registry:component",
+      "description": "Italia boxed-module block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/boxed-module.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "block-copy-to-clipboard-button",
+      "type": "registry:component",
+      "description": "Italia copy-to-clipboard-button block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/copy-to-clipboard-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "block-environment-banner",
+      "type": "registry:component",
+      "description": "Italia environment-banner block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/environment-banner.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "block-footer",
+      "type": "registry:component",
+      "description": "Italia footer block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/footer.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "block-hero",
+      "type": "registry:component",
+      "description": "Italia hero block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/hero.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "block-horizontal-nav",
+      "type": "registry:component",
+      "description": "Italia horizontal-nav block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/horizontal-nav.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "block-lang-switch",
+      "type": "registry:component",
+      "description": "Italia lang-switch block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/lang-switch.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "block-party-account-item-button",
+      "type": "registry:component",
+      "description": "Italia party-account-item-button block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/party-account-item-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "block-party-account-item",
+      "type": "registry:component",
+      "description": "Italia party-account-item block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/party-account-item.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "block-party-avatar",
+      "type": "registry:component",
+      "description": "Italia party-avatar block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/party-avatar.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "block-product-avatar",
+      "type": "registry:component",
+      "description": "Italia product-avatar block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/product-avatar.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "block-product-switch",
+      "type": "registry:component",
+      "description": "Italia product-switch block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/product-switch.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "block-profile-item",
+      "type": "registry:component",
+      "description": "Italia profile-item block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/profile-item.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "block-showcase",
+      "type": "registry:component",
+      "description": "Italia showcase block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/showcase.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "block-single-file-input",
+      "type": "registry:component",
+      "description": "Italia single-file-input block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/single-file-input.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "block-spid-select-dialog",
+      "type": "registry:component",
+      "description": "Italia spid-select-dialog block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/spid-select-dialog.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "block-stepper",
+      "type": "registry:component",
+      "description": "Italia stepper block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/stepper.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "block-tag",
+      "type": "registry:component",
+      "description": "Italia tag block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/tag.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "block-timeline",
+      "type": "registry:component",
+      "description": "Italia timeline block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/timeline.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "block-tos-agreement",
+      "type": "registry:component",
+      "description": "Italia tos-agreement block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/tos-agreement.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "block-wizard",
+      "type": "registry:component",
+      "description": "Italia wizard block (composition).",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils", "theme"],
+      "files": [
+        {
+          "path": "src/blocks/wizard.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "icons",
+      "type": "registry:component",
+      "description": "Italia custom icons (CIE, SPID, PN, Interop, social).",
+      "files": [
+        {
+          "path": "src/icons/check-iban-icon.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/icons/cie-icon.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/icons/interop-icon.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/icons/medium-icon.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/icons/pn-icon.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/icons/spid-icon.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/icons/threads-icon.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/icons/youtube-icon.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/icons/index.ts",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "illustrations",
+      "type": "registry:component",
+      "description": "Italia illustration set (1:1 port).",
+      "files": [
+        {
+          "path": "src/illustrations/AlarmClock.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/Completed.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/DataSecurity.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/Email.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/EmailValidation.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/Error.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/HistoryDoc.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/InProgress.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/Login.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIAccess.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIAlarmClock.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIAssistance.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIAward.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIBadge.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIBell.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIBug.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIBuilding.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIBusiness.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MICalendar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MICalendarCheck.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MICitizen.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MICloud.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MICode.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MICompleted.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MICreditCard.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIDataSecurity.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIDelega.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIDesktop.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIDirection.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIDocumentation.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIDownload.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIEarth.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIEmailValidation.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIEnterprise.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIEnvelope.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIError.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIEuro.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIFileCheck.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIFingerPrint.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIFirma.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIFlag.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIGraduation.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIHistoryDoc.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIHome.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIHourglass.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIIdCard.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIIdea.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIImage.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIInProgress.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIInbox.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIInstitution.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIKeypad.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MILeggi.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MILineChart.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIMaintenance.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIMapPin.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIMessage.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIMessages.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIMouse.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIMultipleFiles.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MINews.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIOpenFolder.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIOptions.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIPersonalFile.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIPieChart.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIPush.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIQuestion.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIQuick.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIRepository.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MISafeDeposit.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MISavingMoney.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MISchool.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MISecurity.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MISimplify.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MISingleFile.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MISmartphoneValidation.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MISms.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIStorage.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MISync.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MITrash.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIUpload.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIUploadFile.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIUserCheck.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIUserManual.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/MIWallet.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/PaymentCompleted.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/PiggyBank.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/Push.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/Quick.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/Repository.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/SafeDeposit.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/SharingInfo.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/Simplify.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/Sms.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/Umbrella.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/UploadFile.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/UserUnauthorized.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/illustration.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/illustrations/index.ts",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "assets",
+      "type": "registry:component",
+      "description": "Italia logos and institutional assets.",
+      "files": [
+        {
+          "path": "src/assets/funded-by-next-generation-eu.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/assets/logo-io-app.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/assets/logo-pago-pa-company.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/assets/logo-pago-pa-product.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/assets/monogram-pago-pa-company.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/assets/partials/SvgColorDark.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/assets/partials/SvgColorLight.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/assets/partials/SvgFilled.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/assets/partials/SvgOutline.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/assets/index.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/assets/partials/index.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/assets/logo-cgn.png",
+          "type": "registry:file",
+          "target": "~/assets/logo-cgn.png"
         }
       ]
     }

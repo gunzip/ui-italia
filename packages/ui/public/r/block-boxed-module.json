@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "block-boxed-module",
+  "description": "Italia boxed-module block (composition).",
+  "dependencies": [
+    "@base-ui/react",
+    "class-variance-authority",
+    "cn",
+    "lucide-react"
+  ],
+  "registryDependencies": ["utils", "theme"],
+  "files": [
+    {
+      "path": "src/blocks/boxed-module.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"cn\"\n\nimport { Skeleton } from \"ui-italia/components/skeleton\"\n\ninterface BoxedModuleProps extends React.ComponentProps<\"div\"> {\n  loading?: boolean\n  /** Layout of content vs action (default: row on desktop, column on mobile). */\n  direction?: \"horizontal\" | \"vertical\"\n  /** Leading icon. */\n  icon?: React.ReactNode\n  /** Trailing action (button, link…). */\n  action?: React.ReactNode\n  /** Accessible label announced while loading. */\n  loadingLabel?: string\n}\n\n/**\n * Port of mui-italia `MIBoxedModule`: bordered card with icon, content and an\n * optional trailing action; a skeleton state while loading.\n */\nfunction BoxedModule({\n  className,\n  loading = false,\n  direction,\n  icon,\n  action,\n  loadingLabel,\n  children,\n  ...props\n}: BoxedModuleProps) {\n  return (\n    <div\n      data-slot=\"boxed-module\"\n      data-loading={loading || undefined}\n      aria-busy={loading || undefined}\n      className={cn(\n        \"flex w-full min-w-0 flex-1 flex-col gap-2 rounded-lg border border-border bg-card p-4 sm:flex-row sm:items-center sm:gap-4\",\n        className\n      )}\n      {...props}\n    >\n      {loading ? (\n        <>\n          <span className=\"sr-only\">\n            {loadingLabel ?? \"Caricamento in corso, attendere...\"}\n          </span>\n          <div aria-hidden=\"true\" className=\"flex w-full flex-col gap-2\">\n            <Skeleton className=\"h-6 w-[30%] rounded-sm\" />\n            <Skeleton className=\"h-4 w-[60%] rounded-sm\" />\n            <Skeleton className=\"h-4 w-[25%] rounded-sm\" />\n          </div>\n        </>\n      ) : (\n        <>\n          {icon ? (\n            <span className=\"shrink-0 [&_svg]:size-6\" aria-hidden=\"true\">\n              {icon}\n            </span>\n          ) : null}\n          {action ? (\n            <div\n              className={cn(\n                \"flex flex-1 gap-4\",\n                direction === \"vertical\"\n                  ? \"flex-col items-stretch gap-2\"\n                  : \"max-sm:flex-col sm:flex-row sm:items-center\"\n              )}\n            >\n              <div className=\"flex-1 text-muted-foreground\">{children}</div>\n              <div className={direction === \"vertical\" ? \"w-full\" : \"shrink-0\"}>\n                {action}\n              </div>\n            </div>\n          ) : (\n            <div className=\"w-full text-muted-foreground\">{children}</div>\n          )}\n        </>\n      )}\n    </div>\n  )\n}\n\nfunction BoxedModuleTitle({\n  className,\n  ...props\n}: React.ComponentProps<\"span\">) {\n  return (\n    <span\n      data-slot=\"boxed-module-title\"\n      className={cn(\"text-body font-semibold text-foreground\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { BoxedModule, BoxedModuleTitle }\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

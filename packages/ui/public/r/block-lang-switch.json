@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "block-lang-switch",
+  "description": "Italia lang-switch block (composition).",
+  "dependencies": [
+    "@base-ui/react",
+    "class-variance-authority",
+    "cn",
+    "lucide-react"
+  ],
+  "registryDependencies": ["utils", "theme"],
+  "files": [
+    {
+      "path": "src/blocks/lang-switch.tsx",
+      "content": "import * as React from \"react\"\nimport { ChevronDownIcon } from \"lucide-react\"\n\nimport { Button } from \"ui-italia/components/button\"\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuItem,\n  DropdownMenuTrigger,\n} from \"ui-italia/components/dropdown-menu\"\n\nexport type LangCode = \"it\" | \"en\" | \"de\" | \"fr\" | \"sl\"\n\nexport type LangLabels = Partial<Record<LangCode, string>> & { it: string }\n\nexport type Languages =\n  (Partial<Record<LangCode, LangLabels>> & { it: LangLabels }) | LangLabels\n\nfunction isFlatLanguages(languages: Languages): languages is LangLabels {\n  return typeof languages.it === \"string\"\n}\n\ninterface LangSwitchProps {\n  currentLangCode?: LangCode\n  languages: Languages\n  onLanguageChanged: (newLang: LangCode) => void\n}\n\n/**\n * Port of mui-italia `LangSwitch`: language picker supporting a flat labels\n * map or per-language nested labels.\n */\nfunction LangSwitch({\n  currentLangCode = \"it\",\n  languages,\n  onLanguageChanged,\n}: LangSwitchProps) {\n  const flat = isFlatLanguages(languages)\n\n  const getLabel = (langCode: LangCode): string => {\n    if (flat) return languages[langCode] || languages.it\n    const currentLangLabels = languages[currentLangCode] ?? languages.it\n    return currentLangLabels[langCode] || languages.it.it\n  }\n\n  const codes = Object.keys(languages) as LangCode[]\n\n  return (\n    <DropdownMenu>\n      <DropdownMenuTrigger\n        render={\n          <Button\n            variant=\"link\"\n            aria-label={`Seleziona lingua: ${getLabel(currentLangCode)}`}\n          />\n        }\n      >\n        {getLabel(currentLangCode)}\n        <ChevronDownIcon data-icon=\"inline-end\" aria-hidden=\"true\" />\n      </DropdownMenuTrigger>\n      <DropdownMenuContent align=\"start\">\n        {codes.map((code) => (\n          <DropdownMenuItem\n            key={code}\n            lang={flat ? code : undefined}\n            onClick={() => onLanguageChanged(code)}\n          >\n            {getLabel(code)}\n          </DropdownMenuItem>\n        ))}\n      </DropdownMenuContent>\n    </DropdownMenu>\n  )\n}\n\nexport { LangSwitch }\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

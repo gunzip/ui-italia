@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "block-party-account-item-button",
+  "description": "Italia party-account-item-button block (composition).",
+  "dependencies": [
+    "@base-ui/react",
+    "class-variance-authority",
+    "cn",
+    "lucide-react"
+  ],
+  "registryDependencies": ["utils", "theme"],
+  "files": [
+    {
+      "path": "src/blocks/party-account-item-button.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"cn\"\n\nimport { PartyAvatar } from \"./party-avatar\"\n\nexport interface PartyAccountItemButtonProps extends Omit<\n  React.ComponentProps<\"div\">,\n  \"onClick\"\n> {\n  image?: string\n  partyName: string\n  partyRole?: string\n  parentPartyName?: string\n  selectedItem?: boolean\n  disabled?: boolean\n  onAction?: () => void\n  /** Slot for custom trailing state (e.g. a Tag). */\n  endSlot?: React.ReactNode\n  maxCharactersNumberMultiLine?: number\n}\n\n/**\n * Port of mui-italia `PartyAccountItemButton`: selectable party row with\n * avatar, name, role and an optional trailing slot.\n */\nfunction PartyAccountItemButton({\n  image,\n  partyName,\n  partyRole,\n  parentPartyName,\n  selectedItem = false,\n  disabled = false,\n  onAction,\n  endSlot,\n  maxCharactersNumberMultiLine = 50,\n  className,\n  ...props\n}: PartyAccountItemButtonProps) {\n  const isLong = partyName.length > maxCharactersNumberMultiLine\n\n  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {\n    if (disabled) return\n    if (event.key === \"Enter\" || event.key === \" \") {\n      event.preventDefault()\n      onAction?.()\n    }\n  }\n\n  return (\n    <div\n      data-slot=\"party-account-item-button\"\n      role=\"button\"\n      tabIndex={disabled ? -1 : 0}\n      aria-disabled={disabled || undefined}\n      aria-pressed={selectedItem || undefined}\n      onClick={disabled ? undefined : onAction}\n      onKeyDown={handleKeyDown}\n      className={cn(\n        \"box-border flex w-full items-center justify-between gap-4 bg-card px-6 py-4 text-foreground transition-colors select-none\",\n        !disabled && \"cursor-pointer hover:bg-action-hover\",\n        selectedItem &&\n          \"bg-primary/8 shadow-[inset_2px_0_0_0_var(--primary)] hover:bg-primary/12\",\n        disabled && \"cursor-not-allowed\",\n        className\n      )}\n      {...props}\n    >\n      <div className=\"flex min-w-0 flex-row\">\n        <div className={cn(\"flex items-center\", disabled && \"opacity-50\")}>\n          <PartyAvatar customAlt={partyName} customSrc={image} />\n        </div>\n        <div className=\"ml-1.5 min-w-0 self-center\">\n          {parentPartyName ? (\n            <p\n              title={isLong ? parentPartyName : undefined}\n              className={cn(\n                \"text-caption leading-[1.25] font-semibold text-foreground\",\n                isLong && \"line-clamp-1\"\n              )}\n            >\n              {parentPartyName}\n            </p>\n          ) : null}\n          <p\n            title={isLong ? partyName : undefined}\n            className={cn(\n              \"text-body leading-[1.25] font-bold\",\n              isLong ? \"line-clamp-2\" : \"truncate\"\n            )}\n          >\n            {partyName}\n          </p>\n          {partyRole ? (\n            <p className=\"truncate text-caption text-muted-foreground\">\n              {partyRole}\n            </p>\n          ) : null}\n        </div>\n      </div>\n      {endSlot ? <div className=\"shrink-0\">{endSlot}</div> : null}\n    </div>\n  )\n}\n\nexport { PartyAccountItemButton }\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

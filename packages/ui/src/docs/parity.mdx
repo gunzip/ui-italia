@@ -1,0 +1,35 @@
+import { Meta } from "@storybook/addon-docs/blocks"
+
+<Meta title="Guides/Parity" />
+
+# Parity with mui-italia
+
+`ui-italia` is the port of `mui-italia` to **shadcn/ui + Base UI**. The visual
+and behavioural target is the **`themeNext`** theme of `mui-italia`.
+
+The executable reference is the parity spec:
+[`docs/parity-spec.md`](https://github.com/gunzip/ui-italia/blob/main/docs/parity-spec.md).
+
+## Conventions
+
+- Styling only through **semantic tokens** (`bg-primary`, `text-muted-foreground`,
+  `border-border`, `ring-ring`…). The Italia theme lives in
+  `packages/ui/src/styles/globals.css`.
+- Status colours use the **bright `main`** as fill/icon/border and the
+  `*-strong` variant for text, so the palette matches mui-italia while staying
+  WCAG 2.2 AA.
+- Component APIs are idiomatic shadcn/Base UI (`variant`, `size`, `cva`,
+  `data-slot`), never MUI-style wrappers or `sx` props.
+
+## Guardrails
+
+- `Foundations/Parity guard` asserts the key computed styles against the spec
+  (button colour/size, badge geometry, input height, switch track, …).
+- Every story must pass `@storybook/addon-a11y` with `test: 'error'`.
+- Visual regression baselines are Linux-authoritative and regenerated with the
+  **Update visual baselines** workflow.
+
+## Migrating
+
+See [`docs/migration-from-mui-italia.md`](https://github.com/gunzip/ui-italia/blob/main/docs/migration-from-mui-italia.md)
+for the component/prop mapping.
