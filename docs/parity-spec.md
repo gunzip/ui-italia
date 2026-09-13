@@ -152,22 +152,23 @@ Legenda gap: 🔴 da fare · 🟡 parziale · 🟢 allineato.
 
 ### 5.1 Button
 
-| Aspetto               | Target                                                              | ui-italia                          | Gap |
-| --------------------- | ------------------------------------------------------------------- | ---------------------------------- | --- |
-| contained bg / bordo  | `#0B3EE3`, bordo `2px solid #0B3EE3`, testo bianco                  | ✅ (colore da aggiornare)          | 🟡  |
-| contained hover       | `#0932B6`                                                           | `--primary-hover`                  | 🟡  |
-| outlined              | bg trasparente, colore/bordo `#0B3EE3`, bordo 2px                   | ✅ logica, colore da aggiornare    | 🟡  |
-| outlined hover        | colore `#0932B6`, bordo `currentColor`                              | hover bg primary pieno             | 🔴  |
-| text                  | trasparente, colore `#0B3EE3`, padding 0, h auto, minW auto         | `variant="link"`/`ghost`           | 🟡  |
-| text hover            | `#0932B6`, sfondo trasparente                                       | ghost usa `bg-primary/8`           | 🔴  |
-| error contained       | bg `#D13333`, bordo 2px, hover `#A82929`                            | `destructive` = bordo soft + testo | 🔴  |
-| contrasted (MIButton) | contained: bg bianco, testo `#0B3EE3`; outlined: testo/bordo bianco | assente                            | 🔴  |
-| size small            | h 40, padding 0 20, 14 / 1.25                                       | `sm` h-10 px-5                     | 🟢  |
-| size medium           | h 48, padding 0 24, 16 / 1.25                                       | `default` h-12 px-6                | 🟢  |
-| size large            | h 56, padding 0 24, 18 / 1.2                                        | `lg` h-14 px-6                     | 🟢  |
-| focus                 | outline 2px `#0B3EE3`, offset 2px, radius 8                         | ✅                                 | 🟢  |
-| min target            | 24×24                                                               | ✅                                 | 🟢  |
-| loading               | spinner/skeleton, `aria-busy`                                       | assente                            | 🔴  |
+| Aspetto               | Target                                                              | ui-italia                                          | Gap |
+| --------------------- | ------------------------------------------------------------------- | -------------------------------------------------- | --- |
+| contained bg / bordo  | `#0B3EE3`, bordo `2px solid #0B3EE3`, testo bianco                  | ✅ token `--primary`                               | 🟢  |
+| contained hover       | `#0932B6`                                                           | ✅ `hover:bg-primary-hover`                        | 🟢  |
+| outlined              | bg trasparente, colore/bordo `#0B3EE3`, bordo 2px                   | ✅                                                 | 🟢  |
+| outlined hover        | colore `#0932B6`, bordo `currentColor`                              | ✅ `hover:border-current hover:text-primary-hover` | 🟢  |
+| text                  | trasparente, colore `#0B3EE3`, padding 0, h auto, minW auto         | `variant="link"` ✅                                | 🟢  |
+| text hover            | `#0932B6`, sfondo trasparente                                       | `link` ✅ / `ghost` usa `--action-hover`           | 🟢  |
+| error contained       | bg `#D13333`, bordo 2px, hover `#A82929`                            | ✅ `destructive` (filled)                          | 🟢  |
+| error outlined        | bordo/colore `#D13333`, hover `#A82929`, bordo `currentColor`       | ✅ `destructive-outline`                           | 🟢  |
+| contrasted (MIButton) | contained: bg bianco, testo `#0B3EE3`; outlined: testo/bordo bianco | assente (variante app-level)                       | 🔴  |
+| size small            | h 40, padding 0 20, 14 / 1.25                                       | `sm` h-10 px-5                                     | 🟢  |
+| size medium           | h 48, padding 0 24, 16 / 1.25                                       | `default` h-12 px-6                                | 🟢  |
+| size large            | h 56, padding 0 24, 18 / 1.2                                        | `lg` h-14 px-6                                     | 🟢  |
+| focus                 | outline 2px `#0B3EE3`, offset 2px, radius 8                         | ✅                                                 | 🟢  |
+| min target            | 24×24                                                               | ✅ `min-h-6 min-w-6`                               | 🟢  |
+| loading               | spinner/skeleton, `aria-busy`                                       | assente                                            | 🔴  |
 
 Fonte: `themeNext.ts` `MuiButton`, `MIButton/styles.ts`, `MIButton/types.ts`.
 
@@ -200,21 +201,28 @@ Fonte: `themeNext.ts` `MuiSelect/MuiMenuItem/MuiPopover/MuiListItem*`.
 
 ### 5.4 Chip / Badge / Tag
 
-| Aspetto                  | Target                                               | ui-italia                     | Gap |
-| ------------------------ | ---------------------------------------------------- | ----------------------------- | --- |
-| radius                   | `40px` (`spacing(5)`)                                | `rounded-4xl` ✅              | 🟢  |
-| label                    | 14 / 600 / 1.3, ls 0.5, padding 8×12                 | `h-5`, `text-xs`, `px-2`      | 🔴  |
-| label small              | padding 4×8                                          | —                             | 🔴  |
-| filled default           | bg `#D2D6E3`, testo `#0E0F13`                        | `bg-primary`                  | 🔴  |
-| filled primary           | bg `#C4DCF5`, testo `#0E0F13`                        | `bg-primary`                  | 🔴  |
-| filled info              | bg `#E1F5FE`, testo `#215C76`                        | ✅ `info-muted`/`info-strong` | 🟢  |
-| filled error             | bg `#FFE0E0`, testo `#761F1F`                        | `bg-destructive/10`           | 🟡  |
-| filled success/warning   | `#E1F4E1`/`#224021`, `#FFF5DA`/`#614C15`             | ✅                            | 🟢  |
-| outlined default/primary | testo `#0E0F13`, bordo `#0000003B` / testo `#0E0F13` | `border-border`               | 🟡  |
-| delete icon              | colore `currentColor`, opacity .7→1                  | assente                       | 🔴  |
-| avatar                   | weight 400                                           | assente                       | 🔴  |
+> **Nota**: `MIChip` **non** usa il `MuiChip` del theme — lo sovrascrive con `src/components/MIChip/MIChip.tsx` (ramp `colors`, non `palette`). Questa tabella riflette `MIChip`, non `theme.ts`.
 
-Fonte: `theme.ts` `MuiChip` (non ri-dichiarato in `themeNext`).
+| Aspetto          | Target (`MIChip`)                                              | ui-italia                                | Gap |
+| ---------------- | -------------------------------------------------------------- | ---------------------------------------- | --- |
+| radius           | `40px`                                                         | `rounded-[40px]` ✅                      | 🟢  |
+| label            | 12 / 600 / 1.5, ls 0.5, padding 3×8                            | ✅ `text-xs font-semibold px-2 py-[3px]` | 🟢  |
+| filled default   | bg `blue[50]` `#E7ECFC`, testo `blue[850]` `#031344`           | `variant="primary"` ✅                   | 🟢  |
+| filled highlight | bg `turquoise[50]` `#DBF9FA`, testo `turquoise[850]` `#003B3D` | `variant="highlight"` ✅                 | 🟢  |
+| filled neutral   | testo `#0E0F13`, bg grey MUI                                   | `variant="neutral"` (`bg-muted`) 🟡      | 🟡  |
+| filled error     | bg `error[100]` `#FFD9D9`, testo `error[850]` `#5D1313`        | `destructive` = `#FFE0E0`/`#761F1F` 🟡   | 🟡  |
+| filled success   | `#E1F4E1` / `#224021`                                          | ✅                                       | 🟢  |
+| filled warning   | `#FFF5DA` / `#614C15`                                          | ✅                                       | 🟢  |
+| filled info      | `#E1F5FE` / `#225C76`                                          | ✅ `#215C76`                             | 🟢  |
+| outlined default | testo/bordo `blue[600]` `#0932B6`                              | `variant="outline-primary"` ✅           | 🟢  |
+| outlined neutral | testo/bordo `#0E0F13`                                          | `outline` usa `border-border` 🟡         | 🟡  |
+| outlined status  | testo/bordo `{status}[850]` (error `[600]`)                    | non modellato                            | 🔴  |
+| delete icon      | colore `blue[500]` `#0B3EE3`, opacity 1                        | assente (Badge senza delete)             | 🔴  |
+| avatar           | weight 400                                                     | assente                                  | 🔴  |
+
+Fonte: `src/components/MIChip/MIChip.tsx`.
+
+### 5.5 Alert
 
 ### 5.5 Alert
 
@@ -233,13 +241,13 @@ Fonte: `themeNext.ts` `MuiAlert/MuiAlertTitle`.
 
 ### 5.6 Card
 
-| Aspetto         | Target                                    | ui-italia               | Gap |
-| --------------- | ----------------------------------------- | ----------------------- | --- |
-| radius          | 8                                         | `rounded-lg` ✅         | 🟢  |
-| content padding | 24                                        | 16 (`--card-spacing:4`) | 🔴  |
-| actions/footer  | padding 24, top 0, **nessun bordo/fondo** | `border-t bg-muted/50`  | 🔴  |
-| titolo          | h6 22–24 / 600                            | 16 / 500                | 🔴  |
-| testo           | body 16                                   | `text-sm`               | 🔴  |
+| Aspetto         | Target                                    | ui-italia                        | Gap |
+| --------------- | ----------------------------------------- | -------------------------------- | --- |
+| radius          | 8                                         | ✅ `rounded-lg`                  | 🟢  |
+| content padding | 24                                        | ✅ `--card-spacing:--spacing(6)` | 🟢  |
+| actions/footer  | padding 24, top 0, **nessun bordo/fondo** | ✅ `px/pt-0/pb`, no border/bg    | 🟢  |
+| titolo          | h6 22–24 / 600                            | ✅ `text-h6`                     | 🟢  |
+| testo           | body 16                                   | ✅ `text-body`                   | 🟢  |
 
 Fonte: `themeNext.ts` `MuiCard/MuiCardContent/MuiCardActions`.
 
@@ -428,7 +436,7 @@ Ogni step chiude con: story + a11y verde + parity test + baseline.
 ### Stato di avanzamento
 
 - **F1 — Token: fatto** (`packages/ui/src/styles/globals.css`, `foundations.stories.tsx`). Light su `themeNext`; dark allineato a `darkTheme` + nuovi token derivati. Build Storybook verde.
-- **F2 — Primitive: da fare** (§5.1 → §5.13).
+- **F2 — Primitive: in corso.** Blocco 1 fatto: **Button** (§5.1), **Card** (§5.6), **Badge** (§5.4). Restano §5.2, §5.3, §5.5, §5.7 → §5.13.
 - **F3 — Storybook: da fare** (§6).
 - **F4 — Catalogo: da fare** (§7).
 - **F5 — Guardrail: da fare** (§8).

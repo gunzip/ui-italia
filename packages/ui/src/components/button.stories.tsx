@@ -18,6 +18,7 @@ const meta = {
         "secondary",
         "ghost",
         "destructive",
+        "destructive-outline",
         "link",
       ],
     },
@@ -71,6 +72,13 @@ export const Destructive: Story = {
   args: {
     variant: "destructive",
     children: "Destructive",
+  },
+}
+
+export const DestructiveOutline: Story = {
+  args: {
+    variant: "destructive-outline",
+    children: "Destructive outline",
   },
 }
 

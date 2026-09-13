@@ -28,13 +28,18 @@
   --color-primary-hover: var(--primary-hover);
   --color-primary-light: var(--primary-light);
   --color-primary-100: var(--primary-100);
+  --color-primary-50: var(--primary-50);
+  --color-primary-850: var(--primary-850);
   /* Accessible primary for text/icons on light or muted surfaces (>= 4.5:1). */
   --color-primary-text: var(--primary-text);
   --color-secondary: var(--secondary);
   --color-secondary-dark: var(--secondary-dark);
+  --color-secondary-50: var(--secondary-50);
+  --color-secondary-850: var(--secondary-850);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-text-disabled: var(--text-disabled);
   --color-menu-item: var(--menu-item);
+  --color-action-hover: var(--action-hover);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
@@ -177,6 +182,8 @@
   --primary-light: #3c65e9;
   --primary-hover: #0932b6;
   --primary-100: #c4dcf5;
+  --primary-50: #e7ecfc;
+  --primary-850: #031344;
   --primary-foreground: #ffffff;
   /* #0b3ee3 is ~7.4:1 on white: safe for text as well. */
   --primary-text: #0b3ee3;
@@ -184,6 +191,8 @@
   /* Secondary — turquoise (absent in paletteNext: legacy DS value) */
   --secondary: #00c5ca;
   --secondary-dark: #00a7ac;
+  --secondary-50: #dbf9fa;
+  --secondary-850: #003b3d;
   --secondary-foreground: #0e0f13;
 
   /* Interaction tints — DS intent adapted to the themeNext primary */
@@ -197,7 +206,7 @@
   --destructive-accent: #d13333;
   --destructive-muted: #ffe0e0;
   --destructive-strong: #761f1f;
-  --destructive-foreground: #0e0f13;
+  --destructive-foreground: #ffffff;
 
   --success: #6cc66a;
   --success-dark: #5ca85a;
@@ -286,11 +295,15 @@
   --primary-light: #64b5ff;
   --primary-hover: #5cb0ff;
   --primary-100: #123354;
+  --primary-50: #0d2135;
+  --primary-850: #e3f2fd;
   --primary-foreground: #0b1f33;
   --primary-text: #3da2ff;
 
   --secondary: #00c5ca;
   --secondary-dark: #00a7ac;
+  --secondary-50: #0a2b2c;
+  --secondary-850: #dbf9fa;
   --secondary-foreground: #0b1f33;
 
   --text-disabled: #7f8a99;
