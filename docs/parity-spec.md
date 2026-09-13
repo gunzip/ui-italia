@@ -162,13 +162,13 @@ Legenda gap: 🔴 da fare · 🟡 parziale · 🟢 allineato.
 | text hover            | `#0932B6`, sfondo trasparente                                       | `link` ✅ / `ghost` usa `--action-hover`           | 🟢  |
 | error contained       | bg `#D13333`, bordo 2px, hover `#A82929`                            | ✅ `destructive` (filled)                          | 🟢  |
 | error outlined        | bordo/colore `#D13333`, hover `#A82929`, bordo `currentColor`       | ✅ `destructive-outline`                           | 🟢  |
-| contrasted (MIButton) | contained: bg bianco, testo `#0B3EE3`; outlined: testo/bordo bianco | assente (variante app-level)                       | 🔴  |
+| contrasted (MIButton) | contained: bg bianco, testo `#0B3EE3`; outlined: testo/bordo bianco | ✅ `contrasted` / `contrasted-outline`             | 🟢  |
 | size small            | h 40, padding 0 20, 14 / 1.25                                       | `sm` h-10 px-5                                     | 🟢  |
 | size medium           | h 48, padding 0 24, 16 / 1.25                                       | `default` h-12 px-6                                | 🟢  |
 | size large            | h 56, padding 0 24, 18 / 1.2                                        | `lg` h-14 px-6                                     | 🟢  |
 | focus                 | outline 2px `#0B3EE3`, offset 2px, radius 8                         | ✅                                                 | 🟢  |
 | min target            | 24×24                                                               | ✅ `min-h-6 min-w-6`                               | 🟢  |
-| loading               | spinner/skeleton, `aria-busy`                                       | assente                                            | 🔴  |
+| loading               | spinner/skeleton, `aria-busy`                                       | ✅ `loading` + `loadingType` + `loadingLabel`      | 🟢  |
 
 Fonte: `themeNext.ts` `MuiButton`, `MIButton/styles.ts`, `MIButton/types.ts`.
 
