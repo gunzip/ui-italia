@@ -33,7 +33,13 @@ jobs:
         run: pnpm --filter ui-italia test:visual:update
 
       - name: Commit baselines
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "test(visual): update Playwright baselines [skip ci]"
-          file_pattern: "packages/ui/tests/visual/__screenshots__/**"
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add packages/ui/tests/visual/__screenshots__
+          if git diff --cached --quiet; then
+            echo "No baseline changes."
+          else
+            git commit -m "test(visual): update Playwright baselines [skip ci]"
+            git push
+          fi

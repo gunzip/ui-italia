@@ -27,8 +27,8 @@ export default defineConfig({
   reporter: process.env.CI ? [["github"], ["html", { open: "never" }]] : "list",
   expect: {
     toHaveScreenshot: {
-      // Small tolerance for cross-platform font anti-aliasing.
-      maxDiffPixelRatio: 0.02,
+      // Same platform for baselines and CI: only tolerate tiny anti-aliasing noise.
+      maxDiffPixels: 100,
       animations: "disabled",
       caret: "hide",
     },
