@@ -36,6 +36,55 @@ Legenda priorità: **P1** = parity visibile/API utente · **P2** = rifinitura ·
 
 ---
 
+## 1b. Blocco `SpidSelectOIDialog` — gap puntuali
+
+> Oracolo: **`themeNext`** (`parity-spec.md` §5.15). Per il confronto, commutare lo Storybook
+> `mui-italia` sul global theme `next`: di default parte con `theme.ts` legacy e mostra
+> differenze di generazione (radius/backdrop/primary), non di porting.
+> La Fase 1 (bug bloccanti) è stata applicata e verificata via `getComputedStyle`.
+
+| #     | Gap                                                                      | Target (mui, `themeNext`)                                           | File                                             | Prio | Stato |
+| ----- | ------------------------------------------------------------------------ | ------------------------------------------------------------------- | ------------------------------------------------ | ---- | ----- |
+| SP.1  | Logo IDP reso a dimensione naturale (preflight `img { height:auto }`)    | `height 28px`, larghezza auto (~115)                                | `src/blocks/spid-select-dialog.tsx`              | P1   | ✅    |
+| SP.2  | Titolo non applicato: `text-h6` scavalcato da `text-xl` di `DialogTitle` | 18 (xs) → 24 (sm) / 700 / lh 1.5                                    | `src/blocks/spid-select-dialog.tsx`              | P1   | ✅    |
+| SP.3  | Icona di chiusura color `primary` invece di neutro                       | `#0E0F13`                                                           | `src/blocks/spid-select-dialog.tsx`              | P1   | ✅    |
+| SP.4  | Riga IDP: altezza/radius/margine/label                                   | h 60, p 16, radius 8, `mb 8`; ls `normal`                           | `src/blocks/spid-select-dialog.tsx`              | P2   | ✅    |
+| SP.5  | Skeleton: righe bordate 60px + barra 240×16                              | `SpidList.tsx` loading                                              | `src/blocks/spid-select-dialog.tsx`              | P2   | ✅    |
+| SP.6  | Larghezza responsive + fullscreen mobile                                 | `410px` sm / `600px` lg; fullscreen < `sm`                          | `src/blocks/spid-select-dialog.tsx`              | P1   | ✅    |
+| SP.7  | Alert "IDP non disponibile" (MIAlert filled)                             | bg warning[100], bordo warning[500], radius 8                       | `src/components/alert.tsx` (appearance `filled`) | P2   | ✅    |
+| SP.8  | Transizione dialogo deterministica                                       | `transitionDuration={0}`                                            | `src/blocks/spid-select-dialog.tsx`              | P3   | —     |
+| SP.9  | Shuffle IDP + scroll all'alert                                           | `shuffleList` + `scrollTo({ top: 0 })`                              | `src/blocks/spid-select-dialog.tsx`              | P2   | ✅    |
+| SP.10 | Mock e matrice story 1:1                                                 | 12 IDP; + UnavailableIdp/Authorizing/CustomTranslations/Interactive | `src/blocks/spid-select-dialog.stories.tsx`      | P2   | ✅    |
+| SP.11 | Contratto di parity (computed-style/visual) verso `mui-italia`           | vs `themeNext`                                                      | `Foundations/Parity guard` + `play` story        | P2   | ✅    |
+
+> Nota Fase 3–4:
+>
+> - **SP.9 shuffle**: deviazione consapevole — `mui-italia` usa `Math.random` (ordine non
+>   riproducibile), ui-italia usa Fisher–Yates con **seed fisso** così le baseline non sono flaky.
+>   `scrollTo({ top: 0 })` all'alert invariato.
+> - **SP.10**: mock 1:1 (`IDPS_MOCK` 12 + `MOCK_IDP_UNAVAILABLE`) e 7 story mui + 1 extra
+>   (`UnavailableIdpSelected`, esercita l'alert). Interazioni con `play` + `userEvent`.
+> - **SP.11**: contratto in due punti — asserzioni `Alert filled` in `Foundations/Parity guard` e
+>   `play` di geometria/stato nelle story SPID. Verificato con `vitest --project storybook` (337/337).
+> - **Extra F3** (emersi durante la verifica): `max-height` + scroll interno desktop
+>   (`sm:max-h-[calc(100dvh-4rem)] overflow-y-auto`, come `MuiDialog`) e `tabIndex={0}` sulla regione
+>   scrollabile per `scrollable-region-focusable`. Test hook allineati a mui.
+
+> Note Fase 2 (storiche):
+>
+> - SP.6 usa classi responsive nel blocco (`max-sm:*` fullscreen, `sm/lg` larghezze) senza toccare
+>   la primitiva `Dialog`.
+> - SP.7 introduce `appearance="filled"` in `alert.tsx` (+ story `Alert/Filled`), il look
+>   `MIAlert` (bg `{status}-muted`, bordo `{status}`, icona/testo `{status}-strong`). Resta il caso
+>   `MuiAlert.standard` della task 1.10.
+> - SP.8 (transizione `transitionDuration={0}`) **rimandata**: richiede modifiche alla primitiva e i
+>   test visuali usano già `animations: "disabled"`.
+> - ⚠️ **Baseline visuali**: rigenerare le baseline Linux di tutte le story
+>   `blocks-spidselectoidialog--*` (7 story), `components-alert--filled` e
+>   `foundations-parity-guard--theme-and-components` col workflow **Update visual baselines**.
+
+---
+
 ## 2. Catalogo e contenuti
 
 - [ ] **MDX per-componente** (parità con i 14 `mui-italia/src/docs/*.mdx`): `Button`, `Alert`, `Badge/Chip`, `Card`, `Input/TextField`, `Select`, `Snackbar`, `Spinner`, `Stepper`, `Timeline`, `Breadcrumb`, `BoxedModule`, `ProfileItem`, `Tag`. Oggi esiste solo `src/docs/parity.mdx`. — **P1**
@@ -59,7 +108,7 @@ Legenda priorità: **P1** = parity visibile/API utente · **P2** = rifinitura ·
 
 ## 4. Docs e processo
 
-- [ ] **Estendere `Foundations/Parity guard`** ai componenti chiusi dopo: Alert (icona warning `#FFC824`), Chip info (bg/testo), Pagination (32px), Field (helper/errore). File: `src/foundations/parity.stories.tsx`. — P2
+- [x] **Estendere `Foundations/Parity guard`** — ✅ Alert `filled` (`MIAlert`) aggiunto in Fase 3. Restano da aggiungere: Chip info (bg/testo), Pagination (32px), Field (helper/errore). File: `src/foundations/parity.stories.tsx`. — P2
 - [ ] **`migration-from-mui-italia.md`**: aggiungere le mappe per i blocchi nuovi (`MIBoxedModule`→`BoxedModule`, `MITimeline`→`Timeline`, `MIWizard`→`Wizard`, `MISpidSelectOIDialog`→`SpidSelectOIDialog`, `Footer`/`Header*`, `Tag`). — **P1**
 - [ ] **`AGENTS.md`**: sezione sul catalogo `src/blocks/**` e sugli entrypoint `ui-italia/{components,blocks,illustrations,icons,assets}`. — P2
 - [ ] **Storybook**: valutare il titolo gerarchico stile mui (`Components/...`, `MUI Components/...`) per il sorting, e la tab Docs con gli MDX. — P3
@@ -69,6 +118,8 @@ Legenda priorità: **P1** = parity visibile/API utente · **P2** = rifinitura ·
 ## 5. Infra / qualità
 
 - [ ] **Baseline visuali**: mantenere il loop (workflow **Update visual baselines** a ogni nuova story). — continuo
+- [ ] **`cn` e utility custom**: `cn` (`cn@0.3.0`) non conosce le utility tipografiche custom (`text-h1…h6`, `text-body`, `text-caption`): gli override vanno in conflitto con `text-xl`/`text-sm` e perdono silenziosamente senza `!` (riprodotto su `SpidSelectOIDialog`, §1b SP.2). Valutare `extendTailwindMerge`/config dedicata. — P2
+- [x] **Parity contract**: contratto computed-style attivo su `Foundations/Parity guard` (Alert `filled`) + `play` di geometria/stato nelle story `SpidSelectOIDialog`. Gira col gate `vitest --project storybook`. Estendere agli altri blocchi chiave. — P2
 - [ ] **Multi-browser**: riabilitare `firefox`/`webkit` nel `playwright.config.ts` rigenerando le baseline Linux. — P3
 - [ ] **ESLint**: valutare regole aggiuntive multi-browser/`no-hardcoded-colors` per prevenire regressioni sui token. — P3
 
