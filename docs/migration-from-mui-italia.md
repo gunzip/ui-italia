@@ -120,6 +120,32 @@ import { Button } from "ui-italia/components/button"
 >
 > Va rimosso a migrazione completata.
 
+### Alert / Banner → `Alert`
+
+| `mui-italia`         | `Alert` (`variant`) |
+| -------------------- | ------------------- |
+| `severity="error"`   | `destructive`       |
+| `severity="success"` | `success`           |
+| `severity="warning"` | `warning`           |
+| `severity="info"`    | `info`              |
+| neutro               | `default`           |
+
+Il bordo sinistro colorato (4px) e l'ombra sono nel componente; comporre con `AlertTitle` / `AlertDescription` / `AlertAction`.
+
+### Chip / Tag → `Badge`
+
+| `mui-italia`                                 | `Badge` (`variant`)            |
+| -------------------------------------------- | ------------------------------ |
+| `MIChip color="primary"`                     | `default`                      |
+| `MIChip color="secondary"`                   | `secondary`                    |
+| `MIChip color="error"`                       | `destructive`                  |
+| `Tag variant="success" / "info" / "warning"` | `success` / `info` / `warning` |
+| `MIChip variant="outlined"`                  | `outline`                      |
+
+### TextField → `Input` + `Label` + `Field`
+
+`Input` è alto 48px, radius 6px, focus ring 2px. Associa sempre una `Label` (o il `Field` del registry) e usa `aria-invalid` per lo stato errore.
+
 ## 4. Verifica
 
 ```bash

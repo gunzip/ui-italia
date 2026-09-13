@@ -25,6 +25,7 @@
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -36,6 +37,22 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-tooltip: var(--tooltip);
+  --color-tooltip-foreground: var(--tooltip-foreground);
+
+  /* Status accents / muted surfaces / strong text */
+  --color-destructive-accent: var(--destructive-accent);
+  --color-destructive-muted: var(--destructive-muted);
+  --color-destructive-strong: var(--destructive-strong);
+  --color-success-accent: var(--success-accent);
+  --color-success-muted: var(--success-muted);
+  --color-success-strong: var(--success-strong);
+  --color-warning-accent: var(--warning-accent);
+  --color-warning-muted: var(--warning-muted);
+  --color-warning-strong: var(--warning-strong);
+  --color-info-accent: var(--info-accent);
+  --color-info-muted: var(--info-muted);
+  --color-info-strong: var(--info-strong);
 
   /* Status colors (additive to shadcn) */
   --color-success: var(--success);
@@ -130,10 +147,14 @@
   --border: #e3e7eb;
   --input: #e3e7eb;
   --ring: #0073e6;
+  --tooltip: #455b71;
+  --tooltip-foreground: #ffffff;
+  --overlay: color-mix(in srgb, #17324d 70%, transparent);
 
   /* Primary — blu */
   --primary: #0073e6;
   --primary-foreground: #ffffff;
+  --primary-hover: #0055aa;
 
   /* Secondary — teal (dark text for AA: 6.15:1) */
   --secondary: #00c5ca;
@@ -215,9 +236,13 @@
   --border: rgba(255, 255, 255, 0.12);
   --input: rgba(255, 255, 255, 0.16);
   --ring: #3da2ff;
+  --tooltip: #2a2a2a;
+  --tooltip-foreground: #ffffff;
+  --overlay: color-mix(in srgb, #000000 70%, transparent);
 
   --primary: #3da2ff;
   --primary-foreground: #0b1f33;
+  --primary-hover: #5cb0ff;
 
   --secondary: #00c5ca;
   --secondary-foreground: #0b1f33;

@@ -1,5 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
-import { InfoIcon, TriangleAlertIcon, XIcon } from "lucide-react"
+import {
+  CheckCircle2Icon,
+  InfoIcon,
+  TriangleAlertIcon,
+  XIcon,
+} from "lucide-react"
 
 import { Alert, AlertAction, AlertDescription, AlertTitle } from "./alert"
 import { Button } from "./button"
@@ -13,7 +18,7 @@ const meta = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["default", "destructive"],
+      options: ["default", "destructive", "success", "warning", "info"],
     },
   },
 } satisfies Meta<typeof Alert>
@@ -58,6 +63,45 @@ export const Destructive: Story = {
       <AlertDescription>
         Non è stato possibile salvare le modifiche.
       </AlertDescription>
+    </Alert>
+  ),
+}
+
+export const Success: Story = {
+  args: {
+    variant: "success",
+  },
+  render: (args) => (
+    <Alert {...args} className="w-96">
+      <CheckCircle2Icon aria-hidden="true" />
+      <AlertTitle>Operazione completata</AlertTitle>
+      <AlertDescription>Le modifiche sono state salvate.</AlertDescription>
+    </Alert>
+  ),
+}
+
+export const Warning: Story = {
+  args: {
+    variant: "warning",
+  },
+  render: (args) => (
+    <Alert {...args} className="w-96">
+      <TriangleAlertIcon aria-hidden="true" />
+      <AlertTitle>Attenzione</AlertTitle>
+      <AlertDescription>La sessione sta per scadere.</AlertDescription>
+    </Alert>
+  ),
+}
+
+export const Info: Story = {
+  args: {
+    variant: "info",
+  },
+  render: (args) => (
+    <Alert {...args} className="w-96">
+      <InfoIcon aria-hidden="true" />
+      <AlertTitle>Informazione</AlertTitle>
+      <AlertDescription>Consulta le linee guida del servizio.</AlertDescription>
     </Alert>
   ),
 }

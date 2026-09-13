@@ -16,7 +16,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-[#0055AA]",
+        default: "bg-primary text-primary-foreground hover:bg-primary-hover",
         outline:
           "border-primary text-primary hover:bg-primary hover:text-primary-foreground",
         secondary:
@@ -27,6 +27,8 @@ const buttonVariants = cva(
         link: "h-auto border-0 p-0 text-primary underline-offset-4 hover:underline",
       },
       size: {
+        xs: "h-8 px-3 text-[0.75rem] leading-tight",
+        "icon-xs": "size-6 p-0",
         sm: "h-10 px-5 text-[0.875rem] leading-tight",
         default: "h-12 px-6 text-base leading-tight",
         lg: "h-14 px-6 text-[1.125rem] leading-snug",

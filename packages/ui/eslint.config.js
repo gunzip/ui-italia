@@ -30,6 +30,9 @@ export default defineConfig([
     rules: {
       // UI library: variants/utilities legitimately live next to components.
       "react-refresh/only-export-components": "off",
+      // Vendored shadcn registry components intentionally sync state in effects
+      // (e.g. carousel, use-mobile); keep them aligned with upstream.
+      "react-hooks/set-state-in-effect": "off",
     },
   },
   ...storybook.configs["flat/recommended"],
