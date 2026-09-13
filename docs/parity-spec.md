@@ -408,7 +408,7 @@ Fonte: `mui-italia/src/components/index.ts`, `src/assets/index.ts`, `src/icons/i
 | Illustrazioni (97)      | ✅ portate via codemod in `packages/ui/src/illustrations/` (`Illustration` + `useIllustrationColors` idiomatici, token `--illustration-primary/secondary`) + story `Assets/Illustrations`                                                  |
 | Assets (6)              | ✅ portati in `packages/ui/src/assets/` (`LogoIOApp`, `LogoPagoPACompany` default/flat, `LogoPagoPAProduct`, `MonogramPagoPACompany` none/circle, `FundedByNextGenerationEU` outline/filled/color + `logo-cgn.png`) + story `Assets/Logos` |
 | Componenti MI* mancanti | 🔴 da portare                                                                                                                                                                                                                              |
-| Composizioni            | 🔴 da portare                                                                                                                                                                                                                              |
+| Composizioni            | 🟡 parziale: portate `BoxedModule` (+ `BoxedModuleTitle`) e `Timeline` (+ `TimelineItem`) in `packages/ui/src/blocks/` con story `Blocks/*`. Restano Header/Footer/Banner/Hero/Party*/Wizard/Stepper ecc.                                  |
 | Registry                | 🔴 item per ogni componente/asset                                                                                                                                                                                                          |
 
 ---
@@ -457,7 +457,7 @@ Ogni step chiude con: story + a11y verde + parity test + baseline.
 - **F1 — Token: fatto** (`packages/ui/src/styles/globals.css`, `foundations.stories.tsx`). Light su `themeNext`; dark allineato a `darkTheme` + nuovi token derivati. Build Storybook verde.
 - **F2 — Primitive: completo.** Blocchi: Button/Card/Badge, Input/Field/Label/Textarea, Select/Combobox/NativeSelect/Menu, Switch/Checkbox/Radio, Alert/Tooltip/Tabs, Table/Breadcrumb/Skeleton, Dialog/AlertDialog/Sheet/Drawer/Sonner. Button: `loading` + `contrasted`. Restano gap minori 🟡/🔴 nella matrice (adornment Input, icona Select 20 vs 24, Pagination, Alert standard, Stepper/Timeline → F4).
 - **F3 — Storybook: in corso.** Step 1 canvas toggle + toolbar tema; step 2 Button loading/contrasted + story MIButton; step 3 story TextField/Select/Card. Restano step 4 (MDX) e step 5 (registry).
-- **F4 — Catalogo: in corso.** Onda 1: **8 icone** + **97 illustrazioni**. Onda 2: **6 assets** (loghi pagoPA/IO/NextGenerationEU + `logo-cgn.png`). Restano componenti MI* e composizioni.
+- **F4 — Catalogo: in corso.** Onda 1: icone (8) + illustrazioni (97). Onda 2: assets (6). Onda 3: `BoxedModule`, `Timeline` in `packages/ui/src/blocks/`. Restano Stepper/Wizard/SpidDialog, Tag/TagGroup, file input/copy/TOS, e le composizioni Header/Footer/Banner/Hero/Party*.
 - **F5 — Guardrail: fatto (base).** `Foundations/Parity guard` verde su Button/Badge/Input/Select/Switch. Da estendere man mano che la parity di altri componenti viene chiusa.
 
 ---

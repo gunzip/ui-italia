@@ -38,6 +38,7 @@
   --color-secondary-850: var(--secondary-850);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-text-disabled: var(--text-disabled);
+  --color-neutral-300: var(--neutral-300);
   --color-menu-item: var(--menu-item);
   --color-action-hover: var(--action-hover);
   --color-muted: var(--muted);
@@ -166,6 +167,7 @@
   --muted: #f4f5f8;
   --muted-foreground: #555c70;
   --text-disabled: #99a3c1;
+  --neutral-300: #bbc2d6;
   --accent: #e3f2fd;
   --accent-foreground: #0e0f13;
   --border: #e8ebf1;
@@ -311,6 +313,7 @@
   --secondary-foreground: #0b1f33;
 
   --text-disabled: #7f8a99;
+  --neutral-300: rgb(255 255 255 / 24%);
   --menu-item: #17324d;
   --action-hover: rgb(255 255 255 / 8%);
   --primary-action-hover: rgb(61 162 255 / 16%);
