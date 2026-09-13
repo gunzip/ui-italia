@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner",
+  "description": "Italia spinner component.",
+  "dependencies": [
+    "@base-ui/react",
+    "class-variance-authority",
+    "cn",
+    "lucide-react"
+  ],
+  "registryDependencies": ["utils", "theme"],
+  "files": [
+    {
+      "path": "src/components/spinner.tsx",
+      "content": "import { cn } from \"cn\"\nimport { Loader2Icon } from \"lucide-react\"\n\nfunction Spinner({ className, ...props }: React.ComponentProps<\"svg\">) {\n  return (\n    <Loader2Icon\n      data-slot=\"spinner\"\n      role=\"status\"\n      aria-label=\"Loading\"\n      className={cn(\"size-4 animate-spin\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Spinner }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "block-tos-agreement",
+  "description": "Italia tos-agreement block (composition).",
+  "dependencies": [
+    "@base-ui/react",
+    "class-variance-authority",
+    "cn",
+    "lucide-react"
+  ],
+  "registryDependencies": ["utils", "theme"],
+  "files": [
+    {
+      "path": "src/blocks/tos-agreement.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"cn\"\n\nimport { Button } from \"ui-italia/components/button\"\n\ninterface TOSAgreementProps extends React.ComponentProps<\"section\"> {\n  /** Product name, rendered as the heading. */\n  productName: string\n  description: React.ReactNode\n  onConfirm: () => void\n  confirmButtonLabel?: string\n  confirmButtonDisabled?: boolean\n  confirmButtonError?: boolean\n  children?: React.ReactNode\n}\n\n/**\n * Port of mui-italia `TOSAgreement`: centered terms-of-service acceptance\n * layout with an optional confirm button.\n */\nfunction TOSAgreement({\n  productName,\n  description,\n  onConfirm,\n  confirmButtonLabel = \"Accedi\",\n  confirmButtonDisabled,\n  confirmButtonError = false,\n  children,\n  className,\n  ...props\n}: TOSAgreementProps) {\n  return (\n    <section\n      data-slot=\"tos-agreement\"\n      className={cn(\"bg-muted py-8 lg:py-16\", className)}\n      {...props}\n    >\n      <div className=\"mx-auto flex max-w-[680px] flex-col gap-8 px-6 lg:gap-16 lg:px-8\">\n        <div className=\"flex flex-col gap-2 text-center\">\n          <h2 className=\"text-h3 text-foreground\">{productName}</h2>\n          <div className=\"text-body text-muted-foreground\">{description}</div>\n        </div>\n        {children}\n        <div className=\"text-center\">\n          <Button\n            variant={confirmButtonError ? \"destructive\" : \"default\"}\n            onClick={onConfirm}\n            disabled={confirmButtonDisabled}\n          >\n            {confirmButtonLabel}\n          </Button>\n        </div>\n      </div>\n    </section>\n  )\n}\n\nexport { TOSAgreement }\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

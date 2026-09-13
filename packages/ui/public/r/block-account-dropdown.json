@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "block-account-dropdown",
+  "description": "Italia account-dropdown block (composition).",
+  "dependencies": [
+    "@base-ui/react",
+    "class-variance-authority",
+    "cn",
+    "lucide-react"
+  ],
+  "registryDependencies": ["utils", "theme"],
+  "files": [
+    {
+      "path": "src/blocks/account-dropdown.tsx",
+      "content": "import * as React from \"react\"\nimport { CircleUserRoundIcon, ChevronDownIcon } from \"lucide-react\"\n\nimport { Button } from \"ui-italia/components/button\"\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuItem,\n  DropdownMenuTrigger,\n} from \"ui-italia/components/dropdown-menu\"\n\nexport interface AccountDropdownUser {\n  id: string\n  name?: string\n  surname?: string\n  email?: string\n}\n\nexport interface AccountDropdownAction {\n  id: string\n  icon?: React.ReactNode\n  label: string\n  onClick: () => void\n}\n\ninterface AccountDropdownProps {\n  user: AccountDropdownUser\n  userActions?: AccountDropdownAction[]\n}\n\n/**\n * Port of mui-italia `AccountDropdown`: user menu with icon + name.\n */\nfunction AccountDropdown({ user, userActions }: AccountDropdownProps) {\n  const fullName =\n    user.name && user.surname ? `${user.name} ${user.surname}` : undefined\n  const label = `Area utente ${user.name ?? \"\"} ${user.surname ?? \"\"}`.trim()\n\n  return (\n    <DropdownMenu>\n      <DropdownMenuTrigger\n        render={\n          <Button variant=\"link\" aria-label={label}>\n            <CircleUserRoundIcon data-icon=\"inline-start\" aria-hidden=\"true\" />\n            <span className=\"hidden sm:inline\">{fullName}</span>\n            <ChevronDownIcon data-icon=\"inline-end\" aria-hidden=\"true\" />\n          </Button>\n        }\n      />\n      {userActions && userActions.length > 0 ? (\n        <DropdownMenuContent align=\"end\">\n          {userActions.map((action) => (\n            <DropdownMenuItem key={action.id} onClick={action.onClick}>\n              {action.icon}\n              {action.label}\n            </DropdownMenuItem>\n          ))}\n        </DropdownMenuContent>\n      ) : null}\n    </DropdownMenu>\n  )\n}\n\nexport { AccountDropdown }\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

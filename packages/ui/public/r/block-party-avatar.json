@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "block-party-avatar",
+  "description": "Italia party-avatar block (composition).",
+  "dependencies": [
+    "@base-ui/react",
+    "class-variance-authority",
+    "cn",
+    "lucide-react"
+  ],
+  "registryDependencies": ["utils", "theme"],
+  "files": [
+    {
+      "path": "src/blocks/party-avatar.tsx",
+      "content": "import * as React from \"react\"\nimport { LandmarkIcon } from \"lucide-react\"\nimport { cn } from \"cn\"\n\ninterface PartyAvatarProps extends React.ComponentProps<\"div\"> {\n  /** Logo URL. When missing, a fallback icon is shown. */\n  customSrc?: string\n  /** Alt text for the logo. */\n  customAlt?: string\n  /** Diameter in pixels. */\n  size?: number\n}\n\n/**\n * Port of mui-italia `PartyAvatar`: circular logo with inner border and a\n * fallback icon when no image is provided.\n */\nfunction PartyAvatar({\n  customSrc,\n  customAlt,\n  size = 48,\n  className,\n  ...props\n}: PartyAvatarProps) {\n  return (\n    <div\n      data-slot=\"party-avatar\"\n      className={cn(\n        \"relative box-border flex shrink-0 items-center justify-center rounded-full p-1.5 text-text-disabled\",\n        \"after:pointer-events-none after:absolute after:inset-0 after:rounded-full after:shadow-[inset_0_0_0_1px_var(--border)] after:content-['']\",\n        customSrc ? \"bg-card\" : \"bg-muted\",\n        className\n      )}\n      style={{ width: size, height: size }}\n      {...props}\n    >\n      {customSrc ? (\n        <img\n          src={customSrc}\n          alt={customAlt ?? \"\"}\n          className=\"size-full object-contain object-center\"\n        />\n      ) : (\n        <LandmarkIcon aria-hidden=\"true\" className=\"size-6\" />\n      )}\n    </div>\n  )\n}\n\nexport { PartyAvatar }\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "block-product-avatar",
+  "description": "Italia product-avatar block (composition).",
+  "dependencies": [
+    "@base-ui/react",
+    "class-variance-authority",
+    "cn",
+    "lucide-react"
+  ],
+  "registryDependencies": ["utils", "theme"],
+  "files": [
+    {
+      "path": "src/blocks/product-avatar.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"cn\"\n\nexport type ProductAvatarSize = \"small\" | \"default\" | \"large\"\n\nconst sizesMap: Record<\n  ProductAvatarSize,\n  { dimension: number; padding: number }\n> = {\n  small: { dimension: 32, padding: 4 },\n  default: { dimension: 64, padding: 8 },\n  large: { dimension: 88, padding: 16 },\n}\n\ninterface ProductAvatarProps extends React.ComponentProps<\"div\"> {\n  size?: ProductAvatarSize\n  logoUrl: string\n  /** Logo background color; when unset the card surface is used. */\n  logoBgColor?: string\n  logoAltText: string\n}\n\n/**\n * Port of mui-italia `ProductAvatar`: rounded square logo with inner border.\n */\nfunction ProductAvatar({\n  size = \"default\",\n  logoUrl,\n  logoBgColor,\n  logoAltText,\n  className,\n  ...props\n}: ProductAvatarProps) {\n  const { dimension, padding } = sizesMap[size]\n\n  return (\n    <div\n      data-slot=\"product-avatar\"\n      className={cn(\n        \"relative box-border flex shrink-0 items-center justify-center rounded-lg\",\n        \"after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-[inset_0_0_0_1px_var(--border)] after:content-['']\",\n        logoBgColor ? undefined : \"bg-card\",\n        className\n      )}\n      style={{\n        width: dimension,\n        height: dimension,\n        padding,\n        backgroundColor: logoBgColor,\n      }}\n      {...props}\n    >\n      <img\n        src={logoUrl}\n        alt={logoAltText}\n        className=\"size-full object-contain object-center\"\n      />\n    </div>\n  )\n}\n\nexport { ProductAvatar }\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

@@ -29,6 +29,20 @@ test("visual regression across all stories", async ({ page, request }) => {
     await page.waitForLoadState("load")
     // Ensure webfonts (Titillium/DM Mono) are ready before screenshotting.
     await page.evaluate(() => document.fonts.ready)
+    // Let mount-time transitions settle: Base UI marks elements with
+    // `data-starting-style`/`data-ending-style` while animating (dialogs,
+    // drawers, popovers). Wait until none is present, then a short settle.
+    await page
+      .waitForFunction(
+        () =>
+          document.querySelectorAll(
+            "[data-starting-style], [data-ending-style]"
+          ).length === 0,
+        undefined,
+        { timeout: 3000 }
+      )
+      .catch(() => {})
+    await page.waitForTimeout(250)
     await expect(page).toHaveScreenshot(`${story.id}.png`, {
       fullPage: true,
       animations: "disabled",

@@ -1,0 +1,8 @@
+export { CheckIbanIcon } from "./check-iban-icon"
+export { CieIcon } from "./cie-icon"
+export { InteropIcon } from "./interop-icon"
+export { MediumIcon } from "./medium-icon"
+export { PNIcon } from "./pn-icon"
+export { SpidIcon } from "./spid-icon"
+export { ThreadsIcon } from "./threads-icon"
+export { YoutubeIcon } from "./youtube-icon"

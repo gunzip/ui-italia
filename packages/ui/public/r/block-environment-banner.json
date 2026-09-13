@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "block-environment-banner",
+  "description": "Italia environment-banner block (composition).",
+  "dependencies": [
+    "@base-ui/react",
+    "class-variance-authority",
+    "cn",
+    "lucide-react"
+  ],
+  "registryDependencies": ["utils", "theme"],
+  "files": [
+    {
+      "path": "src/blocks/environment-banner.tsx",
+      "content": "import * as React from \"react\"\nimport { XIcon } from \"lucide-react\"\nimport { cn } from \"cn\"\n\nimport { Button } from \"ui-italia/components/button\"\n\nexport type EnvironmentBannerColor = \"white\" | \"info\" | \"warning\"\n\nconst colorMap = {\n  white: {\n    container: \"bg-card border-border text-foreground\",\n    icon: \"text-neutral-300\",\n    action: \"text-primary-text\",\n  },\n  info: {\n    container: \"bg-primary-50 border-primary-100 text-foreground\",\n    icon: \"text-italia-200\",\n    action: \"text-primary-text\",\n  },\n  warning: {\n    container: \"bg-warning-muted border-warning-light text-warning-strong\",\n    icon: \"text-warning-strong\",\n    action: \"text-warning-strong\",\n  },\n} as const\n\ninterface EnvironmentBannerProps extends React.ComponentProps<\"div\"> {\n  bgColor?: EnvironmentBannerColor\n  title?: string\n  message?: string\n  icon?: React.ReactNode\n  onClose?: () => void\n  actionButton?: {\n    label: string\n    onClick: () => void\n    color?: string\n  }\n}\n\n/**\n * Port of mui-italia `EnvironmentBanner`: bordered banner to signal the\n * environment, with optional icon, action and close button.\n */\nfunction EnvironmentBanner({\n  bgColor = \"white\",\n  title,\n  message,\n  icon,\n  onClose,\n  actionButton,\n  className,\n  ...props\n}: EnvironmentBannerProps) {\n  const variant = colorMap[bgColor]\n\n  return (\n    <div\n      data-slot=\"environment-banner\"\n      className={cn(\n        \"relative flex flex-col gap-4 rounded-lg border p-4 sm:flex-row sm:items-start\",\n        variant.container,\n        className\n      )}\n      {...props}\n    >\n      {icon ? (\n        <span aria-hidden=\"true\" className={cn(\"shrink-0\", variant.icon)}>\n          {icon}\n        </span>\n      ) : null}\n\n      <div className=\"flex flex-1 flex-col items-center gap-2 text-center sm:items-start sm:text-left\">\n        {title ? <p className=\"text-body-lg font-semibold\">{title}</p> : null}\n        {message ? <p className=\"text-body\">{message}</p> : null}\n        {actionButton ? (\n          <Button\n            variant=\"link\"\n            className={cn(\"self-center sm:self-start\", variant.action)}\n            onClick={actionButton.onClick}\n            style={\n              actionButton.color ? { color: actionButton.color } : undefined\n            }\n          >\n            {actionButton.label}\n          </Button>\n        ) : null}\n      </div>\n\n      {onClose ? (\n        <Button\n          variant=\"ghost\"\n          size=\"icon-xs\"\n          aria-label=\"Chiudi\"\n          className=\"absolute top-2 right-2\"\n          onClick={onClose}\n        >\n          <XIcon aria-hidden=\"true\" />\n        </Button>\n      ) : null}\n    </div>\n  )\n}\n\nexport { EnvironmentBanner }\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

@@ -27,26 +27,26 @@ function Swatch({ name, value }: { name: string; value: string }) {
 
 const semantic = [
   ["background", "#ffffff"],
-  ["foreground", "#17324d"],
-  ["primary", "#0073e6"],
+  ["foreground", "#0e0f13"],
+  ["primary", "#0b3ee3"],
   ["primary-foreground", "#ffffff"],
   ["secondary", "#00c5ca"],
-  ["secondary-foreground", "#17324d"],
-  ["muted", "#f2f2f2"],
-  ["muted-foreground", "#5c6f82"],
+  ["secondary-foreground", "#0e0f13"],
+  ["muted", "#f4f5f8"],
+  ["muted-foreground", "#555c70"],
   ["accent", "#e3f2fd"],
-  ["border", "#e3e7eb"],
-  ["ring", "#0073e6"],
+  ["border", "#e8ebf1"],
+  ["ring", "#0b3ee3"],
 ]
 
 const status = [
-  ["destructive", "#b02a2a"],
+  ["destructive", "#d13333"],
   ["destructive-muted", "#ffe0e0"],
-  ["success", "#2e6b2c"],
+  ["success", "#6cc66a"],
   ["success-muted", "#e1f4e1"],
-  ["warning", "#7a5c00"],
+  ["warning", "#ffc824"],
   ["warning-muted", "#fff5da"],
-  ["info", "#17566e"],
+  ["info", "#6bcffb"],
   ["info-muted", "#e1f5fe"],
 ]
 

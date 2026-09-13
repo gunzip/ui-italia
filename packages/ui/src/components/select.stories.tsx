@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 import { expect, userEvent, waitFor, within } from "storybook/test"
+import { LandmarkIcon } from "lucide-react"
 
 import { Label } from "./label"
 import {
@@ -87,6 +88,54 @@ export const WithGroups: Story = {
   ),
 }
 
+export const WithIcon: Story = {
+  render: () => (
+    <div className="flex w-72 flex-col gap-2">
+      <Label htmlFor="select-icon">Account</Label>
+      <Select defaultValue="corrente">
+        <SelectTrigger id="select-icon" className="w-full">
+          <SelectValue placeholder="Select an account" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="corrente">
+            <LandmarkIcon />
+            Conto corrente
+          </SelectItem>
+          <SelectItem value="deposito">
+            <LandmarkIcon />
+            Conto deposito
+          </SelectItem>
+          <SelectItem value="carta">
+            <LandmarkIcon />
+            Carta prepagata
+          </SelectItem>
+        </SelectContent>
+      </Select>
+    </div>
+  ),
+}
+
+export const WithLongOption: Story = {
+  render: () => (
+    <div className="flex w-72 flex-col gap-2">
+      <Label htmlFor="select-long">Option</Label>
+      <Select defaultValue="option-1">
+        <SelectTrigger id="select-long" className="w-full">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="option-1">Option 1</SelectItem>
+          <SelectItem value="option-2">
+            Option 2 with a very very very very very very very very very very
+            very long text
+          </SelectItem>
+          <SelectItem value="option-3">Option 3</SelectItem>
+        </SelectContent>
+      </Select>
+    </div>
+  ),
+}
+
 export const Disabled: Story = {
   render: () => (
     <div className="flex w-72 flex-col gap-2">
@@ -128,7 +177,10 @@ export const Invalid: Story = {
           ))}
         </SelectContent>
       </Select>
-      <p id="select-invalid-error" className="text-sm text-destructive">
+      <p
+        id="select-invalid-error"
+        className="text-xs leading-[1.25] font-semibold tracking-[0.5px] text-destructive"
+      >
         Select a fruit to continue.
       </p>
     </div>

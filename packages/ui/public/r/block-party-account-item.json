@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "block-party-account-item",
+  "description": "Italia party-account-item block (composition).",
+  "dependencies": [
+    "@base-ui/react",
+    "class-variance-authority",
+    "cn",
+    "lucide-react"
+  ],
+  "registryDependencies": ["utils", "theme"],
+  "files": [
+    {
+      "path": "src/blocks/party-account-item.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"cn\"\n\nimport { PartyAvatar } from \"./party-avatar\"\n\nexport interface PartyAccountItemProps extends React.ComponentProps<\"div\"> {\n  image?: string\n  /** Party name, e.g. \"Comune di Roma\". */\n  partyName: string\n  /** User role, e.g. \"Referente amministrativo\". */\n  partyRole?: string\n  /** Label shown above the party name. */\n  parentPartyName?: string\n  /** When true the party name is kept on a single line. */\n  noWrap?: boolean\n  /** Character count above which the multi-line clamp kicks in. */\n  maxCharactersNumberMultiLine?: number\n}\n\n/**\n * Port of mui-italia `PartyAccountItem`: avatar + parent name + party name +\n * role, with truncation for long names.\n */\nfunction PartyAccountItem({\n  image,\n  partyName,\n  partyRole,\n  parentPartyName,\n  noWrap = true,\n  maxCharactersNumberMultiLine = 50,\n  className,\n  ...props\n}: PartyAccountItemProps) {\n  const isLong = partyName.length > maxCharactersNumberMultiLine\n\n  return (\n    <div\n      data-slot=\"party-account-item\"\n      className={cn(\"flex flex-row select-none\", className)}\n      {...props}\n    >\n      <div className=\"flex items-center\">\n        <PartyAvatar customAlt={partyName} customSrc={image} />\n      </div>\n      <div className=\"ml-1.5 min-w-0 self-center select-text\">\n        {parentPartyName ? (\n          <p\n            title={isLong ? parentPartyName : undefined}\n            className={cn(\n              \"text-caption leading-[1.25] font-semibold text-foreground\",\n              isLong && \"line-clamp-1\"\n            )}\n          >\n            {parentPartyName}\n          </p>\n        ) : null}\n        {partyName ? (\n          <p\n            title={isLong ? partyName : undefined}\n            className={cn(\n              \"text-body leading-[1.25] font-bold text-foreground\",\n              noWrap && \"truncate\",\n              isLong && \"line-clamp-2 whitespace-normal\"\n            )}\n          >\n            {partyName}\n          </p>\n        ) : null}\n        {partyRole ? (\n          <p className=\"truncate text-caption text-muted-foreground\">\n            {partyRole}\n          </p>\n        ) : null}\n      </div>\n    </div>\n  )\n}\n\nexport { PartyAccountItem }\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

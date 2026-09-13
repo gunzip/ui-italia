@@ -67,6 +67,10 @@
     "./globals.css": "./src/styles/globals.css",
     "./lib/*": "./src/lib/*.ts",
     "./components/*": "./src/components/*.tsx",
-    "./hooks/*": "./src/hooks/*.ts"
+    "./hooks/*": "./src/hooks/*.ts",
+    "./illustrations": "./src/illustrations/index.ts",
+    "./illustrations/*": "./src/illustrations/*.tsx",
+    "./icons": "./src/icons/index.ts",
+    "./assets": "./src/assets/index.ts"
   }
 }
