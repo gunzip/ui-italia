@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 import { TriangleAlertIcon } from "lucide-react"
-import { expect, screen, userEvent, within } from "storybook/test"
+import { expect, userEvent, waitFor, within } from "storybook/test"
 
 import { Button } from "./button"
 import {
@@ -51,8 +51,13 @@ export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
     await userEvent.click(canvas.getByRole("button", { name: "Elimina bozza" }))
-    const dialog = await screen.findByRole("alertdialog")
-    await expect(within(dialog).getByText("Eliminare la bozza?")).toBeVisible()
+    // The dialog is portalled outside the canvas and animates in; wait for the
+    // enter animation to finish before asserting visibility.
+    const body = within(canvasElement.ownerDocument.body)
+    const dialog = await body.findByRole("alertdialog")
+    await waitFor(() =>
+      expect(within(dialog).getByText("Eliminare la bozza?")).toBeVisible()
+    )
   },
 }
 

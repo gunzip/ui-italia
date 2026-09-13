@@ -121,7 +121,11 @@ function Calendar({
           defaultClassNames.range_end
         ),
         today: cn(
-          "rounded-(--cell-radius) bg-muted text-foreground data-[selected=true]:rounded-none",
+          // The day is a ghost Button, whose primary text on the muted today
+          // surface fails AA (4.08:1). Restore the cell's semantic foreground,
+          // while `data-[selected-single=true]` on the button still wins for a
+          // selected day.
+          "rounded-(--cell-radius) bg-muted text-foreground data-[selected=true]:rounded-none [&_button]:text-foreground",
           defaultClassNames.today
         ),
         outside: cn(

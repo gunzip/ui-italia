@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
-import { expect, screen, userEvent, within } from "storybook/test"
+import { expect, userEvent, waitFor, within } from "storybook/test"
 
 import { Button } from "./button"
 import {
@@ -48,9 +48,10 @@ export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
     await userEvent.click(canvas.getByRole("button", { name: "Apri pannello" }))
-    await expect(
-      await screen.findByRole("dialog", { name: "Modifica profilo" })
-    ).toBeVisible()
+    // Portalled sheet animates in; wait for the enter animation to finish.
+    const body = within(canvasElement.ownerDocument.body)
+    const sheet = await body.findByRole("dialog", { name: "Modifica profilo" })
+    await waitFor(() => expect(sheet).toBeVisible())
   },
 }
 

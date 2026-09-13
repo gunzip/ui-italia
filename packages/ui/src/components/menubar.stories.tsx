@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
-import { expect, screen, userEvent, within } from "storybook/test"
+import { expect, userEvent, waitFor, within } from "storybook/test"
 
 import {
   Menubar,
@@ -65,7 +65,10 @@ export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
     await userEvent.click(canvas.getByRole("menuitem", { name: "File" }))
-    await expect(await screen.findByText("Nuovo")).toBeVisible()
+    // Portalled menu animates in; wait for the enter animation to finish.
+    const body = within(canvasElement.ownerDocument.body)
+    const item = await body.findByText("Nuovo")
+    await waitFor(() => expect(item).toBeVisible())
   },
 }
 

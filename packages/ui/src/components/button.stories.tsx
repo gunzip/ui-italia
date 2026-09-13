@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
+import { expect } from "storybook/test"
 
 import { Button } from "./button"
 
@@ -84,5 +85,21 @@ export const Disabled: Story = {
   args: {
     disabled: true,
     children: "Disabled",
+  },
+}
+
+/**
+ * Guards against the design-system CSS not loading in Storybook: asserts a
+ * concrete computed style (Italy primary #0073E6, no theme shortcut).
+ */
+export const CssCheck: Story = {
+  args: {
+    children: "Styling check",
+  },
+  play: async ({ canvas }) => {
+    const button = canvas.getByRole("button", { name: /styling check/i })
+    await expect(getComputedStyle(button).backgroundColor).toBe(
+      "rgb(0, 115, 230)"
+    )
   },
 }

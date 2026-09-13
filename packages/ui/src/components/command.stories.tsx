@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 import * as React from "react"
-import { expect, screen, userEvent, within } from "storybook/test"
+import { expect, userEvent, waitFor, within } from "storybook/test"
 
 import { Button } from "./button"
 import {
@@ -110,8 +110,12 @@ export const CommandDialogStory: Story = {
     await userEvent.click(
       canvas.getByRole("button", { name: "Apri command palette" })
     )
-    const dialog = await screen.findByRole("dialog")
-    await expect(within(dialog).getByText("Nuovo documento")).toBeVisible()
+    // Portalled dialog animates in; wait for the enter animation to finish.
+    const body = within(canvasElement.ownerDocument.body)
+    const dialog = await body.findByRole("dialog")
+    await waitFor(() =>
+      expect(within(dialog).getByText("Nuovo documento")).toBeVisible()
+    )
   },
 }
 

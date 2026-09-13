@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
-import { fireEvent, expect, screen, within } from "storybook/test"
+import { expect, fireEvent, waitFor, within } from "storybook/test"
 
 import {
   ContextMenu,
@@ -45,12 +45,16 @@ export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
     fireEvent.contextMenu(canvas.getByText("Clicca con il tasto destro"))
-    const menu = await screen.findByRole("menu", {
+    // Portalled menu animates in; wait for the enter animation to finish.
+    const body = within(canvasElement.ownerDocument.body)
+    const menu = await body.findByRole("menu", {
       name: "Azioni contestuali",
     })
-    await expect(
-      within(menu).getByRole("menuitem", { name: "Modifica" })
-    ).toBeVisible()
+    await waitFor(() =>
+      expect(
+        within(menu).getByRole("menuitem", { name: "Modifica" })
+      ).toBeVisible()
+    )
   },
 }
 

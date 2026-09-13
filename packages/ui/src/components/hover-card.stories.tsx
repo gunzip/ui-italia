@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
-import { expect, screen, userEvent, within } from "storybook/test"
+import { expect, userEvent, waitFor, within } from "storybook/test"
 
 import { Button } from "./button"
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./hover-card"
@@ -34,7 +34,10 @@ export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
     await userEvent.hover(canvas.getByText("@mario"))
-    await expect(await screen.findByText("Mario Rossi")).toBeVisible()
+    // Portalled card animates in; wait for the enter animation to finish.
+    const body = within(canvasElement.ownerDocument.body)
+    const card = await body.findByText("Mario Rossi")
+    await waitFor(() => expect(card).toBeVisible())
   },
 }
 

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
-import { expect, screen, userEvent, within } from "storybook/test"
+import { expect, userEvent, waitFor, within } from "storybook/test"
 
 import {
   NavigationMenu,
@@ -76,9 +76,10 @@ export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
     await userEvent.hover(canvas.getByRole("button", { name: "Servizi" }))
-    await expect(
-      await screen.findByRole("link", { name: "Anagrafe" })
-    ).toBeVisible()
+    // Portalled panel animates in; wait for the enter animation to finish.
+    const body = within(canvasElement.ownerDocument.body)
+    const link = await body.findByRole("link", { name: "Anagrafe" })
+    await waitFor(() => expect(link).toBeVisible())
   },
 }
 

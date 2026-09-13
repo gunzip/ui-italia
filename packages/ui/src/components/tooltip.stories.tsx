@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 import { Trash2Icon } from "lucide-react"
-import { expect, screen, userEvent, within } from "storybook/test"
+import { expect, userEvent, waitFor, within } from "storybook/test"
 
 import { Button } from "./button"
 import {
@@ -35,7 +35,10 @@ export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
     await userEvent.hover(canvas.getByRole("button", { name: "Salva" }))
-    await expect(await screen.findByText("Salva le modifiche")).toBeVisible()
+    // Portalled tooltip animates in; wait for the enter animation to finish.
+    const body = within(canvasElement.ownerDocument.body)
+    const tooltip = await body.findByText("Salva le modifiche")
+    await waitFor(() => expect(tooltip).toBeVisible())
   },
 }
 

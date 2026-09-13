@@ -26,6 +26,8 @@
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary-hover: var(--primary-hover);
+  /* Accessible primary for text/icons on light or muted surfaces (>= 4.5:1). */
+  --color-primary-text: var(--primary-text);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -155,6 +157,9 @@
   --primary: #0073e6;
   --primary-foreground: #ffffff;
   --primary-hover: #0055aa;
+  /* #0073e6 is only 4.57:1 on white and drops below 4.5:1 on muted surfaces;
+     this darker blue keeps primary-colored text AA-compliant. */
+  --primary-text: #0055aa;
 
   /* Secondary — teal (dark text for AA: 6.15:1) */
   --secondary: #00c5ca;
@@ -243,6 +248,7 @@
   --primary: #3da2ff;
   --primary-foreground: #0b1f33;
   --primary-hover: #5cb0ff;
+  --primary-text: #3da2ff;
 
   --secondary: #00c5ca;
   --secondary-foreground: #0b1f33;

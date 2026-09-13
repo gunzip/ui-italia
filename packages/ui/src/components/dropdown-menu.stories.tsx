@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 import { LogOutIcon, SettingsIcon, UserIcon } from "lucide-react"
-import { expect, screen, userEvent, within } from "storybook/test"
+import { expect, userEvent, waitFor, within } from "storybook/test"
 
 import { Button } from "./button"
 import {
@@ -64,10 +64,14 @@ export const Default: Story = {
     await userEvent.click(canvas.getByRole("button", { name: "Apri menu" }))
     // Base UI labels the popup via `aria-labelledby` pointing at the trigger,
     // so the menu's accessible name is the trigger label, not `aria-label`.
-    const menu = await screen.findByRole("menu")
-    await expect(
-      within(menu).getByRole("menuitem", { name: /Profilo/ })
-    ).toBeVisible()
+    // The menu is portalled and animates in; wait for the enter animation.
+    const body = within(canvasElement.ownerDocument.body)
+    const menu = await body.findByRole("menu")
+    await waitFor(() =>
+      expect(
+        within(menu).getByRole("menuitem", { name: /Profilo/ })
+      ).toBeVisible()
+    )
   },
 }
 

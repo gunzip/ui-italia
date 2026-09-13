@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
-import { expect, screen, userEvent, within } from "storybook/test"
+import { expect, userEvent, waitFor, within } from "storybook/test"
 
 import {
   Combobox,
@@ -103,7 +103,11 @@ export const Default: Story = {
     const canvas = within(canvasElement)
     const input = canvas.getByRole("combobox", { name: "Framework" })
     await userEvent.click(input)
-    await userEvent.click(await screen.findByRole("option", { name: "Svelte" }))
+    // Portalled listbox animates in; wait for the enter animation first.
+    const body = within(canvasElement.ownerDocument.body)
+    const option = await body.findByRole("option", { name: "Svelte" })
+    await waitFor(() => expect(option).toBeVisible())
+    await userEvent.click(option)
     await expect(input).toHaveValue("Svelte")
   },
 }
@@ -145,7 +149,11 @@ export const Multiple: Story = {
     await userEvent.click(
       canvas.getByRole("combobox", { name: "Framework selezionati" })
     )
-    await userEvent.click(await screen.findByRole("option", { name: "Vue" }))
+    // Portalled listbox animates in; wait for the enter animation first.
+    const body = within(canvasElement.ownerDocument.body)
+    const option = await body.findByRole("option", { name: "Vue" })
+    await waitFor(() => expect(option).toBeVisible())
+    await userEvent.click(option)
     await expect(
       canvas.getByText("Vue", { selector: '[data-slot="combobox-chip"]' })
     ).toBeVisible()

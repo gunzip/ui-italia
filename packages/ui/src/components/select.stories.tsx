@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
-import { expect, screen, userEvent, within } from "storybook/test"
+import { expect, userEvent, waitFor, within } from "storybook/test"
 
 import { Label } from "./label"
 import {
@@ -52,7 +52,10 @@ export const Default: Story = {
     const canvas = within(canvasElement)
     const trigger = canvas.getByRole("combobox", { name: "Frutto" })
     await userEvent.click(trigger)
-    const option = await screen.findByRole("option", { name: "Banana" })
+    // Portalled listbox animates in; wait for the enter animation first.
+    const body = within(canvasElement.ownerDocument.body)
+    const option = await body.findByRole("option", { name: "Banana" })
+    await waitFor(() => expect(option).toBeVisible())
     await userEvent.click(option)
     await expect(trigger).toHaveTextContent("Banana")
   },
