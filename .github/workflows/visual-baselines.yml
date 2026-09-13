@@ -26,11 +26,12 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - name: Install Playwright (Chromium, Firefox, WebKit)
-        run: pnpm --filter ui-italia exec playwright install --with-deps chromium firefox webkit
+      - name: Install Playwright (Chromium)
+        run: pnpm --filter ui-italia exec playwright install --with-deps chromium
 
-      - name: Regenerate baselines
-        run: pnpm --filter ui-italia test:visual:update
+      - name: Regenerate Chromium baselines
+        # Firefox/WebKit baselines are intentionally not updated by this action.
+        run: pnpm --filter ui-italia test:visual:update -- --project=chromium
 
       - name: Commit baselines
         run: |

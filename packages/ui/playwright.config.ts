@@ -41,8 +41,10 @@ export default defineConfig({
   },
   projects: [
     { name: "chromium", use: { ...devices["Desktop Chrome"] } },
-    { name: "firefox", use: { ...devices["Desktop Firefox"] } },
-    { name: "webkit", use: { ...devices["Desktop Safari"] } },
+    // Firefox/WebKit baselines are intentionally out of scope for now.
+    // Re-enable by adding the project and regenerating baselines on Linux.
+    // { name: "firefox", use: { ...devices["Desktop Firefox"] } },
+    // { name: "webkit", use: { ...devices["Desktop Safari"] } },
   ],
   webServer: {
     command: "pnpm storybook",

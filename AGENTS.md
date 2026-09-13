@@ -88,4 +88,4 @@ Use the `shadcn` MCP to search/consult/install registry items (e.g. `@shadcn/but
 
 ## Visual test
 
-The baselines are authoritative **on Linux (CI)** and are committed. Locally, `pnpm --filter ui-italia test:visual:update` generates baselines for your platform (gitignored). After adding/modifying a story, run the **Update visual baselines** workflow on GitHub to update the Linux ones, otherwise the CI `visual` job fails. Visual tests run on **chromium, firefox and webkit**: the same workflow (re)generates all three.
+The baselines are authoritative **on Linux (CI)** and are committed. Locally, `pnpm --filter ui-italia test:visual:update` generates baselines for your platform (gitignored). After adding/modifying a story, run the **Update visual baselines** workflow on GitHub to update the Linux ones, otherwise the CI `visual` job fails.
