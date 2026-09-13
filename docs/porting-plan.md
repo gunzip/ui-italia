@@ -61,7 +61,7 @@
 | `typescript`                            | `~6`            |                                                                |
 | `eslint`                                | `10.x`          | flat config                                                    |
 | `vitest` + `@vitest/browser-playwright` | `5.x`           | Storybook Test, browser Chromium                               |
-| `@playwright/test`                      | `1.6x`          | Visual regression self-hosted (Chromium/Firefox/WebKit)        |
+| `@playwright/test`                      | `1.6x`          | Visual regression self-hosted (Chromium)                       |
 | `react-hook-form` / `zod`               | ultime          | da aggiungere in W3                                            |
 | `react-day-picker`                      | ultima          | via registry `calendar` / `date-picker`                        |
 | `lucide-react`                          | `1.x`           | icon library del preset `nova`                                 |
@@ -314,7 +314,7 @@ Legenda strategia: **copy** = componente shadcn del registry, tematizzato; **ext
   - `parameters.a11y` con `test: 'error'` per tutte le story.
   - **Viewport** allineati a `breakpointsChromaticValues = [375, 640, 900, 1200, 1600]`.
   - Story generate dall'agente taggate `ai-generated` finché non validate.
-- **Visual regression**: **self-hosted** con Playwright, projects chromium + firefox + webkit (vedi §15.1).
+- **Visual regression**: **self-hosted** con Playwright, project **chromium** (Firefox/WebKit disattivati per ora) (vedi §15.1).
 - **Il MCP di Storybook** abilita il loop: genera UI → scrive story → `test-run` (incl. a11y) → fix → ri-test.
 
 ---
@@ -353,7 +353,7 @@ Legenda strategia: **copy** = componente shadcn del registry, tematizzato; **ext
     }
   }
   ```
-- **CI (GitHub Actions)**: lint → typecheck → Vitest browser + a11y → build pacchetto → build Storybook → Playwright visual (multi-browser) → publish registry.
+- **CI (GitHub Actions)**: lint → typecheck → Vitest browser + a11y → build pacchetto → build Storybook → Playwright visual (Chromium) → publish registry.
 - **Quality gate**: la CI fallisce se una story ha violazioni a11y o se un test play fallisce.
 
 ---
@@ -422,29 +422,29 @@ Ogni workstream chiude con: story + test + a11y verde + docs + registry item.
 
 ## 15. Decisioni finali
 
-| #   | Domanda          | Decisione                                                                       |
-| --- | ---------------- | ------------------------------------------------------------------------------- |
-| 1   | Nome/scope npm   | `ui-italia`                                                                     |
-| 2   | Hosting registry | **GitHub Pages**                                                                |
-| 3   | Visual testing   | **Self-hosted** con Playwright (chromium/firefox/webkit), niente vendor — §15.1 |
-| 4   | Illustrazioni    | In `packages/ui` con entrypoint dedicato + registry items (vedi §7.4)           |
-| 5   | RTL              | **Non supportato**, come mui-italia (LTR-only)                                  |
-| 6   | Browser target   | Come mui-italia: evergreen, ultime 2 versioni, no IE (nessuna browserslist)     |
-| 7   | Dark mode        | Sì, port 1:1 di `darkTheme`                                                     |
-| 8   | Migrazione       | Guida agent-oriented + shim opzionale `ui-italia-compat` (vedi §11.1)           |
+| #   | Domanda          | Decisione                                                                    |
+| --- | ---------------- | ---------------------------------------------------------------------------- |
+| 1   | Nome/scope npm   | `ui-italia`                                                                  |
+| 2   | Hosting registry | **GitHub Pages**                                                             |
+| 3   | Visual testing   | **Self-hosted** con Playwright (**Chromium** per ora), niente vendor — §15.1 |
+| 4   | Illustrazioni    | In `packages/ui` con entrypoint dedicato + registry items (vedi §7.4)        |
+| 5   | RTL              | **Non supportato**, come mui-italia (LTR-only)                               |
+| 6   | Browser target   | Come mui-italia: evergreen, ultime 2 versioni, no IE (nessuna browserslist)  |
+| 7   | Dark mode        | Sì, port 1:1 di `darkTheme`                                                  |
+| 8   | Migrazione       | Guida agent-oriented + shim opzionale `ui-italia-compat` (vedi §11.1)        |
 
 ### 15.1 Visual testing: self-hosted (niente vendor)
 
 **Decisione**: nessun fornitore esterno. Il visual regression è self-hosted con **Playwright** (`@playwright/test`), con baseline tracciate in git.
 
-- `packages/ui/playwright.config.ts`: projects **chromium + firefox + webkit** (WebKit ≈ Safari), `webServer` che avvia Storybook in automatico.
+- `packages/ui/playwright.config.ts`: project **chromium** (`webServer` che avvia Storybook). Firefox/WebKit sono commentati: si riattiveranno rigenerando le baseline su Linux.
 - `packages/ui/tests/visual/stories.spec.ts`: enumera `/index.json`, apre ogni story e usa `toHaveScreenshot`.
 - **Baseline per piattaforma** (default Playwright): fanno fede quelle **Linux** (CI), committate in `packages/ui/tests/visual/__screenshots__`; le baseline macOS/Windows restano locali e gitignorate.
 - Comandi: `pnpm --filter ui-italia test:visual` (confronto) e `test:visual:update` (rigenerazione locale).
 - Aggiornamento baseline Linux: workflow **Update visual baselines** (`workflow_dispatch` + settimanale), che rigenera e committa.
 - CI: il job `visual` è **bloccante** sulle baseline Linux; su fallimento carica il report Playwright.
 
-**Perché** (vs fornitore hosted): costo **$0**, nessun dato che esce dal perimetro, **multi-browser incluso** (Chromium/Firefox/WebKit), nessun lock-in. **Costo**: niente review UI proprietaria — la review avviene sul report Playwright HTML e le baseline sono nostre.
+**Perché** (vs fornitore hosted): costo **$0**, nessun dato che esce dal perimetro, nessun lock-in. **Costo**: niente review UI proprietaria — la review avviene sul report Playwright HTML e le baseline sono nostre. Il multi-browser (Firefox/WebKit) è già predisposto e si riattiva quando serve.
 
 **Alternative valutate**: Lost Pixel / reg-suit / BackstopJS (aggiungono una review UI ma più manutenzione); Playwright è sufficiente per ora.
 
