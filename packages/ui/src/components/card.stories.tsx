@@ -27,16 +27,37 @@ export const Default: Story = {
   render: () => (
     <Card className="w-96">
       <CardHeader>
-        <CardTitle>Sign in to the service</CardTitle>
+        <CardTitle>Check IBAN</CardTitle>
         <CardDescription>
-          Use SPID or CIE to access Public Administration services.
+          Verifica l&apos;abbinamento di un IBAN ad un CF di un cittadino o di
+          un&apos;impresa.
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <p className="text-muted-foreground">The main content of the card.</p>
+        <p className="text-body">Il prodotto è attivo da 12 mesi.</p>
       </CardContent>
       <CardFooter>
-        <Button size="sm">Sign in</Button>
+        <Button variant="outline" size="sm">
+          Attiva prodotto
+        </Button>
+      </CardFooter>
+    </Card>
+  ),
+}
+
+export const Raised: Story = {
+  render: () => (
+    <Card className="w-96 shadow-elevation-8">
+      <CardHeader>
+        <CardTitle>Check IBAN</CardTitle>
+        <CardDescription>
+          Card con elevazione 8 (`raised` in MUI).
+        </CardDescription>
+      </CardHeader>
+      <CardFooter>
+        <Button variant="outline" size="sm">
+          Attiva prodotto
+        </Button>
       </CardFooter>
     </Card>
   ),
