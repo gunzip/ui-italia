@@ -152,6 +152,10 @@ Single source of truth: `packages/ui/src/styles/globals.css` with `@import "tail
 
 ### 5.1 Palette → semantic variables mapping
 
+> ⚠️ **Aggiornamento (F1 del refactoring parity)**: il reference è ora `themeNext`, non la palette legacy.
+> I valori correnti e la mappa per-componente sono in [`parity-spec.md`](./parity-spec.md).
+> La tabella sottostante documenta il porting iniziale (palette legacy) e va considerata storica.
+
 | shadcn semantic token  | Value from mui-italia            | Notes                                          |
 | ---------------------- | -------------------------------- | ---------------------------------------------- |
 | `--background`         | `#FFFFFF` (`background.paper`)   |                                                |

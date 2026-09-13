@@ -26,10 +26,15 @@
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary-hover: var(--primary-hover);
+  --color-primary-light: var(--primary-light);
+  --color-primary-100: var(--primary-100);
   /* Accessible primary for text/icons on light or muted surfaces (>= 4.5:1). */
   --color-primary-text: var(--primary-text);
   --color-secondary: var(--secondary);
+  --color-secondary-dark: var(--secondary-dark);
   --color-secondary-foreground: var(--secondary-foreground);
+  --color-text-disabled: var(--text-disabled);
+  --color-menu-item: var(--menu-item);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
@@ -38,21 +43,30 @@
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
+  --color-input-border: var(--input-border);
   --color-ring: var(--ring);
   --color-tooltip: var(--tooltip);
   --color-tooltip-foreground: var(--tooltip-foreground);
 
-  /* Status accents / muted surfaces / strong text */
+  /* Status: main (fill/icon) + dark (hover) + light + muted surface + strong text */
   --color-destructive-accent: var(--destructive-accent);
+  --color-destructive-dark: var(--destructive-dark);
+  --color-destructive-light: var(--destructive-light);
   --color-destructive-muted: var(--destructive-muted);
   --color-destructive-strong: var(--destructive-strong);
   --color-success-accent: var(--success-accent);
+  --color-success-dark: var(--success-dark);
+  --color-success-light: var(--success-light);
   --color-success-muted: var(--success-muted);
   --color-success-strong: var(--success-strong);
   --color-warning-accent: var(--warning-accent);
+  --color-warning-dark: var(--warning-dark);
+  --color-warning-light: var(--warning-light);
   --color-warning-muted: var(--warning-muted);
   --color-warning-strong: var(--warning-strong);
   --color-info-accent: var(--info-accent);
+  --color-info-dark: var(--info-dark);
+  --color-info-light: var(--info-light);
   --color-info-muted: var(--info-muted);
   --color-info-strong: var(--info-strong);
 
@@ -69,6 +83,8 @@
   --color-brand-foreground: var(--brand-foreground);
   --color-eu: var(--eu);
   --color-eu-foreground: var(--eu-foreground);
+  --color-indigo: var(--indigo);
+  --color-check-iban: var(--check-iban);
 
   /* Italia palette */
   --color-italia-50: var(--italia-50);
@@ -135,65 +151,85 @@
 :root {
   --shadow-color: #002b55;
 
-  /* Surfaces */
+  /* Surfaces — themeNext (paletteNext) */
   --background: #ffffff;
-  --foreground: #17324d;
+  --foreground: #0e0f13;
   --card: #ffffff;
-  --card-foreground: #17324d;
+  --card-foreground: #0e0f13;
   --popover: #ffffff;
-  --popover-foreground: #17324d;
-  --muted: #f2f2f2;
-  --muted-foreground: #5c6f82;
+  --popover-foreground: #0e0f13;
+  --muted: #f4f5f8;
+  --muted-foreground: #555c70;
+  --text-disabled: #99a3c1;
   --accent: #e3f2fd;
-  --accent-foreground: #17324d;
-  --border: #e3e7eb;
-  --input: #e3e7eb;
-  --ring: #0073e6;
+  --accent-foreground: #0e0f13;
+  --border: #e8ebf1;
+  --input: #e8ebf1;
+  --input-border: #636b82;
+  --ring: #0b3ee3;
   --tooltip: #455b71;
   --tooltip-foreground: #ffffff;
-  --overlay: color-mix(in srgb, #17324d 70%, transparent);
+  --overlay: rgb(14 15 19 / 35%);
+  --menu-item: #17324d;
 
-  /* Primary — blue */
-  --primary: #0073e6;
+  /* Primary — colors.blue[500] (paletteNext.primary.main) */
+  --primary: #0b3ee3;
+  --primary-light: #3c65e9;
+  --primary-hover: #0932b6;
+  --primary-100: #c4dcf5;
   --primary-foreground: #ffffff;
-  --primary-hover: #0055aa;
-  /* #0073e6 is only 4.57:1 on white and drops below 4.5:1 on muted surfaces;
-     this darker blue keeps primary-colored text AA-compliant. */
-  --primary-text: #0055aa;
+  /* #0b3ee3 is ~7.4:1 on white: safe for text as well. */
+  --primary-text: #0b3ee3;
 
-  /* Secondary — teal (dark text for AA: 6.15:1) */
+  /* Secondary — turquoise (absent in paletteNext: legacy DS value) */
   --secondary: #00c5ca;
-  --secondary-foreground: #17324d;
+  --secondary-dark: #00a7ac;
+  --secondary-foreground: #0e0f13;
 
-  /* Status — text-safe mains + Italia accents */
-  --destructive: #b02a2a;
-  --destructive-foreground: #ffffff;
-  --success: #2e6b2c;
-  --success-foreground: #ffffff;
-  --warning: #7a5c00;
-  --warning-foreground: #ffffff;
-  --info: #17566e;
-  --info-foreground: #ffffff;
+  /* Interaction tints — DS intent adapted to the themeNext primary */
+  --action-hover: rgb(23 50 77 / 8%);
+  --primary-action-hover: rgb(11 62 227 / 12%);
 
-  /* Status accents (icons/borders/fills) + muted surfaces + strong text */
-  --destructive-accent: #fe6666;
+  /* Status — main (fill/icon/border) + dark (hover) + light + muted surface + strong text */
+  --destructive: #d13333;
+  --destructive-dark: #a82929;
+  --destructive-light: #ff4040;
+  --destructive-accent: #d13333;
   --destructive-muted: #ffe0e0;
   --destructive-strong: #761f1f;
+  --destructive-foreground: #0e0f13;
+
+  --success: #6cc66a;
+  --success-dark: #5ca85a;
+  --success-light: #89d188;
   --success-accent: #6cc66a;
   --success-muted: #e1f4e1;
   --success-strong: #224021;
-  --warning-accent: #ffcb46;
+  --success-foreground: #0e0f13;
+
+  --warning: #ffc824;
+  --warning-dark: #d9ad3c;
+  --warning-light: #ffd56b;
+  --warning-accent: #ffc824;
   --warning-muted: #fff5da;
   --warning-strong: #614c15;
+  --warning-foreground: #0e0f13;
+
+  --info: #6bcffb;
+  --info-dark: #5bb0d5;
+  --info-light: #89d9fc;
   --info-accent: #6bcffb;
   --info-muted: #e1f5fe;
   --info-strong: #215c76;
+  --info-foreground: #0e0f13;
 
   /* Brand */
   --brand: #0066cc;
   --brand-foreground: #ffffff;
   --eu: #264ca4;
   --eu-foreground: #ffffff;
+  --indigo: #3f51b5;
+  --check-iban: #008ca8;
 
   /* Italia palette */
   --italia-50: #e3f2fd;
@@ -208,21 +244,21 @@
   --italia-900: #0d47a1;
 
   /* Charts */
-  --chart-1: #0073e6;
+  --chart-1: #0b3ee3;
   --chart-2: #00c5ca;
   --chart-3: #6cc66a;
-  --chart-4: #ffcb46;
-  --chart-5: #b02a2a;
+  --chart-4: #ffc824;
+  --chart-5: #d13333;
 
   /* Sidebar */
   --sidebar: #ffffff;
-  --sidebar-foreground: #17324d;
-  --sidebar-primary: #0073e6;
+  --sidebar-foreground: #0e0f13;
+  --sidebar-primary: #0b3ee3;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #e3f2fd;
-  --sidebar-accent-foreground: #17324d;
-  --sidebar-border: #e3e7eb;
-  --sidebar-ring: #0073e6;
+  --sidebar-accent-foreground: #0e0f13;
+  --sidebar-border: #e8ebf1;
+  --sidebar-ring: #0b3ee3;
 }
 
 .dark {
@@ -240,32 +276,66 @@
   --accent-foreground: #ffffff;
   --border: rgba(255, 255, 255, 0.12);
   --input: rgba(255, 255, 255, 0.16);
+  --input-border: rgb(255 255 255 / 42%);
   --ring: #3da2ff;
   --tooltip: #2a2a2a;
   --tooltip-foreground: #ffffff;
   --overlay: color-mix(in srgb, #000000 70%, transparent);
 
   --primary: #3da2ff;
-  --primary-foreground: #0b1f33;
+  --primary-light: #64b5ff;
   --primary-hover: #5cb0ff;
+  --primary-100: #123354;
+  --primary-foreground: #0b1f33;
   --primary-text: #3da2ff;
 
   --secondary: #00c5ca;
+  --secondary-dark: #00a7ac;
   --secondary-foreground: #0b1f33;
 
+  --text-disabled: #7f8a99;
+  --menu-item: #17324d;
+  --action-hover: rgb(255 255 255 / 8%);
+  --primary-action-hover: rgb(61 162 255 / 16%);
+
   --destructive: #ff8a8a;
+  --destructive-dark: #ff6b6b;
+  --destructive-light: #ffb3b3;
+  --destructive-accent: #ff8a8a;
+  --destructive-muted: rgb(255 138 138 / 16%);
+  --destructive-strong: #ffb3b3;
   --destructive-foreground: #3b0a0a;
+
   --success: #8ed88c;
+  --success-dark: #6fbf6d;
+  --success-light: #b5e2b4;
+  --success-accent: #8ed88c;
+  --success-muted: rgb(142 216 140 / 16%);
+  --success-strong: #b5e2b4;
   --success-foreground: #10240f;
+
   --warning: #ffd97a;
+  --warning-dark: #e0b84f;
+  --warning-light: #ffe5a3;
+  --warning-accent: #ffd97a;
+  --warning-muted: rgb(255 217 122 / 16%);
+  --warning-strong: #ffe5a3;
   --warning-foreground: #3a2c00;
+
   --info: #8fd8f5;
+  --info-dark: #64b5d8;
+  --info-light: #b3e7fa;
+  --info-accent: #8fd8f5;
+  --info-muted: rgb(143 216 245 / 16%);
+  --info-strong: #b3e7fa;
   --info-foreground: #06232e;
 
   --brand: #4d9fff;
   --brand-foreground: #0b1f33;
   --eu: #7f9fe0;
   --eu-foreground: #0b1f33;
+  --indigo: #7986cb;
+  --check-iban: #4dd0e1;
 
   --italia-50: #0d2135;
   --italia-100: #123354;
@@ -360,6 +430,12 @@
     font-size: 1.5rem; /* 24px */
     line-height: 1.15;
   }
+}
+@utility text-sidenav {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.35;
 }
 @utility text-body-lg {
   font-size: 1.125rem; /* 18px */

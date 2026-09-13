@@ -99,7 +99,7 @@ export const CssCheck: Story = {
   play: async ({ canvas }) => {
     const button = canvas.getByRole("button", { name: /styling check/i })
     await expect(getComputedStyle(button).backgroundColor).toBe(
-      "rgb(0, 115, 230)"
+      "rgb(11, 62, 227)"
     )
   },
 }
