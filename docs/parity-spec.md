@@ -257,23 +257,24 @@ Fonte: `themeNext.ts` `MuiCard/MuiCardContent/MuiCardActions`.
 
 ### 5.7 Switch
 
-| Aspetto  | Target                                                            | ui-italia                        | Gap |
-| -------- | ----------------------------------------------------------------- | -------------------------------- | --- |
-| track    | 42×26, radius 13, bg `#555C70` (off), `#0B3EE3` (on)              | 32×18.4, `bg-input`/`bg-primary` | 🔴  |
-| thumb    | 22×22, checked translate(7,-9)                                    | 16, translate 100%               | 🔴  |
-| hover    | halo 8px `rgba(23,50,77,.08)`; checked 10px `rgba(0,115,230,.12)` | assente                          | 🔴  |
-| errore   | track `#A82929`                                                   | —                                | 🔴  |
-| disabled | thumb `#E8EBF1`, track opacity .2                                 | opacity .5                       | 🔴  |
+| Aspetto  | Target                                                            | ui-italia                                        | Gap |
+| -------- | ----------------------------------------------------------------- | ------------------------------------------------ | --- |
+| track    | 42×26, radius 13, bg `#555C70` (off), `#0B3EE3` (on)              | ✅ `42×26`, off `muted-foreground`, on `primary` | 🟢  |
+| thumb    | 22×22, checked translate ~16px                                    | ✅ `22×22`, `translate-x-[16px]`                 | 🟢  |
+| hover    | halo 8px `rgba(23,50,77,.08)`; checked 10px `rgba(11,62,227,.12)` | ✅ `--action-hover` / `--primary-action-hover`   | 🟢  |
+| errore   | track `#A82929`                                                   | — (aria-invalid non emesso)                      | 🟡  |
+| disabled | thumb `#E8EBF1`, track opacity .2                                 | `opacity-50`, halo disattivato                   | 🟡  |
 
 Fonte: `muiSwitch.ts`.
 
 ### 5.8 Checkbox / Radio
 
-| Aspetto        | Target               | ui-italia     | Gap |
-| -------------- | -------------------- | ------------- | --- |
-| box            | 24×24, radius 4      | `size-4` (16) | 🔴  |
-| colore checked | `#0B3EE3`            | `--primary`   | 🟡  |
-| focus          | outline 2px offset 4 | ring/`ring-3` | 🔴  |
+| Aspetto        | Target               | ui-italia                         | Gap |
+| -------------- | -------------------- | --------------------------------- | --- |
+| box            | 24×24, radius 4      | ✅ `size-6`                       | 🟢  |
+| bordo          | scuro (MUI ~60% blk) | ✅ `border-muted-foreground`      | 🟢  |
+| colore checked | `#0B3EE3`            | ✅ `data-checked:bg-primary`      | 🟢  |
+| focus          | outline 2px offset 4 | ring `ring-3` (pattern base-nova) | 🟡  |
 
 Fonte: default MUI + `focusWidth/focusOffset`; allineare al pattern `MuiButton`.
 
@@ -440,7 +441,7 @@ Ogni step chiude con: story + a11y verde + parity test + baseline.
 ### Stato di avanzamento
 
 - **F1 — Token: fatto** (`packages/ui/src/styles/globals.css`, `foundations.stories.tsx`). Light su `themeNext`; dark allineato a `darkTheme` + nuovi token derivati. Build Storybook verde.
-- **F2 — Primitive: in corso.** Blocco 1: **Button/Card/Badge**. Blocco 2: **Input/Field/Label/Textarea** (§5.2). Blocco 3: **Select/Combobox/NativeSelect/Menu/Dropdown/Command** (§5.3). Restano §5.5, §5.7 → §5.13.
+- **F2 — Primitive: in corso.** Blocco 1: **Button/Card/Badge**. Blocco 2: **Input/Field/Label/Textarea** (§5.2). Blocco 3: **Select/Combobox/NativeSelect/Menu/Dropdown/Command** (§5.3). Blocco 4: **Switch/Checkbox/Radio** (§5.7/§5.8). Restano §5.5, §5.9 → §5.13.
 - **F3 — Storybook: da fare** (§6).
 - **F4 — Catalogo: da fare** (§7).
 - **F5 — Guardrail: da fare** (§8).
