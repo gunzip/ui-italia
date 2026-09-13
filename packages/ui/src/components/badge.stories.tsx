@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
+import { expect, within } from "storybook/test"
 
 import { Badge } from "./badge"
 
 const meta = {
   component: Badge,
-  tags: ["autodocs"],
   parameters: {
     layout: "centered",
   },
@@ -23,6 +23,11 @@ const meta = {
         "info",
         "outline",
         "outline-primary",
+        "outline-highlight",
+        "outline-success",
+        "outline-warning",
+        "outline-info",
+        "outline-destructive",
         "ghost",
         "link",
       ],
@@ -147,4 +152,78 @@ export const AllVariants: Story = {
       ))}
     </div>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+
+    // MIChip ramp: filled error uses error[100], neutral uses MUI grey[300].
+    const destructive = getComputedStyle(canvas.getByText("destructive"))
+    await expect(destructive.backgroundColor).toBe("rgb(255, 217, 217)")
+    await expect(destructive.color).toBe("rgb(93, 19, 19)")
+
+    const neutral = getComputedStyle(canvas.getByText("neutral"))
+    await expect(neutral.backgroundColor).toBe("rgb(224, 224, 224)")
+    await expect(neutral.color).toBe("rgb(14, 15, 19)")
+  },
+}
+
+/** Outlined variants, including the status colours (`MIChip` outlined). */
+export const OutlineStatuses: Story = {
+  render: () => (
+    <div className="flex max-w-xl flex-wrap gap-2">
+      {(
+        [
+          "outline",
+          "outline-primary",
+          "outline-highlight",
+          "outline-success",
+          "outline-warning",
+          "outline-info",
+          "outline-destructive",
+        ] as const
+      ).map((variant) => (
+        <Badge key={variant} variant={variant}>
+          {variant.replace("outline-", "")}
+        </Badge>
+      ))}
+    </div>
+  ),
+}
+
+/** `MIChip` `avatar`: leading avatar/icon, regular weight. */
+export const WithAvatar: Story = {
+  render: () => (
+    <div className="flex flex-wrap gap-2">
+      <Badge
+        variant="primary"
+        avatar={
+          <img
+            alt=""
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='12' fill='%230b3ee3'/%3E%3C/svg%3E"
+          />
+        }
+      >
+        Mario Rossi
+      </Badge>
+      <Badge variant="neutral">No avatar</Badge>
+    </div>
+  ),
+}
+
+/** `MIChip` `onDelete`: the delete button must be keyboard reachable and named. */
+export const Deletable: Story = {
+  args: {
+    variant: "neutral",
+    children: "Filtro attivo",
+    deleteAriaLabel: "Rimuovi filtro",
+    onDelete: () => {},
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement)
+    const deleteButton = canvas.getByRole("button", { name: /rimuovi filtro/i })
+
+    await step("the delete button is focusable", async () => {
+      deleteButton.focus()
+      await expect(deleteButton).toHaveFocus()
+    })
+  },
 }

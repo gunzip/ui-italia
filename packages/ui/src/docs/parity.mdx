@@ -20,6 +20,9 @@ The executable reference is the parity spec:
   WCAG 2.2 AA.
 - Component APIs are idiomatic shadcn/Base UI (`variant`, `size`, `cva`,
   `data-slot`), never MUI-style wrappers or `sx` props.
+- Floating labels (MUI `TextField` outlined) are **not** cloned: parity is
+  achieved through height/weight/colour, and the error state is expressed with
+  `aria-invalid` + `FieldError` (see `parity-spec.md` §10.2).
 
 ## Guardrails
 
@@ -28,6 +31,15 @@ The executable reference is the parity spec:
 - Every story must pass `@storybook/addon-a11y` with `test: 'error'`.
 - Visual regression baselines are Linux-authoritative and regenerated with the
   **Update visual baselines** workflow.
+
+## Storybook titles
+
+The catalogue uses file-path titles (`components/*`, `blocks/*`,
+`Foundations/*`, `Assets/*`, `Guides/*`). The MUI `MUI Components/…` prefix is
+**intentionally not adopted**: it would rename every story id and invalidate all
+visual baselines for a cosmetic sorting change. Per-component documentation
+comes from the MDX pages under `src/docs` (`<Meta of={…} />`), which replace the
+`autodocs` page for those components.
 
 ## Migrating
 

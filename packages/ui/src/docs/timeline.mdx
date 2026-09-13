@@ -1,0 +1,36 @@
+import {
+  Meta,
+  Title,
+  Primary,
+  Controls,
+  Stories,
+} from "@storybook/addon-docs/blocks"
+
+import * as TimelineStories from "../blocks/timeline.stories"
+
+<Meta of={TimelineStories} />
+
+<Title />
+
+`Timeline` è la linea temporale del Design System, porting di `MITimeline`:
+lista semantica di step con indicatore e connettore.
+
+## Playground
+
+<Primary />
+<Controls />
+
+## Composizione
+
+`Timeline` (ordina gli `TimelineItem` e inietta primo/ultimo) con `TimelineItem`,
+che accetta `title`, `variant` (`normal`, `info`, `success`, `warning`,
+`error`) e un `icon` decorativo.
+
+<Stories />
+
+## Accessibilità
+
+- Radice `ol` / item `li`: l'ordine è quello del DOM.
+- Le icone decorative vanno marcate `aria-hidden`.
+- Le varianti colorano sfondo e bordo: aggiungere sempre testo/titolo
+  significativo, non affidarsi al colore.

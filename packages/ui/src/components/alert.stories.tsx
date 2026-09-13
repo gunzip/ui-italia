@@ -11,7 +11,6 @@ import { Button } from "./button"
 
 const meta = {
   component: Alert,
-  tags: ["autodocs"],
   parameters: {
     layout: "centered",
   },
@@ -19,6 +18,10 @@ const meta = {
     variant: {
       control: "select",
       options: ["default", "destructive", "success", "warning", "info"],
+    },
+    appearance: {
+      control: "select",
+      options: ["outlined", "standard"],
     },
   },
 } satisfies Meta<typeof Alert>
@@ -101,6 +104,29 @@ export const Info: Story = {
       <AlertTitle>Information</AlertTitle>
       <AlertDescription>See the service guidelines.</AlertDescription>
     </Alert>
+  ),
+}
+
+/** `standard` appearance: status-tinted surface with a dark icon (`MuiAlert.standard`). */
+export const Standard: Story = {
+  render: () => (
+    <div className="flex w-96 flex-col gap-4">
+      {(
+        [
+          ["default", "Nota"],
+          ["destructive", "Errore"],
+          ["success", "Operazione completata"],
+          ["warning", "Attenzione"],
+          ["info", "Informazione"],
+        ] as const
+      ).map(([variant, title]) => (
+        <Alert key={variant} variant={variant} appearance="standard">
+          <InfoIcon aria-hidden="true" />
+          <AlertTitle>{title}</AlertTitle>
+          <AlertDescription>Contenuto dell&apos;avviso.</AlertDescription>
+        </Alert>
+      ))}
+    </div>
   ),
 }
 

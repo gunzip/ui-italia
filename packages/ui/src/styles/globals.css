@@ -76,6 +76,11 @@
   --color-info-muted: var(--info-muted);
   --color-info-strong: var(--info-strong);
 
+  /* Chip ramp (mui-italia colors.ts) — distinct from --destructive-* (Alert). */
+  --color-error-100: var(--error-100);
+  --color-error-850: var(--error-850);
+  --color-grey-300: var(--grey-300);
+
   /* Status colors (additive to shadcn) */
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
@@ -231,8 +236,13 @@
   --info-light: #89d9fc;
   --info-accent: #6bcffb;
   --info-muted: #e1f5fe;
-  --info-strong: #215c76;
+  --info-strong: #225c76;
   --info-foreground: #0e0f13;
+
+  /* MIChip ramp (mui-italia colors.ts) — intentionally distinct from --destructive-* */
+  --error-100: #ffd9d9;
+  --error-850: #5d1313;
+  --grey-300: #e0e0e0;
 
   /* Brand */
   --brand: #0066cc;
@@ -349,6 +359,11 @@
   --info-muted: rgb(143 216 245 / 16%);
   --info-strong: #b3e7fa;
   --info-foreground: #06232e;
+
+  /* MIChip ramp in dark mode, aligned with the semantic status dark mapping. */
+  --error-100: rgb(255 138 138 / 16%);
+  --error-850: #ffb3b3;
+  --grey-300: rgb(255 255 255 / 16%);
 
   --brand: #4d9fff;
   --brand-foreground: #0b1f33;

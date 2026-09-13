@@ -7,7 +7,6 @@ import { Toaster } from "./sonner"
 
 const meta = {
   component: Toaster,
-  tags: ["autodocs"],
   parameters: {
     layout: "centered",
   },

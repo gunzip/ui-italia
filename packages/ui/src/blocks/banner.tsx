@@ -2,6 +2,7 @@ import * as React from "react"
 import { LightbulbIcon, XIcon } from "lucide-react"
 import { cn } from "cn"
 
+import { Badge } from "ui-italia/components/badge"
 import { buttonVariants } from "ui-italia/components/button"
 import { IllusPush } from "ui-italia/illustrations"
 
@@ -10,7 +11,12 @@ export type BannerVariant = "primary" | "secondary" | "tertiary"
 
 export type BannerCTA =
   | { label: string; onClick: () => void }
-  | { label: string; href: string; target?: "_self" | "_blank"; rel?: string }
+  | {
+      label: string
+      href: string
+      target?: "_self" | "_blank"
+      rel?: string
+    }
 
 interface BannerProps extends Omit<React.ComponentProps<"section">, "title"> {
   color?: BannerColor
@@ -29,6 +35,63 @@ const colorMap = {
   white: "bg-card border-border",
   info: "bg-primary-50 border-primary-100",
 } as const
+
+function BannerCta({
+  cta,
+  contained,
+  tertiary,
+  className,
+}: {
+  cta: BannerCTA
+  contained: boolean
+  tertiary: boolean
+  className?: string
+}) {
+  const classes = cn(
+    contained
+      ? buttonVariants({ variant: "default", size: "sm" })
+      : cn(
+          "rounded-lg p-0 font-semibold underline-offset-4 outline-none hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring",
+          tertiary ? "text-body" : "text-caption-strong",
+          "text-primary-text hover:text-primary-hover"
+        ),
+    contained && "px-4",
+    className
+  )
+
+  if ("href" in cta) {
+    return (
+      <a href={cta.href} target={cta.target} rel={cta.rel} className={classes}>
+        {cta.label}
+      </a>
+    )
+  }
+
+  return (
+    <button type="button" onClick={cta.onClick} className={classes}>
+      {cta.label}
+    </button>
+  )
+}
+
+function CloseButton({
+  onClose,
+  ariaLabel,
+}: {
+  onClose: () => void
+  ariaLabel: string
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClose}
+      className="flex size-8 shrink-0 items-center justify-center rounded-sm text-foreground outline-none hover:bg-action-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+    >
+      <XIcon aria-hidden="true" className="size-5" />
+      <span className="sr-only">{ariaLabel}</span>
+    </button>
+  )
+}
 
 /**
  * Port of mui-italia `Banner`: three layouts (`primary` with illustration,
@@ -49,31 +112,25 @@ function Banner({
   ...props
 }: BannerProps) {
   const titleId = React.useId()
-  const horizontal = variant === "tertiary" ? true : undefined
 
-  const ctaNode = cta ? (
-    "href" in cta ? (
-      <a
-        href={cta.href}
-        target={cta.target}
-        rel={cta.rel}
-        className={buttonVariants({
-          variant: variant === "secondary" ? "default" : "link",
-        })}
-      >
-        {cta.label}
-      </a>
-    ) : (
-      <button
-        type="button"
-        onClick={cta.onClick}
-        className={buttonVariants({
-          variant: variant === "secondary" ? "default" : "link",
-        })}
-      >
-        {cta.label}
-      </button>
-    )
+  const titleClass = cn(
+    "leading-[1.2] font-bold [overflow-wrap:anywhere] break-words text-foreground",
+    variant === "tertiary" ? "text-body" : "text-[18px] sm:text-2xl"
+  )
+  const messageClass = cn(
+    "[overflow-wrap:anywhere] break-words text-muted-foreground",
+    variant === "tertiary" ? "text-caption" : "text-body"
+  )
+
+  const titleNode = (
+    <h3 id={titleId} className={titleClass}>
+      {title}
+    </h3>
+  )
+  const messageNode = message ? <p className={messageClass}>{message}</p> : null
+
+  const closeNode = onClose ? (
+    <CloseButton onClose={onClose} ariaLabel={closeAriaLabel} />
   ) : null
 
   return (
@@ -81,58 +138,95 @@ function Banner({
       data-slot="banner"
       aria-labelledby={titleId}
       className={cn(
-        "relative flex rounded-lg border p-4",
-        horizontal
-          ? "flex-row items-start"
-          : "flex-col md:flex-row md:items-start",
+        "w-full rounded-lg border p-4 text-foreground",
         colorMap[color],
         className
       )}
       {...props}
     >
       {variant === "primary" ? (
-        <div aria-hidden="true" className="shrink-0">
-          {illustration ?? <IllusPush size={80} />}
+        <div className="flex items-stretch">
+          <span
+            aria-hidden="true"
+            className="mr-4 w-1 shrink-0 self-stretch rounded-full bg-primary"
+          />
+          <div className="flex w-full justify-between gap-4">
+            <div className="flex min-w-0 flex-1 flex-col gap-2">
+              {badge ? (
+                <Badge variant="highlight" className="self-start">
+                  {badge}
+                </Badge>
+              ) : null}
+              {titleNode}
+              {messageNode}
+              {cta ? (
+                <BannerCta
+                  cta={cta}
+                  contained={false}
+                  tertiary={false}
+                  className="mt-1 self-start"
+                />
+              ) : null}
+            </div>
+            <div className="flex shrink-0 flex-col items-end gap-4">
+              {closeNode}
+              <div className="mt-auto flex size-14 items-end justify-end sm:size-20 [&>img]:size-full [&>img]:object-contain [&>svg]:size-full">
+                {illustration ?? <IllusPush />}
+              </div>
+            </div>
+          </div>
         </div>
-      ) : null}
-
-      {variant === "tertiary" ? (
-        <span aria-hidden="true" className="shrink-0 text-primary">
-          {icon ?? <LightbulbIcon className="size-5" />}
-        </span>
-      ) : null}
-
-      <div
-        className={cn(
-          "flex flex-1 flex-col gap-4",
-          variant === "tertiary" &&
-            "items-center text-center md:items-start md:text-left"
-        )}
-      >
-        <div className="flex flex-col gap-1">
-          {badge ? (
-            <span className="text-overline text-muted-foreground">{badge}</span>
-          ) : null}
-          <h3 id={titleId} className="text-h6 text-foreground">
-            {title}
-          </h3>
-          {message ? (
-            <p className="text-body text-muted-foreground">{message}</p>
-          ) : null}
+      ) : variant === "secondary" ? (
+        <div className="flex w-full justify-between gap-4">
+          <div className="flex min-w-0 flex-1 flex-col gap-2">
+            {titleNode}
+            {messageNode}
+            {cta ? (
+              <BannerCta
+                cta={cta}
+                contained
+                tertiary={false}
+                className="mt-1 self-start sm:hidden"
+              />
+            ) : null}
+          </div>
+          <div className="flex shrink-0 flex-col items-end gap-4">
+            {closeNode}
+            {cta ? (
+              <BannerCta
+                cta={cta}
+                contained
+                tertiary={false}
+                className="mt-auto hidden self-end sm:inline-flex"
+              />
+            ) : null}
+          </div>
         </div>
-        {ctaNode}
-      </div>
-
-      {onClose ? (
-        <button
-          type="button"
-          aria-label={closeAriaLabel}
-          onClick={onClose}
-          className="absolute top-2 right-2 flex size-6 items-center justify-center rounded-sm text-muted-foreground hover:bg-action-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-        >
-          <XIcon aria-hidden="true" className="size-4" />
-        </button>
-      ) : null}
+      ) : (
+        <div className="flex w-full items-start justify-between gap-4">
+          <div className="flex min-w-0 flex-1 items-start gap-2">
+            <span
+              aria-hidden="true"
+              className="mt-0.5 shrink-0 text-primary/40"
+            >
+              {icon ?? <LightbulbIcon className="size-5" />}
+            </span>
+            <div className="flex min-w-0 flex-1 flex-col gap-2">
+              {titleNode}
+              {messageNode}
+              {cta ? (
+                <BannerCta
+                  cta={cta}
+                  contained={false}
+                  tertiary
+                  className="mt-0.5 self-start"
+                />
+              ) : null}
+            </div>
+          </div>
+          {closeNode}
+        </div>
+      )}
     </section>
   )
 }

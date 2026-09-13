@@ -1,0 +1,37 @@
+import {
+  Meta,
+  Title,
+  Primary,
+  Controls,
+  Stories,
+} from "@storybook/addon-docs/blocks"
+
+import * as BoxedModuleStories from "../blocks/boxed-module.stories"
+
+<Meta of={BoxedModuleStories} />
+
+<Title />
+
+`BoxedModule` è il modulo incorniciato del Design System, porting di
+`MIBoxedModule`: bordo, icona iniziale, contenuto e azione finale, con stato di
+caricamento a skeleton.
+
+## Playground
+
+<Primary />
+<Controls />
+
+## Props
+
+- `loading` — mostra lo skeleton e imposta `aria-busy`.
+- `loadingLabel` — etichetta annunciata durante il caricamento.
+- `direction` — `horizontal`/`vertical` per il layout contenuto/azione.
+- `icon` / `action` — icona iniziale e azione finale.
+- `BoxedModuleTitle` — titolo del modulo.
+
+<Stories />
+
+## Accessibilità
+
+- Durante il caricamento è esposto `aria-busy` con un'etichetta accessibile.
+- L'azione finale resta un controllo reale (button/link) con nome esplicito.

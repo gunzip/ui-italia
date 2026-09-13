@@ -12,7 +12,6 @@ import {
 
 const meta = {
   component: Breadcrumb,
-  tags: ["autodocs"],
   parameters: {
     layout: "padded",
   },

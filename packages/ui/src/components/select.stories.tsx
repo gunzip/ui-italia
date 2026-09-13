@@ -22,7 +22,6 @@ const fruits = [
 
 const meta = {
   component: Select,
-  tags: ["autodocs"],
   parameters: {
     layout: "centered",
   },

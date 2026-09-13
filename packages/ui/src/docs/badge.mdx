@@ -1,0 +1,41 @@
+import {
+  Meta,
+  Title,
+  Primary,
+  Controls,
+  Stories,
+} from "@storybook/addon-docs/blocks"
+
+import * as BadgeStories from "../components/badge.stories"
+
+<Meta of={BadgeStories} />
+
+<Title />
+
+`Badge` è il chip del Design System, porting di `MIChip`: geometria a pillola
+(raggio 40px), label 12px/600 e palette semantica.
+
+## Playground
+
+<Primary />
+<Controls />
+
+## Varianti
+
+- Filled: `primary`, `highlight` (turchese), `neutral`, `destructive`,
+  `success`, `warning`, `info`.
+- Outlined: `outline` (neutral), `outline-primary`, `outline-highlight`,
+  `outline-success`, `outline-warning`, `outline-info`, `outline-destructive`.
+
+`avatar` aggiunge un avatar/icona iniziale; `onDelete` (+ `deleteAriaLabel`)
+mostra il pulsante di rimozione, necessario quando il chip rappresenta un
+filtro rimosso.
+
+<Stories />
+
+## Accessibilità
+
+- Il chip è un elemento non interattivo; l'azione di rimozione è un `<button>`
+  con nome accessibile (`deleteAriaLabel`, default `Delete`).
+- Il target del pulsante di rimozione è 24×24.
+- Le coppie sfondo/testo usano i token `*-muted` / `*-strong` (AA).

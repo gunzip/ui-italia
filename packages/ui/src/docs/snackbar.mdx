@@ -1,0 +1,43 @@
+import {
+  Meta,
+  Title,
+  Primary,
+  Controls,
+  Stories,
+} from "@storybook/addon-docs/blocks"
+
+import * as SonnerStories from "../components/sonner.stories"
+
+<Meta of={SonnerStories} />
+
+<Title />
+
+`Snackbar`/toast è implementato con **Sonner**, porting di `MISnackbar`. Si
+monta una volta `<Toaster />` alla radice dell'app e si invoca `toast()`.
+
+## Playground
+
+<Primary />
+<Controls />
+
+## Uso
+
+```tsx
+import { toast } from "sonner"
+
+toast.success("Operazione completata")
+toast.error("Si è verificato un errore", {
+  action: { label: "Riprova", onClick: retry },
+})
+```
+
+La superficie è bianca con elevazione 4, testo 16px e `--border-radius` uguale
+al raggio del tema.
+
+<Stories />
+
+## Accessibilità
+
+- Sonner gestisce `role="status"`/`aria-live` per l'annuncio dei toast.
+- L'azione deve avere un'etichetta testuale esplicita e non essere l'unico modo
+  per completare un'operazione critica.

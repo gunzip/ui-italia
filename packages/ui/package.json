@@ -2,15 +2,27 @@
   "name": "ui-italia",
   "version": "0.0.0",
   "type": "module",
-  "private": true,
+  "private": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist",
+    "src/styles/globals.css"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "prepack": "pnpm build",
     "lint": "eslint",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "typecheck": "tsc --noEmit",
     "test": "vitest --project storybook run",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "registry:build": "shadcn build",
+    "registry:build": "node scripts/build-registry.mjs && shadcn build",
     "test:visual": "playwright test",
     "test:visual:update": "playwright test --update-snapshots"
   },
@@ -65,12 +77,45 @@
   },
   "exports": {
     "./globals.css": "./src/styles/globals.css",
-    "./lib/*": "./src/lib/*.ts",
-    "./components/*": "./src/components/*.tsx",
-    "./hooks/*": "./src/hooks/*.ts",
-    "./illustrations": "./src/illustrations/index.ts",
-    "./illustrations/*": "./src/illustrations/*.tsx",
-    "./icons": "./src/icons/index.ts",
-    "./assets": "./src/assets/index.ts"
+    "./lib/*": {
+      "source": "./src/lib/*.ts",
+      "types": "./dist/lib/*.d.ts",
+      "default": "./dist/lib/*.js"
+    },
+    "./components/*": {
+      "source": "./src/components/*.tsx",
+      "types": "./dist/components/*.d.ts",
+      "default": "./dist/components/*.js"
+    },
+    "./blocks/*": {
+      "source": "./src/blocks/*.tsx",
+      "types": "./dist/blocks/*.d.ts",
+      "default": "./dist/blocks/*.js"
+    },
+    "./hooks/*": {
+      "source": "./src/hooks/*.ts",
+      "types": "./dist/hooks/*.d.ts",
+      "default": "./dist/hooks/*.js"
+    },
+    "./illustrations": {
+      "source": "./src/illustrations/index.ts",
+      "types": "./dist/illustrations/index.d.ts",
+      "default": "./dist/illustrations/index.js"
+    },
+    "./illustrations/*": {
+      "source": "./src/illustrations/*.tsx",
+      "types": "./dist/illustrations/*.d.ts",
+      "default": "./dist/illustrations/*.js"
+    },
+    "./icons": {
+      "source": "./src/icons/index.ts",
+      "types": "./dist/icons/index.d.ts",
+      "default": "./dist/icons/index.js"
+    },
+    "./assets": {
+      "source": "./src/assets/index.ts",
+      "types": "./dist/assets/index.d.ts",
+      "default": "./dist/assets/index.js"
+    }
   }
 }

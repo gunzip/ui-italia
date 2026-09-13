@@ -1,7 +1,16 @@
 import * as React from "react"
+import { z } from "zod"
 import { cn } from "cn"
 
-import { LogoPagoPACompany } from "ui-italia/assets"
+import { FundedByNextGenerationEU, LogoPagoPACompany } from "ui-italia/assets"
+import {
+  InstagramIcon,
+  LinkedinIcon,
+  MediumIcon,
+  ThreadsIcon,
+  TwitterIcon,
+  YoutubeIcon,
+} from "ui-italia/icons"
 import { LangSwitch } from "./lang-switch"
 import type { LangCode, Languages } from "./lang-switch"
 
@@ -47,7 +56,29 @@ export interface PreLoginFooterLinks {
   }
 }
 
-const HREF_NO_OP = "#"
+export const PRODUCTS_JSON_URL =
+  "https://selfcare.pagopa.it/assets/products.json"
+
+/** Product entry loaded from `productsJsonUrl` (`FooterPreLogin`). */
+const productSchema = z.object({
+  label: z.string(),
+  href: z.string(),
+  ariaLabel: z.string().optional(),
+  linkType: z.enum(["internal", "external"]).optional(),
+})
+
+const productsSchema = z.array(productSchema)
+
+export type FooterProduct = z.infer<typeof productSchema>
+
+const socialIcons: Record<FooterSocialIcon, React.ReactNode> = {
+  linkedin: <LinkedinIcon />,
+  instagram: <InstagramIcon />,
+  threads: <ThreadsIcon />,
+  youtube: <YoutubeIcon />,
+  twitter: <TwitterIcon />,
+  medium: <MediumIcon />,
+}
 
 function FooterLink({
   item,
@@ -58,7 +89,7 @@ function FooterLink({
 }) {
   return (
     <a
-      href={item.href ?? HREF_NO_OP}
+      href={item.href ?? "#"}
       aria-label={item.ariaLabel}
       onClick={item.onClick}
       className={cn(
@@ -109,7 +140,7 @@ function FooterPostLogin({
     <div className={cn("border-t border-border bg-card", className)}>
       <div className="flex flex-col items-center justify-between gap-4 px-4 py-3 md:flex-row md:gap-3">
         <a
-          href={companyLink.href ?? HREF_NO_OP}
+          href={companyLink.href ?? "#"}
           aria-label={companyLink.ariaLabel}
           onClick={companyLink.onClick}
           className="inline-flex"
@@ -158,7 +189,7 @@ function FooterCheckout({
           />
         </nav>
         <a
-          href={companyLink.href ?? HREF_NO_OP}
+          href={companyLink.href ?? "#"}
           aria-label={companyLink.ariaLabel}
           onClick={companyLink.onClick}
           className="inline-flex"
@@ -170,53 +201,115 @@ function FooterCheckout({
   )
 }
 
-/** Port of mui-italia `FooterPreLogin` (products column omitted). */
+interface FooterPreLoginProps extends FooterLangProps {
+  companyLink: CompanyLink
+  links: PreLoginFooterLinks
+  /** URL of the JSON listing the products shown in the dedicated column. */
+  productsJsonUrl?: string
+  /** Heading of the products column. */
+  productsTitle?: string
+  /** Called when the products JSON cannot be fetched or validated. */
+  onProductsJsonFetchError?: (reason: unknown) => void
+  /** Hides the products column entirely. */
+  hideProductsColumn?: boolean
+  className?: string
+}
+
+/** Port of mui-italia `FooterPreLogin` (logo + about, products, resources, follow). */
 function FooterPreLogin({
   companyLink,
   links,
+  productsJsonUrl = PRODUCTS_JSON_URL,
+  productsTitle = "Prodotti e Servizi",
+  onProductsJsonFetchError,
+  hideProductsColumn = false,
   languages,
   onLanguageChanged,
   currentLangCode,
   className,
-}: {
-  companyLink: CompanyLink
-  links: PreLoginFooterLinks
-  className?: string
-} & FooterLangProps) {
+}: FooterPreLoginProps) {
+  const [products, setProducts] = React.useState<FooterProduct[]>([])
+
+  React.useEffect(() => {
+    if (hideProductsColumn) return
+    let cancelled = false
+
+    fetch(productsJsonUrl)
+      .then((response) => response.json())
+      .then((json) => {
+        const result = productsSchema.safeParse(json)
+        if (!result.success) {
+          throw result.error
+        }
+        if (!cancelled) setProducts(result.data)
+      })
+      .catch((reason: unknown) => {
+        if (onProductsJsonFetchError) {
+          onProductsJsonFetchError(reason)
+        } else {
+          console.error(reason)
+        }
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [hideProductsColumn, productsJsonUrl, onProductsJsonFetchError])
+
   return (
     <footer className={cn("border-t border-border bg-card", className)}>
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 py-8 md:grid-cols-4">
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-6">
           <a
-            href={companyLink.href ?? HREF_NO_OP}
+            href={companyLink.href ?? "#"}
             aria-label={companyLink.ariaLabel}
             onClick={companyLink.onClick}
             className="inline-flex"
           >
             <LogoPagoPACompany />
           </a>
+
+          <nav
+            aria-label={links.aboutUs.title ?? "Chi siamo"}
+            className="flex flex-col gap-3"
+          >
+            {links.aboutUs.title ? (
+              <h2 className="text-overline text-foreground">
+                {links.aboutUs.title}
+              </h2>
+            ) : null}
+            {links.aboutUs.links.map((item, index) => (
+              <FooterLink key={index} item={item} />
+            ))}
+          </nav>
         </div>
 
-        <nav
-          aria-label={links.aboutUs.title ?? "Chi siamo"}
-          className="flex flex-col gap-3"
-        >
-          {links.aboutUs.title ? (
-            <h2 className="text-caption-strong text-foreground">
-              {links.aboutUs.title}
-            </h2>
-          ) : null}
-          {links.aboutUs.links.map((item, index) => (
-            <FooterLink key={index} item={item} />
-          ))}
-        </nav>
+        {!hideProductsColumn ? (
+          <nav aria-label={productsTitle} className="flex flex-col gap-3">
+            <h2 className="text-overline text-foreground">{productsTitle}</h2>
+            <ul className="flex flex-col gap-2">
+              {products.map((product, index) => (
+                <li key={index}>
+                  <a
+                    href={product.href}
+                    lang="it"
+                    aria-label={product.ariaLabel}
+                    className="text-caption font-semibold text-foreground underline-offset-4 hover:underline"
+                  >
+                    {product.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ) : null}
 
         <nav
           aria-label={links.resources.title ?? "Risorse"}
           className="flex flex-col gap-3"
         >
           {links.resources.title ? (
-            <h2 className="text-caption-strong text-foreground">
+            <h2 className="text-overline text-foreground">
               {links.resources.title}
             </h2>
           ) : null}
@@ -225,23 +318,25 @@ function FooterPreLogin({
           ))}
         </nav>
 
-        <div className="flex flex-col gap-3">
-          <h2 className="text-caption-strong text-foreground">
+        <div className="flex flex-col gap-4">
+          <h2 className="text-overline text-foreground">
             {links.followUs.title}
           </h2>
-          <ul className="flex flex-wrap items-center gap-3">
-            {links.followUs.socialLinks.map((social, index) => (
-              <li key={index}>
-                <a
-                  href={social.href ?? HREF_NO_OP}
-                  aria-label={social.ariaLabel ?? social.title}
-                  onClick={social.onClick}
-                  className="text-caption font-semibold text-foreground underline-offset-4 hover:underline"
-                >
-                  {social.title}
-                </a>
-              </li>
-            ))}
+          <ul className="flex flex-wrap items-center gap-4 sm:gap-2 lg:gap-4">
+            {links.followUs.socialLinks
+              .filter((social) => social.icon in socialIcons)
+              .map((social, index) => (
+                <li key={index}>
+                  <a
+                    href={social.href ?? "#"}
+                    aria-label={social.ariaLabel ?? social.title}
+                    onClick={social.onClick}
+                    className="inline-flex rounded-sm text-foreground outline-none hover:text-primary-hover focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring [&_svg]:size-6"
+                  >
+                    {socialIcons[social.icon]}
+                  </a>
+                </li>
+              ))}
           </ul>
           <div className="flex flex-col gap-3">
             {links.followUs.links.map((item, index) => (
@@ -253,6 +348,9 @@ function FooterPreLogin({
             onLanguageChanged={onLanguageChanged}
             currentLangCode={currentLangCode}
           />
+          <div className="mt-2">
+            <FundedByNextGenerationEU size={180} />
+          </div>
         </div>
       </div>
     </footer>
@@ -265,6 +363,10 @@ interface FooterProps extends FooterLangProps {
   postLoginLinks: FooterLinkItem[]
   preLoginLinks: PreLoginFooterLinks
   legalInfo: React.ReactNode
+  productsJsonUrl?: string
+  productsTitle?: string
+  onProductsJsonFetchError?: (reason: unknown) => void
+  hideProductsColumn?: boolean
   onExit?: (exitAction: () => void) => void
 }
 
@@ -275,6 +377,10 @@ function Footer({
   postLoginLinks,
   preLoginLinks,
   legalInfo,
+  productsJsonUrl,
+  productsTitle,
+  onProductsJsonFetchError,
+  hideProductsColumn,
   languages,
   onLanguageChanged,
   currentLangCode,
@@ -293,6 +399,10 @@ function Footer({
         <FooterPreLogin
           companyLink={companyLink}
           links={preLoginLinks}
+          productsJsonUrl={productsJsonUrl}
+          productsTitle={productsTitle}
+          onProductsJsonFetchError={onProductsJsonFetchError}
+          hideProductsColumn={hideProductsColumn}
           languages={languages}
           onLanguageChanged={onLanguageChanged}
           currentLangCode={currentLangCode}

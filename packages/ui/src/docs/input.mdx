@@ -1,0 +1,39 @@
+import {
+  Meta,
+  Title,
+  Primary,
+  Controls,
+  Stories,
+} from "@storybook/addon-docs/blocks"
+
+import * as InputStories from "../components/input.stories"
+
+<Meta of={InputStories} />
+
+<Title />
+
+`Input` è il campo di testo, porting di `TextField`: altezza 56px (medium),
+raggio 8px, bordo `--input-border` e testo 16px/600.
+
+## Playground
+
+<Primary />
+<Controls />
+
+## Uso
+
+Associare sempre una `Label` (o il registry `Field`) con `htmlFor`/`id`. Lo
+stato di errore si esprime con `aria-invalid` (bordo e focus diventano
+`destructive`) e con `FieldError`/`FieldDescription` per i messaggi.
+
+Per input con addon (icone, pulsanti, prefissi) usare `InputGroup`. Per il
+testo multiriga, `Textarea`.
+
+<Stories />
+
+## Accessibilità
+
+- Label sempre associata; helper ed errore collegati via `aria-describedby`.
+- `aria-invalid` per lo stato di errore; non affidarsi al solo colore.
+- Focus visibile 2px, offset 2px, token `--ring`.
+- La label flottante di MUI **non** è clonata: vedi `Guides/Parity`.

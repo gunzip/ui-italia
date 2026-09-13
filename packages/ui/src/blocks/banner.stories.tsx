@@ -16,6 +16,7 @@ export const Primary: Story = {
   args: {
     title: "Scopri i nuovi servizi",
     message: "Attiva i servizi digitali per la tua impresa.",
+    badge: "Novità",
     cta: { label: "Scopri di più", onClick: () => {} },
     onClose: () => {},
   },

@@ -6,7 +6,6 @@ import { Label } from "./label"
 
 const meta = {
   component: Input,
-  tags: ["autodocs"],
   parameters: {
     layout: "centered",
   },
