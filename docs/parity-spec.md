@@ -400,6 +400,17 @@ Components presenti in ui-italia **senza** controparte in mui (story extra): `ac
 
 Fonte: `mui-italia/src/components/index.ts`, `src/assets/index.ts`, `src/icons/index.ts`, `src/illustrations/**`.
 
+### Stato F4
+
+| Gruppo                  | Stato                                                                                                                                                                                     |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Icone (8)               | ✅ portate in `packages/ui/src/icons/` (SVG puri, `currentColor`) + story `Assets/Icons`                                                                                                  |
+| Illustrazioni (97)      | ✅ portate via codemod in `packages/ui/src/illustrations/` (`Illustration` + `useIllustrationColors` idiomatici, token `--illustration-primary/secondary`) + story `Assets/Illustrations` |
+| Assets (6)              | 🔴 da portare (API `title`/`size`/`color`)                                                                                                                                                |
+| Componenti MI* mancanti | 🔴 da portare                                                                                                                                                                             |
+| Composizioni            | 🔴 da portare                                                                                                                                                                             |
+| Registry                | 🔴 item per ogni componente/asset                                                                                                                                                         |
+
 ---
 
 ## 8. Verifica e guardrail
@@ -446,7 +457,7 @@ Ogni step chiude con: story + a11y verde + parity test + baseline.
 - **F1 — Token: fatto** (`packages/ui/src/styles/globals.css`, `foundations.stories.tsx`). Light su `themeNext`; dark allineato a `darkTheme` + nuovi token derivati. Build Storybook verde.
 - **F2 — Primitive: completo.** Blocchi: Button/Card/Badge, Input/Field/Label/Textarea, Select/Combobox/NativeSelect/Menu, Switch/Checkbox/Radio, Alert/Tooltip/Tabs, Table/Breadcrumb/Skeleton, Dialog/AlertDialog/Sheet/Drawer/Sonner. Button: `loading` + `contrasted`. Restano gap minori 🟡/🔴 nella matrice (adornment Input, icona Select 20 vs 24, Pagination, Alert standard, Stepper/Timeline → F4).
 - **F3 — Storybook: in corso.** Step 1 canvas toggle + toolbar tema; step 2 Button loading/contrasted + story MIButton; step 3 story TextField/Select/Card. Restano step 4 (MDX) e step 5 (registry).
-- **F4 — Catalogo: da fare** (§7).
+- **F4 — Catalogo: in corso (onda 1).** Portate **8 icone** e **97 illustrazioni** (codemod idiomatico: `Illustration` + `useIllustrationColors`, token `--illustration-*`), con story `Assets/Icons` e `Assets/Illustrations`. Restano assets (6), componenti MI*, composizioni.
 - **F5 — Guardrail: fatto (base).** `Foundations/Parity guard` verde su Button/Badge/Input/Select/Switch. Da estendere man mano che la parity di altri componenti viene chiusa.
 
 ---

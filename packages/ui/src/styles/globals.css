@@ -240,6 +240,10 @@
   --indigo: #3f51b5;
   --check-iban: #008ca8;
 
+  /* Illustrations (colors from mui `useIllustrationColors`) */
+  --illustration-primary: #0b3ee3;
+  --illustration-secondary: #ced8f9;
+
   /* Italia palette */
   --italia-50: #e3f2fd;
   --italia-100: #bbdefb;
@@ -349,6 +353,9 @@
   --eu-foreground: #0b1f33;
   --indigo: #7986cb;
   --check-iban: #4dd0e1;
+
+  --illustration-primary: #ffffff;
+  --illustration-secondary: #6d8bee;
 
   --italia-50: #0d2135;
   --italia-100: #123354;
